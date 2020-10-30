@@ -4,13 +4,26 @@
 
 ### Smart Repo
 
-// TODO: Abid can you add a description here?
+An analytics dashboard app which gives insights of public github codebases and can suggest improvements based on best practices:
 
-- Avg size of PR/commits
-- Number of issues 
+- Static code analysis:
+    - Anti-patterns
+    - Redundant code
+    - linter or code format consistency validation
 
-- Anti-patterns
-- Redundant code
+- Avg size of PR/commits and frequency
+- Number of issues
+- Pull request analysis such as success rate, failure rate and frequency
+
+Possible tech stack:
+ReactJs, NodeJs: Single page web app
+
+Useful React data visualization framework: https://nivo.rocks/
+
+
+This app would be like a single web page which has a search bar that takes the URL to any public Github repo (could narrow it to a specific language) as input, and then generates a full dashboard filled with charts, graphs and other types of visual analysis that displays to the user any code anti-patterns, inconsistent code formatting or redundant code, as well as some other data about the commit sizes and pull requests history.
+
+
 
 
 ### Space Time Complexity
