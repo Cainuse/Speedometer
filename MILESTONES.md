@@ -23,9 +23,6 @@ Useful React data visualization framework: https://nivo.rocks/
 
 This app would be like a single web page which has a search bar that takes the URL to any public Github repo (could narrow it to a specific language) as input, and then generates a full dashboard filled with charts, graphs and other types of visual analysis that displays to the user any code anti-patterns, inconsistent code formatting or redundant code, as well as some other data about the commit sizes and pull requests history.
 
-
-
-
 ### Space Time Complexity
 
 A dynamic analysis tool that emprically calculates the space/time complexity of a piece of code.
@@ -60,5 +57,11 @@ The tool would then run each of these test cases multiple times to get an averag
 
 ## Feedback from TA
 
+* Both ideas have potential to be a good project
+* No major issues
+* Avoid simply combining a visualization framework with an analysis framework
+* Needs to seek clarification on part of assignment description - will follow up
+
 ## Changes based on feedback
--
+
+* No changes required so far
