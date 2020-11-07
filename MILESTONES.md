@@ -32,6 +32,9 @@ video - divide tasks
 
 ## Summary of progress so far
 
+* Identified and expanded on idea
+* Breakdown of tasks
+
 # Milestone 1
 
 ## Update: Revised project idea after discussions with TA
