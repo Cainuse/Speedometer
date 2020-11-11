@@ -15,20 +15,37 @@ video - divide tasks
 
 ## Roadmap for what should be done when
 
-6th Nov - Sketch for prototype (sample input/output + wireframe for visualization, med-high fidelity)
+6th Nov:
+
+       - Sketch for prototype (sample input/output + wireframe for visualization, med-high fidelity)
        - Describe the stages of analysis (from user's perspective)
-9th Nov - User study on prototype
-20 days - Implement everything
-10th Nov
+       
+9th Nov:
+
+       - User study on prototype
+20 days:
+
+       - Implement everything
+10th Nov:
+
     precursor: define APIs that connect these components...
-12th Nov
+12th Nov:
+
     - Front-end template
     - Docker analysis
     - cProfile analysis
     - Connector (combines data + template)
-26th Nov - Final user study
-27th Nov - Create video
-30th Nov - Submit project
+
+26th Nov:
+       
+       - Final user study
+27th Nov:
+
+       - Create video
+30th Nov:
+
+       - Submit project
+
 
 ## Summary of progress so far
 
