@@ -1,7 +1,31 @@
 # Contents
 
+* [Milestone 3](milestone-3)
 * [Milestone 2](milestone-2)
 * [Milestone 1](milestone-1)
+
+# Milestone 3
+
+## Mockup of analysis design, including any visualisation planned
+
+Mockup available on Figma [here](https://www.figma.com/file/4YQEQzz0XZD33ePeqh8TxW/FML-Complexity-2.0?node-id=0%3A1)
+
+## Notes about first user study
+
+See detailed feedback under [docs](docs/).
+
+Summary of feedback:
+
+* Timeline view is good, but descriptions are not very useful
+* Line by line analysis is nice but more details would be better
+* Performance summary is nice - especially the colour coding
+    * Would be nice to plot the actual code runtime on the graph
+* For memory usage, would be nice to see which data structures use most memory
+
+
+## Any changes to original analysis/visualisation design
+
+TODO
 
 # Milestone 2
 
