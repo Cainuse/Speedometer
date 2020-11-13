@@ -25,7 +25,13 @@ Summary of feedback:
 
 ## Any changes to original analysis/visualisation design
 
-TODO
+- Clarified visualization titles, chart legends and run-time specific data percentages for better understanding of dashboard
+- Gave timeline more clear descriptions for the entire performance analysis process
+- Provided helpful descriptions for each visualization in order to understand the purpose and usefulness of each of them
+
+Aside note:
+
+A lot of the template images for the rough design was taken off online resources that have aspects that may be irrelevant for our purposes even though they are shown as part of the initial design, they will be modified during the actual implementation. This led to receiving feedback on parts we were already aware of that were seemingly incoherent, even though they were simply put in the initial drafted design for completion purposes.
 
 # Milestone 2
 
