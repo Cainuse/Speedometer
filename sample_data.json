@@ -1,0 +1,84 @@
+{
+  "e2e": {
+    "input_size_1": {
+      "tot_run_time": 1000,
+      "tot_mem_consum_bytes": 500
+    },
+    "input_size_10": {
+      "tot_run_time": 1000,
+      "tot_mem_consum_bytes": 500
+    },
+    "input_size_100": {
+      "tot_run_time": 1000,
+      "tot_mem_consum_bytes": 500
+    }
+  },
+  "function": [
+    {
+      "name": "func_1",
+      "parent": "root",
+      "input_size_1": {
+        "tot_run_time": 1000,
+        "tot_mem_consum_bytes": 500
+      },
+      "input_size_10": {
+        "tot_run_time": 1000,
+        "tot_mem_consum_bytes": 500
+      },
+      "input_size_100": {
+        "tot_run_time": 1000,
+        "tot_mem_consum_bytes": 500
+      }
+    },
+    {
+      "name": "func_2",
+      "parent": "func_1",
+      "input_size_1": {
+        "tot_run_time": 1000,
+        "tot_mem_consum_bytes": 500
+      },
+      "input_size_10": {
+        "tot_run_time": 1000,
+        "tot_mem_consum_bytes": 500
+      },
+      "input_size_100": {
+        "tot_run_time": 1000,
+        "tot_mem_consum_bytes": 500
+      }
+    }
+  ],
+  "line_by_line": [
+    {
+      "line_num": 1,
+      "scope": "body",
+      "input_size_1": {
+        "tot_run_time": 1000,
+        "tot_mem_consum_bytes": 500
+      },
+      "input_size_10": {
+        "tot_run_time": 1000,
+        "tot_mem_consum_bytes": 500
+      },
+      "input_size_100": {
+        "tot_run_time": 1000,
+        "tot_mem_consum_bytes": 500
+      }
+    },
+    {
+      "line_num": 10,
+      "scope": "func_1",
+      "input_size_1": {
+        "tot_run_time": 1000,
+        "tot_mem_consum_bytes": 500
+      },
+      "input_size_10": {
+        "tot_run_time": 1000,
+        "tot_mem_consum_bytes": 500
+      },
+      "input_size_100": {
+        "tot_run_time": 1000,
+        "tot_mem_consum_bytes": 500
+      }
+    }
+  ]
+}
