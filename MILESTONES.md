@@ -1,8 +1,8 @@
 # Contents
 
-* [Milestone 3](milestone-3)
-* [Milestone 2](milestone-2)
-* [Milestone 1](milestone-1)
+* [Milestone 3](https://github.students.cs.ubc.ca/cpsc410-2020w-t1/cpsc410_project2_team4/blob/master/MILESTONES.md#milestone-3)
+* [Milestone 2](https://github.students.cs.ubc.ca/cpsc410-2020w-t1/cpsc410_project2_team4/blob/master/MILESTONES.md#milestone-2)
+* [Milestone 1](https://github.students.cs.ubc.ca/cpsc410-2020w-t1/cpsc410_project2_team4/blob/master/MILESTONES.md#milestone-1)
 
 # Milestone 3
 
