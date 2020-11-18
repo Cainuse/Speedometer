@@ -1,4 +1,8 @@
 import os
+import subprocess
+import json
+from datetime import datetime
+
 
 class EndToEndAnalyzer:
 
@@ -28,8 +32,34 @@ class EndToEndAnalyzer:
         # Build Docker Image
         os.system("docker build -t e2e .")
 
-        # Run Docker Image in a container and immediately delete it after execution
-        os.system("docker run --rm e2e")
+        # Run Docker Image in a container
+        os.system("docker run --name e2e e2e")
+
+        # Get information about the docker container
+        output = subprocess.run(["docker", "inspect", "e2e"], stdout=subprocess.PIPE)
+
+        # Convert bytes to string
+        output = output.stdout.decode('utf-8')
+
+        # Convert String to json and extract data
+        output_json = json.loads(output)
+
+        container = output_json[0]
+
+        container_state = container["State"]
+
+        container_start_time = container_state["StartedAt"]
+        container_state_time = datetime.strptime(container_start_time[:-2], "%Y-%m-%dT%H:%M:%S.%f").microsecond
+
+        container_end_time = container_state["FinishedAt"]
+        container_end_time = datetime.strptime(container_end_time[:-2], "%Y-%m-%dT%H:%M:%S.%f").microsecond
+
+        # Total runtime in microseconds
+        print("Total Runtime is: " + str(container_end_time - container_state_time) + " microseconds")
+        print("Total Runtime is: " + str((container_end_time - container_state_time) / 10 ** 6) + " seconds")
+
+        # Delete Created Docker image and container after script executes
+        os.system("docker rm e2e && docker rmi e2e")
 
     def get_results(self) -> dict:
         """
