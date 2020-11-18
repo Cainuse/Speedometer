@@ -10,7 +10,7 @@
 
 Mockup available on Figma [here](https://www.figma.com/file/4YQEQzz0XZD33ePeqh8TxW/FML-Complexity-2.0?node-id=0%3A1)
 
-## Notes about first user study
+## Notes about first user studies
 
 See detailed feedback under [docs](docs/).
 
