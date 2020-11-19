@@ -5,7 +5,7 @@ from datetime import datetime
 from typing import List, Dict
 
 from src.model.analyzers.e2e_analysis.Config import Config
-from src.model.analyzers.e2e_analysis.Docker.Dockerfile import build_dockerfile
+from src.model.analyzers.e2e_analysis.docker.Dockerfile import build_dockerfile
 
 
 class TestResult:
@@ -33,7 +33,7 @@ class EndToEndAnalyzer:
     def analyze(self, program_file_path: str, config_file_path: str) -> None:
         """
         Runs e2e analyses on the given program
-        :param program_file_path: path to the program to analyze
+        :param program_file_path: **absolute** path to the program to analyze
         :param config_file_path: path to the config file
         """
         config: Config = Config(config_file_path)

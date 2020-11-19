@@ -1,9 +1,8 @@
 from os import path
 import os
-import random
-import string
 import shutil
 
+from src.model.analyzers.e2e_analysis.docker import Docker_Util
 
 CURRENT_DIR_PATH = os.path.dirname(os.path.abspath(__file__))
 GENERATED_DOCKERFILES_PATH = path.abspath(path.join(CURRENT_DIR_PATH, "generated_dockerfiles"))
@@ -13,7 +12,7 @@ TEMPLATE_PATH = path.abspath(path.join(CURRENT_DIR_PATH, "Dockerfile_Template"))
 def build_dockerfile(program_file_path: str, program_args: list) -> str:
     """
     Creates a Dockerfile to test the given program with the given command
-    :param program_file_path: path to python program that will be run
+    :param program_file_path: **absolute** path to python program that will be run
     :param program_args: arguments to pass the python program
     :return: the path for the generated Dockerfile
     """
@@ -99,6 +98,5 @@ def _write_dockerfile(contents: str, output_path: str) -> None:
 
 
 def _get_random_folder_name():
-    length = 20
-    letters = string.ascii_letters + string.digits
-    return ''.join(random.choice(letters) for _ in range(length))
+    return Docker_Util.get_random_string_of_length(20)
+
