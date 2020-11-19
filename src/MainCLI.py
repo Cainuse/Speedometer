@@ -32,6 +32,8 @@ def main():
     speedometer = Speedometer()
     speedometer.run(program_file_path, config_file_path)
 
+    # TODO: open the generated webpage in browser
+
 
 if __name__ == "__main__":
     main()
