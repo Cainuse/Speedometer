@@ -22,9 +22,12 @@ def build_docker_image(dockerfile_path: str) -> str:
     if not os.path.exists(build_path):
         raise Exception("Build path {} does not exist".format(build_path))
 
-    repository: str = DockerUtil.get_random_string_of_length(20, uppercase=False, numbers=False)
-    DOCKER_CLIENT.images.build(path=build_path, tag=repository)
-    return repository
+    try:
+        repository: str = DockerUtil.get_random_string_of_length(20, uppercase=False, numbers=False)
+        DOCKER_CLIENT.images.build(path=build_path, tag=repository)
+        return repository
+    except Exception as e:
+        raise Exception("Failed to build image for {}".format(dockerfile_path), e)
 
 
 def list_images() -> List[str]:
