@@ -23,7 +23,7 @@ Completed tasks:
 
 ## Plans for final user study
 
-// TODO
+- Provide finished implementation of app with instructions to do certain tasks and receive feedback
 
 ## Planned timeline for the remaining days
 
