@@ -20,14 +20,17 @@ Completed tasks:
 * Visualization
     * Skeleton React app with some graphs using dummy data
     
+Tasks to Complete:
+
+* Line-by-line analysis:
+    * Debug and integrate with E2E analysis in proper JSON output format to send to front end
 
 ## Plans for final user study
 
 - Provide finished implementation of app with instructions to do certain tasks and receive feedback
    - Create test Python files that users can use our tool to analyze to compare expected and actual results
    - Complete front end dashboard for users to provide feedback on
-
-// TODO
+   - Recruit users with Linux/MacOS to help with testing
 
 ## Planned timeline for the remaining days
 
