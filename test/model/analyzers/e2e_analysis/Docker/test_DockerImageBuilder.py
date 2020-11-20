@@ -10,5 +10,6 @@ Test build_docker_image()
 
 def test():
     dockerfile_path = os.path.join(CURRENT_DIR_PATH, "resources", "Dockerfile")
-    print("Building")
-    DockerImageBuilder.build_docker_image(dockerfile_path)
+    name = DockerImageBuilder.build_docker_image(dockerfile_path)
+    assert name in DockerImageBuilder.list_images()
+    DockerImageBuilder.delete_all_docker_images(force=True)

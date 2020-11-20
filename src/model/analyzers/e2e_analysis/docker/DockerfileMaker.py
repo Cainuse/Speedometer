@@ -2,11 +2,11 @@ from os import path
 import os
 import shutil
 
-from src.model.analyzers.e2e_analysis.docker import Docker_Util
+from src.model.analyzers.e2e_analysis.docker import DockerUtil
 
 CURRENT_DIR_PATH = os.path.dirname(os.path.abspath(__file__))
 GENERATED_DOCKERFILES_PATH = path.abspath(path.join(CURRENT_DIR_PATH, "generated_dockerfiles"))
-TEMPLATE_PATH = path.abspath(path.join(CURRENT_DIR_PATH, "Dockerfile_Template"))
+TEMPLATE_PATH = path.abspath(path.join(CURRENT_DIR_PATH, "DockerfileTemplate"))
 
 
 def build_dockerfile(program_file_path: str, program_args: list) -> str:
@@ -98,5 +98,5 @@ def _write_dockerfile(contents: str, output_path: str) -> None:
 
 
 def _get_random_folder_name():
-    return Docker_Util.get_random_string_of_length(20)
+    return DockerUtil.get_random_string_of_length(20)
 
