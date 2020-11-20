@@ -1,6 +1,6 @@
-from os import path
 import os
 import shutil
+from os import path
 
 from src.model.analyzers.e2e_analysis.docker import DockerUtil
 
@@ -99,4 +99,3 @@ def _write_dockerfile(contents: str, output_path: str) -> None:
 
 def _get_random_folder_name():
     return DockerUtil.get_random_string_of_length(20)
-

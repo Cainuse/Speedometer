@@ -34,6 +34,3 @@ class Speedometer:
         """
 
         # TODO: implement this
-
-
-

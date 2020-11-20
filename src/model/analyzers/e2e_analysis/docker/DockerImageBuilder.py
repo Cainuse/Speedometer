@@ -1,7 +1,8 @@
-import docker
 import os
 import re
 from typing import List
+
+import docker
 
 from src.model.analyzers.e2e_analysis.docker import DockerUtil
 
@@ -15,9 +16,9 @@ def build_docker_image(dockerfile_path: str) -> str:
     :return: the name of the image created. Randomly generated.
     """
     if os.path.isfile(dockerfile_path):
-        build_path, _ = os.path.split(dockerfile_path)                  # if given path is to Dockerfile, get the parent
+        build_path, _ = os.path.split(dockerfile_path)  # if given path is to Dockerfile, get the parent
     else:
-        build_path = dockerfile_path                                                      # else use the directory given
+        build_path = dockerfile_path  # else use the directory given
 
     if not os.path.exists(build_path):
         raise Exception("Build path {} does not exist".format(build_path))

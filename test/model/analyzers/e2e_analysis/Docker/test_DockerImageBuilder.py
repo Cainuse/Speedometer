@@ -1,6 +1,8 @@
-import src.model.analyzers.e2e_analysis.docker.DockerImageBuilder as DockerImageBuilder
 import os
+
 import pytest
+
+import src.model.analyzers.e2e_analysis.docker.DockerImageBuilder as DockerImageBuilder
 
 CURRENT_DIR_PATH = os.path.dirname(os.path.abspath(__file__))
 

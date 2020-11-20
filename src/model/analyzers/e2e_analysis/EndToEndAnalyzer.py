@@ -1,8 +1,8 @@
 from typing import List, Dict
 
 from src.model.Config import Config
-from src.model.analyzers.e2e_analysis.docker.DockerfileMaker import build_dockerfile
 from src.model.analyzers.e2e_analysis.docker.DockerImageBuilder import build_docker_image
+from src.model.analyzers.e2e_analysis.docker.DockerfileMaker import build_dockerfile
 
 
 class TestResult:
@@ -22,7 +22,6 @@ class InputSizeResult:
 
 
 class EndToEndAnalyzer:
-
     RUNS_PER_INPUT_SIZE: int = 3
 
     results = dict()
@@ -36,10 +35,12 @@ class EndToEndAnalyzer:
         input_sizes: List[int] = config.get_input_sizes()
 
         # creates all required dockerfiles and stores paths in a dict of <input_size, dockerfile path>
-        dockerfiles: Dict[int, str] = {s: self._build_dockerfile_for_input(program_file_path, s, config) for s in input_sizes}
+        dockerfiles: Dict[int, str] = \
+            {size: self._build_dockerfile_for_input(program_file_path, size, config) for size in input_sizes}
 
         # builds all the dockerfiles into images and stores the image names in a dict of <input_size, image name>
-        images: Dict[int, str] = {s: build_docker_image(dockerfile) for s, dockerfile in dockerfiles.items()}
+        images: Dict[int, str] = \
+            {size: build_docker_image(dockerfile) for size, dockerfile in dockerfiles.items()}
 
         # execute the test runs
         for input_size, image in images.items():
