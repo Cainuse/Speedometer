@@ -24,6 +24,8 @@ Completed tasks:
 ## Plans for final user study
 
 - Provide finished implementation of app with instructions to do certain tasks and receive feedback
+   - Create test Python files that users can use our tool to analyze to compare expected and actual results
+   - Complete front end dashboard for users to provide feedback on
 
 // TODO
 
