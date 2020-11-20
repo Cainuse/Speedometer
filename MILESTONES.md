@@ -25,6 +25,8 @@ Completed tasks:
 
 - Provide finished implementation of app with instructions to do certain tasks and receive feedback
 
+// TODO
+
 ## Planned timeline for the remaining days
 
 25th Nov - finish implementation (continue fixing bugs and testing)
