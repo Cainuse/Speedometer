@@ -1,22 +1,31 @@
+import os
+import sys
+import re
 class ProfileAnalyzer:
 
-    results: {"e2e": {}, "function": [], "line_by_line": []}
+    results= {"e2e": {}, "function": [], "line_by_line": []}
 
-    def analyze(self, program_file_path: str) -> None:
+    def analyze(self,program_file_path: str) -> None:
         """
         Runs profile analyses on the given program
         :param program_file_path: path to the program to analyze
         """
 
-        if len(sys.argv) > 1:
+        if len(program_file_path) > 1:
             p = os.popen('scalene ' + program_file_path)
             output = p.read()
             ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
             result = ansi_escape.sub('', output)
-            outArr = result.splitlines()
-            for i in range(len(outArr)):
-                outArr[i] = outArr[i].strip()
-            processLines(outArr)
+            # print(result)
+            chart_start = re.compile(r'Line(\s+)\│Time %(\s+)\│Time %(\s+)\│Sys(\s+).*', re.DOTALL)
+            chart_str = re.search(chart_start,result)
+            if (chart_str != None):
+                outArr = chart_str.group(0).splitlines()
+                for i in range(len(outArr)):
+                    outArr[i] = outArr[i].strip()
+                self.processLines(outArr)
+            else:
+                print("File was too short for scalene to analyze")
         else:
             print("No file given to analyze.")
 
@@ -38,7 +47,7 @@ class ProfileAnalyzer:
                 fileDict[arr[start]] = arr[start + 5:i]
         for a in fileDict:
             file_name = a.split(": % of time")[0]
-            referenceTime = getRefTime(a)
+            referenceTime = self.getRefTime(a)
             func = {"file": file_name, "name": "", "tot_run_time": 0}
             for l in fileDict[a]:
                 line = {"file": file_name, "tot_run_time": 0}
