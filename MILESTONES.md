@@ -24,6 +24,8 @@ Tasks to Complete:
 
 * Line-by-line analysis:
     * Debug and integrate with E2E analysis in proper JSON output format to send to front end
+* End-to-end analysis:
+    * Write code for spinning-up docker containers and measuring stats
 
 ## Plans for final user study
 
