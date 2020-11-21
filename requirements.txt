@@ -1,1 +1,2 @@
 pytest==6.1.2
+scalene==1.1.10
