@@ -1,11 +1,8 @@
-import os
-import subprocess
-import json
-from datetime import datetime
 from typing import List, Dict
 
-from src.model.analyzers.e2e_analysis.Config import Config
-from src.model.analyzers.e2e_analysis.Docker.Dockerfile import build_dockerfile
+from src.model.Config import Config
+from src.model.analyzers.e2e_analysis.docker.DockerImageBuilder import build_docker_image
+from src.model.analyzers.e2e_analysis.docker.DockerfileMaker import build_dockerfile
 
 
 class TestResult:
@@ -25,25 +22,25 @@ class InputSizeResult:
 
 
 class EndToEndAnalyzer:
-
     RUNS_PER_INPUT_SIZE: int = 3
 
     results = dict()
 
-    def analyze(self, program_file_path: str, config_file_path: str) -> None:
+    def analyze(self, program_file_path: str, config: Config) -> None:
         """
         Runs e2e analyses on the given program
-        :param program_file_path: path to the program to analyze
-        :param config_file_path: path to the config file
+        :param program_file_path: **absolute** path to the program to analyze
+        :param config: config object for user-defined configuration
         """
-        config: Config = Config(config_file_path)
         input_sizes: List[int] = config.get_input_sizes()
 
         # creates all required dockerfiles and stores paths in a dict of <input_size, dockerfile path>
-        dockerfiles: Dict[int, str] = {s: self._build_dockerfile_for_input(program_file_path, s, config) for s in input_sizes}
+        dockerfiles: Dict[int, str] = \
+            {size: self._build_dockerfile_for_input(program_file_path, size, config) for size in input_sizes}
 
         # builds all the dockerfiles into images and stores the image names in a dict of <input_size, image name>
-        images: Dict[int, str] = {s: self._build_docker_image(dockerfile) for s, dockerfile in dockerfiles.items()}
+        images: Dict[int, str] = \
+            {size: build_docker_image(dockerfile) for size, dockerfile in dockerfiles.items()}
 
         # execute the test runs
         for input_size, image in images.items():
@@ -105,21 +102,6 @@ class EndToEndAnalyzer:
         #
         # # Delete Created Docker image and container after script executes
         # os.system("docker rm e2e && docker rmi e2e")
-
-    def _build_docker_image(self, dockerfile_path) -> str:
-        """
-        Builds the image for the given dockerfile
-        :param dockerfile_path: path to dockerfile
-        :return: the name of the generated image
-        """
-
-        # TODO: implement this
-
-        # # Build Docker Image
-        # os.system("docker build -t e2e .")
-        #
-        # # Run Docker Image in a container
-        # os.system("docker run --name e2e e2e")
 
     def _build_dockerfile_for_input(self, program_file_path: str, input_size: int, config: Config) -> str:
         """
