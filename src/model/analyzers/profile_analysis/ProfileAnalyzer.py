@@ -111,7 +111,7 @@ class ProfileAnalyzer:
         :param header: Scalene output line that includes filename, total time, and % of time for file
         """
 
-        timeString = header.split(": % of time =  ")[1]
+        timeString = header.split(": % of time = ")[1]
         timeSplit = timeString.split("% out of   ")
         timeSplit[1] = timeSplit[1].replace("s.", "")
         return float(timeSplit[0]) / 100 * float(timeSplit[1])
