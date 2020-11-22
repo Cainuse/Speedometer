@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   viz_container: {
     padding: theme.spacing(2),
-    height: "110vh",
+    height: "120vh",
   },
   fullHeight: {
     height: "100%",
@@ -48,7 +48,7 @@ const Summary = () => {
   const defaultProps = {
     bgcolor: "background.paper",
     m: 1,
-    style: { width: "100%", height: "2rem", marginBottom: "3%" },
+    style: { width: "100%", height: "2rem", marginBottom: "1%" },
     borderColor: "grey.500",
   };
 

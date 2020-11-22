@@ -176,7 +176,7 @@ export default class PerfLineChart extends PureComponent {
               domain={[left, right]}
               type="number"
             >
-              <Label value="Input Size" offset={-5} position="bottom" />
+              <Label value="Input Size (n)" offset={10} position="bottom" />
             </XAxis>
             <YAxis
               allowDataOverflow
@@ -187,7 +187,7 @@ export default class PerfLineChart extends PureComponent {
             >
               <Label
                 value={this.props.yLabel}
-                offset={-8}
+                offset={0}
                 position="left"
                 angle={-90}
               />
