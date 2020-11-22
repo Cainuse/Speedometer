@@ -1,8 +1,46 @@
 # Contents
 
+* [Milestone 4](https://github.students.cs.ubc.ca/cpsc410-2020w-t1/cpsc410_project2_team4/blob/master/MILESTONES.md#milestone-4)
 * [Milestone 3](https://github.students.cs.ubc.ca/cpsc410-2020w-t1/cpsc410_project2_team4/blob/master/MILESTONES.md#milestone-3)
 * [Milestone 2](https://github.students.cs.ubc.ca/cpsc410-2020w-t1/cpsc410_project2_team4/blob/master/MILESTONES.md#milestone-2)
 * [Milestone 1](https://github.students.cs.ubc.ca/cpsc410-2020w-t1/cpsc410_project2_team4/blob/master/MILESTONES.md#milestone-1)
+
+# Milestone 4
+
+## Status of implementation
+
+Completed tasks:
+
+* Line-by-line analysis:
+    * Prototyping with Scalene for memory and CPU time profiling
+    * Initial implementation of profiler with Scalene (in review)
+* End-to-end analysis:
+    * Code for creating Dockerfiles for running test program with each sample size (in review)
+    * Code for building Docker images from Dockerfiles (in review)
+* Visualization
+    * Skeleton React app with some graphs using dummy data
+    
+Tasks to Complete:
+
+* Line-by-line analysis:
+    * Debug and integrate with E2E analysis in proper JSON output format to send to front end
+* End-to-end analysis:
+    * Write code for spinning-up docker containers and measuring stats
+
+## Plans for final user study
+
+- Provide finished implementation of app with instructions to do certain tasks and receive feedback
+   - Create test Python files that users can use our tool to analyze to compare expected and actual results
+   - Complete front end dashboard for users to provide feedback on
+   - Recruit users with Linux/MacOS to help with testing
+
+## Planned timeline for the remaining days
+
+25th Nov - finish implementation (continue fixing bugs and testing)
+
+26th Nov - final user study
+
+27th Nov - start working on video
 
 # Milestone 3
 

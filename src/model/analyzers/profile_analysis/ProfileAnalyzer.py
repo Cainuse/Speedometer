@@ -1,3 +1,4 @@
+from src.model import Config
 import os
 import sys
 import re
@@ -32,10 +33,11 @@ class ProfileAnalyzer:
 
     results: dict = {"e2e": {}, "function": [], "line_by_line": []}
 
-    def analyze(self,program_file_path: str) -> None:
+    def analyze(self,program_file_path: str, config: Config) -> None:
         """
         Runs profile analyses on the given program
         :param program_file_path: path to the program to analyze
+        :param config: config object for user-defined configuration
         """
 
         p = os.popen('scalene ' + program_file_path)
