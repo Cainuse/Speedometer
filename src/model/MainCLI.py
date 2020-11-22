@@ -1,5 +1,6 @@
 from src.model.Speedometer import Speedometer
 
+import sys
 
 def _parse_program_file_path() -> str:
     """
@@ -10,6 +11,10 @@ def _parse_program_file_path() -> str:
     """
 
     # TODO: Implement
+    if len(sys.argv) > 1:
+        return sys.argv(1)
+    else:
+        print("No file given to analyze.")
 
 
 def _parse_config_file_path() -> str:
@@ -20,6 +25,11 @@ def _parse_config_file_path() -> str:
     """
 
     # TODO: Implement
+    if len(sys.argv) > 2:
+        return sys.argv(2)
+    else:
+        print("No config file given.")
+
 
 
 def main():

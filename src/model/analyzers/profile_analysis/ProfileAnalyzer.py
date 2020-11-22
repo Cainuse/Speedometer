@@ -1,9 +1,36 @@
 import os
 import sys
 import re
+
+class function_runtime:
+    """
+    Python runtime of function as given by Scalene
+    """
+    file: str
+    name: str
+    tot_run_time: float
+
+    def __init__(self, file, name, runtime):
+        self.file = file
+        self.name = name
+        self.tot_run_time = runtime
+
+class line_by_line_runtime:
+    """
+    Python runtime of individual line as given by Scalene
+    """
+    file: str
+    line_num: int
+    tot_run_time: float
+
+    def __init__(self, file, linenum, runtime):
+        self.file = file
+        self.line_num = linenum
+        self.tot_run_time = runtime
+
 class ProfileAnalyzer:
 
-    results= {"e2e": {}, "function": [], "line_by_line": []}
+    results: dict = {"e2e": {}, "function": [], "line_by_line": []}
 
     def analyze(self,program_file_path: str) -> None:
         """
@@ -11,23 +38,19 @@ class ProfileAnalyzer:
         :param program_file_path: path to the program to analyze
         """
 
-        if len(program_file_path) > 1:
-            p = os.popen('scalene ' + program_file_path)
-            output = p.read()
-            ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
-            result = ansi_escape.sub('', output)
-            # print(result)
-            chart_start = re.compile(r'Line(\s+)\│Time %(\s+)\│Time %(\s+)\│Sys(\s+).*', re.DOTALL)
-            chart_str = re.search(chart_start,result)
-            if (chart_str != None):
-                outArr = chart_str.group(0).splitlines()
-                for i in range(len(outArr)):
-                    outArr[i] = outArr[i].strip()
-                self.processLines(outArr)
-            else:
-                print("File was too short for scalene to analyze")
+        p = os.popen('scalene ' + program_file_path)
+        output = p.read()
+        ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+        result = ansi_escape.sub('', output)
+        chart_start = re.compile(r'\n(.*)\n(.*)\s+Line(\s+)\│Time %(\s+)\│Time %(\s+)\│Sys(\s+)(.+\n)*')
+        chart_str = re.search(chart_start,result)
+        if (chart_str != None):
+            outArr = chart_str.group(0).splitlines()
+            for i in range(len(outArr)):
+                outArr[i] = outArr[i].strip()
+            self.processLines(outArr)
         else:
-            print("No file given to analyze.")
+            print("File was too short for scalene to analyze")
 
     def processLines(self, arr: list):
         """
@@ -35,36 +58,52 @@ class ProfileAnalyzer:
         :param arr: Scalene output split by line
         """
 
-        fileDict = {}
-        start = 0
+        file_dict = self.ScaleneArrayStrip(arr, "% of time", 5)
+
+        for a in file_dict:
+            file_name = a.split(": % of time")[0]
+            reference_time = self.getRefTime(a)
+            func = function_runtime(file_name, "", 0.0)
+
+            for l in file_dict[a]:
+                line = line_by_line_runtime(file_name, 0, 0.0)
+                line_split = l.split("│")
+
+                if line_split[4].startswith("def") and line_split[4].endswith(":"):
+                    if func.name != "" and func.tot_run_time > 0.0:
+                        self.results["function"].append(func)
+                    func = function_runtime(file_name, line_split[4][4:len(line_split[4]) - 1], 0.0)
+
+                if not (line_split[1].isspace() or line_split[2].isspace()):
+                    line.line_num = int(line_split[0].strip())
+                    lineTime = int(line_split[1].strip().replace("%", "")) / 100 * reference_time
+                    line.tot_run_time = lineTime
+                    func.tot_run_time += lineTime
+
+                if line.tot_run_time > 0.0:
+                    self.results["line_by_line"].append(line)
+
+            if func.name != "" and func.tot_run_time > 0.0:
+                self.results["function"].append(func)
+
+    def ScaleneArrayStrip(self, arr: list, split_str: str, header_len: int) -> dict:
+        """
+        Helper function to split Scalene output into map of file header to lines in file
+        :param arr: Scalene output split by line
+        :param split_str: String that determines header line
+        :param header_len: Line length of Scalene header to remove
+        """
+        ret = {}
+        start = len(arr)
         for i in range(len(arr)):
-            if "% of time =" in arr[i]:
+            if split_str in arr[i]:
                 end = i - 1
-                if (end > start):
-                    fileDict[arr[start]] = arr[start + 5:end]
+                if end > start:
+                    ret[arr[start]] = arr[start + header_len:end]
                 start = i
             if i == len(arr) - 1:
-                fileDict[arr[start]] = arr[start + 5:i]
-        for a in fileDict:
-            file_name = a.split(": % of time")[0]
-            referenceTime = self.getRefTime(a)
-            func = {"file": file_name, "name": "", "tot_run_time": 0}
-            for l in fileDict[a]:
-                line = {"file": file_name, "tot_run_time": 0}
-                lineSplit = l.split("│")
-                if lineSplit[4].startswith("def") and lineSplit[4].endswith(":"):
-                    if func["name"] != "" and func["tot_run_time"] > 0:
-                        results["function"].append(func)
-                    func = {"file": file_name, "name": lineSplit[4][4:len(lineSplit[4]) - 1], "tot_run_time": 0}
-                if not (lineSplit[1].isspace() or lineSplit[2].isspace()):
-                    line["line_num"] = lineSplit[0].strip()
-                    lineTime = int(lineSplit[1].strip().replace("%", "")) / 100 * referenceTime
-                    line["tot_run_time"] = lineTime
-                    func["tot_run_time"] += lineTime
-                if line["tot_run_time"] > 0:
-                    results["line_by_line"].append(line)
-            if func["name"] != "" and func["tot_run_time"] > 0:
-                results["function"].append(func)
+                ret[arr[start]] = arr[start + header_len:i]
+        return ret
 
     def getRefTime(self, header: str):
         """
@@ -82,4 +121,4 @@ class ProfileAnalyzer:
         :return: the results from the analysis as a dict
         """
 
-        return results
+        return self.results
