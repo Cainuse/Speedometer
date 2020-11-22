@@ -11,7 +11,10 @@ def _parse_program_file_path() -> str:
     """
 
     # TODO: Implement
-    raise Exception("Not implemented")
+    if len(sys.argv) > 1:
+        return sys.argv(1)
+    else:
+        print("No file given to analyze.")
 
 
 def _parse_config_file() -> Config:
@@ -23,7 +26,10 @@ def _parse_config_file() -> Config:
     """
 
     # TODO: Implement
-    raise Exception("Not implemented")
+    if len(sys.argv) > 2:
+        return sys.argv(2)
+    else:
+        print("No config file given.")
 
 
 def main():
