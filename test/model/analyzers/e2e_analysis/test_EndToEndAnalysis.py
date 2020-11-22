@@ -1,10 +1,11 @@
 import pytest
 
-from src.model.analyzers.e2e_analysis.EndToEndAnalyzer import EndToEndAnalyzer, InputSizeResult, TestResult
+from src.model.analyzers.e2e_analysis.EndToEndAnalyzer import EndToEndAnalyzer
+from src.model.analyzers.e2e_analysis.result_types.InputSizeResult import InputSizeResult
+from src.model.analyzers.e2e_analysis.result_types.TestResult import TestResult
 
 
 class TestComputeAverage:
-
     e2e_analyzer: EndToEndAnalyzer
 
     TEST_RESULT_1 = TestResult(

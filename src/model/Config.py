@@ -1,10 +1,9 @@
-from typing import Dict, List
 import json
 import os
+from typing import Dict, List
 
 
 class Config:
-
     ARGS_PROP = "arguments"
 
     args: Dict[int, List[str]]
