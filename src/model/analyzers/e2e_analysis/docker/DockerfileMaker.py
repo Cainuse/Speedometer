@@ -24,8 +24,18 @@ def build_dockerfile(program_file_path: str, program_args: list) -> str:
     command.extend(program_args)
     dockerfile_contents = _dockerfile_append_cmd(dockerfile_contents, command)
 
-    output_path = path.abspath(path.join(GENERATED_DOCKERFILES_PATH, _get_random_folder_name(), "Dockerfile"))
+    random_folder_name = _get_random_folder_name()
+    output_path = path.abspath(path.join(GENERATED_DOCKERFILES_PATH, random_folder_name, "Dockerfile"))
     _write_dockerfile(dockerfile_contents, output_path)
+
+    #Temp
+    target_file = open("abs path to target file to run", "r")
+    content = target_file.read()
+
+    target_file_copy = open(path.join(GENERATED_DOCKERFILES_PATH, random_folder_name, "test.py"), "w+")
+    target_file_copy.write(content)
+    target_file_copy.close()
+    #####
     return output_path
 
 
