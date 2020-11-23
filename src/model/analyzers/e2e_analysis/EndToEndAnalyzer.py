@@ -3,22 +3,8 @@ from typing import List, Dict
 from src.model.Config import Config
 from src.model.analyzers.e2e_analysis.docker.DockerImageBuilder import build_docker_image
 from src.model.analyzers.e2e_analysis.docker.DockerfileMaker import build_dockerfile
-
-
-class TestResult:
-    """
-    Results for an individual run, for a given input size
-    """
-    total_runtime: float
-    # TODO: add more
-
-
-class InputSizeResult:
-    """
-    Results for multiple runs, for a given input size
-    """
-    average: TestResult
-    individual: List[TestResult]
+from src.model.analyzers.e2e_analysis.result_types.InputSizeResult import InputSizeResult
+from src.model.analyzers.e2e_analysis.result_types.TestResult import TestResult
 
 
 class EndToEndAnalyzer:
@@ -54,8 +40,7 @@ class EndToEndAnalyzer:
                  the keys int the dictionary are the input sizes
                  the values are the results for that sample size
         """
-
-        # TODO: implement this
+        return self.results
 
     def _compute_average(self, individual_runs: List[TestResult]) -> InputSizeResult:
         """
@@ -64,7 +49,27 @@ class EndToEndAnalyzer:
         :return: a combined result with a computed average
         """
 
-        # TODO: implement this
+        runs: float = len(individual_runs) * 1.0
+        average_result = TestResult()
+        sample_times_with_counts: Dict[int, int] = dict()
+
+        for run in individual_runs:
+            average_result.total_runtime_ms += run.total_runtime_ms / runs
+            average_result.max_memory_usage_bytes += run.max_memory_usage_bytes / runs
+
+            for time, memory in run.memory_usage_by_time.items():
+                if time not in average_result.memory_usage_by_time:
+                    average_result.memory_usage_by_time[time] = 0
+                if time not in sample_times_with_counts:
+                    sample_times_with_counts[time] = 0
+
+                sample_times_with_counts[time] += 1
+                average_result.memory_usage_by_time[time] += memory
+
+        for time, memory in average_result.memory_usage_by_time.items():
+            average_result.memory_usage_by_time[time] /= sample_times_with_counts[time]
+
+        return InputSizeResult(average_result, individual_runs)
 
     def _run_test_container(self, image_name: str, runs: int) -> List[TestResult]:
         """
