@@ -2,21 +2,28 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import { Box } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 import ComplexityTimeLine from "../Visualizations/ComplexityTimeLine";
 import FunctionsPieChart from "../Visualizations/FunctionsPieChart";
 import ComposedBarChart from "../Visualizations/ComposedBarChart";
+import ScriptSankeyChart from "../Visualizations/ScriptSankeyChart";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
     textAlign: "center",
     color: theme.palette.text.secondary,
     justifyContent: "center",
-    height: "50vh",
+    height: "40vh",
+  },
+  timeline_paper: {
+    padding: theme.spacing(3),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+    justifyContent: "center",
   },
 }));
 
@@ -90,29 +97,28 @@ const TimeComplexity = () => {
       </Box>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <Paper>
+          <Paper className={classes.timeline_paper}>
+            <Typography>Script Execution Timeline</Typography>
             <ComplexityTimeLine data={data} />
           </Paper>
         </Grid>
         <Grid container item xs={12} sm={6} spacing={3}>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
+              <Typography>Relative Time Per Function Pie Chart</Typography>
               <FunctionsPieChart data={fnData} pieDataKey={fnDataY} />
             </Paper>
           </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
+              <Typography>Relative Time Per Function Bar Chart</Typography>
               <ComposedBarChart data={fnData} barDataKey={fnDataY} />
             </Paper>
           </Grid>
-          <Grid item xs={12}>
-            <Paper className={classes.paper}>
-              Runtime per module SankeyChart
-              {/* TODO: Make a card with proper titles,
-            descrition, maybe buttons for interactions,
-            properly formatted */}
-            </Paper>
-          </Grid>
+        </Grid>
+        <Grid item xs={12} sm={12}>
+          <Typography>Relative Time Per Script module</Typography>
+          <ScriptSankeyChart />
         </Grid>
       </Grid>
     </div>

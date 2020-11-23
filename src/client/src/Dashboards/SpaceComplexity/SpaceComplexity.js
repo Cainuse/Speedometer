@@ -6,16 +6,17 @@ import { Box, Typography } from "@material-ui/core";
 import MemoryAreaChart from "../Visualizations/MemoryAreaChart";
 import FunctionsPieChart from "../Visualizations/FunctionsPieChart";
 import ComposedBarChart from "../Visualizations/ComposedBarChart";
+import ScriptSankeyChart from "../Visualizations/ScriptSankeyChart";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
     textAlign: "center",
     color: theme.palette.text.secondary,
-    height: "58vh",
+    height: "40vh",
   },
 }));
 
@@ -85,12 +86,8 @@ const SpaceComplexity = () => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={12}>
-          <Paper className={classes.paper}>
-            Memory usage per module SankeyChart
-            {/* TODO: Make a card with proper titles,
-            descrition, maybe buttons for interactions,
-            properly formatted */}
-          </Paper>
+          <Typography>Space Usage Per Script module</Typography>
+          <ScriptSankeyChart />
         </Grid>
       </Grid>
     </div>

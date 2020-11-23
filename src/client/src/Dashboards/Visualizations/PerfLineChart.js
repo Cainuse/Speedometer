@@ -137,8 +137,8 @@ export default class PerfLineChart extends PureComponent {
         className="highlight-bar-charts"
         style={{
           userSelect: "none",
-          width: "85%",
-          height: "85%",
+          width: "90%",
+          height: "90%",
           marginLeft: "6%",
         }}
       >
@@ -176,7 +176,7 @@ export default class PerfLineChart extends PureComponent {
               domain={[left, right]}
               type="number"
             >
-              <Label value="Input Size (n)" offset={10} position="bottom" />
+              <Label value="Input Size (n)" offset={5} position="bottom" />
             </XAxis>
             <YAxis
               allowDataOverflow

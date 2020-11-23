@@ -124,7 +124,7 @@ const TabPanel = (props) => {
       aria-labelledby={`nav-tab-${index}`}
       {...other}
     >
-      {value === index && <Box p={7}>{children}</Box>}
+      {value === index && <Box p={5}>{children}</Box>}
     </div>
   );
 };

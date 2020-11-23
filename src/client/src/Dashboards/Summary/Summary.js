@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   viz_container: {
     padding: theme.spacing(2),
-    height: "120vh",
+    height: "77vh",
   },
   fullHeight: {
     height: "100%",
@@ -58,63 +58,57 @@ const Summary = () => {
         Performance Summary for 'test.py'
       </Box>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.viz_container}>
-            <Grid container spacing={3} className={classes.fullHeight}>
-              <Grid item xs={12} className={classes.halfHeight}>
-                <Paper className={classes.paper}>
-                  <Speedometer value={5.5} valueText="Time Complexity" />
-                </Paper>
-              </Grid>
-              <Grid item xs={12} className={classes.halfHeight}>
-                <Paper className={classes.paper}>
-                  <Speedometer value={3.5} valueText="Space Complexity" />
-                </Paper>
-              </Grid>
+        <Grid item xs={4} className={classes.viz_container}>
+          <Grid container spacing={3} className={classes.fullHeight}>
+            <Grid item xs={12} className={classes.halfHeight}>
+              <Paper className={classes.paper}>
+                <Speedometer value={5.5} valueText="Time Complexity" />
+              </Paper>
             </Grid>
-          </Paper>
+            <Grid item xs={12} className={classes.halfHeight}>
+              <Paper className={classes.paper}>
+                <Speedometer value={3.5} valueText="Space Complexity" />
+              </Paper>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className={classes.viz_container}>
-            <Grid container spacing={3} className={classes.fullHeight}>
-              <Grid item xs={12} className={classes.halfHeight}>
-                <Paper className={classes.paper}>
-                  <SummaryInfo
-                    totalVal="4.5s"
-                    totalText="Total Runtime"
-                    highestVal="bar()"
-                    highestText="Highest Runtime Function"
-                  />
-                </Paper>
-              </Grid>
-              <Grid item xs={12} className={classes.halfHeight}>
-                <Paper className={classes.paper}>
-                  <SummaryInfo
-                    totalVal="29kb"
-                    totalText="Total Memory Usage"
-                    highestVal="foo()"
-                    highestText="Highest Memory Usage Function"
-                  />
-                </Paper>
-              </Grid>
+        <Grid item xs={2} className={classes.viz_container}>
+          <Grid container spacing={3} className={classes.fullHeight}>
+            <Grid item xs={12} className={classes.halfHeight}>
+              <Paper className={classes.paper}>
+                <SummaryInfo
+                  totalVal="4.5s"
+                  totalText="Total Runtime"
+                  highestVal="bar()"
+                  highestText="Highest Runtime Function"
+                />
+              </Paper>
             </Grid>
-          </Paper>
+            <Grid item xs={12} className={classes.halfHeight}>
+              <Paper className={classes.paper}>
+                <SummaryInfo
+                  totalVal="29kb"
+                  totalText="Total Memory Usage"
+                  highestVal="foo()"
+                  highestText="Highest Memory Usage Function"
+                />
+              </Paper>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <Paper className={classes.viz_container}>
-            <Grid container spacing={3} className={classes.fullHeight}>
-              <Grid item xs={12} className={classes.halfHeight}>
-                <Paper className={classes.paper}>
-                  <PerfLineChart data={data} yLabel="Time (ms)" yUnit="ms" />
-                </Paper>
-              </Grid>
-              <Grid item xs={12} className={classes.halfHeight}>
-                <Paper className={classes.paper}>
-                  <PerfLineChart data={data} yLabel="Memory (KB)" yUnit="kb" />
-                </Paper>
-              </Grid>
+        <Grid item xs={6} className={classes.viz_container}>
+          <Grid container spacing={3} className={classes.fullHeight}>
+            <Grid item xs={12} className={classes.halfHeight}>
+              <Paper className={classes.paper}>
+                <PerfLineChart data={data} yLabel="Time (ms)" yUnit="ms" />
+              </Paper>
             </Grid>
-          </Paper>
+            <Grid item xs={12} className={classes.halfHeight}>
+              <Paper className={classes.paper}>
+                <PerfLineChart data={data} yLabel="Memory (KB)" yUnit="kb" />
+              </Paper>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </div>

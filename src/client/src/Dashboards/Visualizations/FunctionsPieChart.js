@@ -7,8 +7,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+import { getRandomColor } from "../../constants";
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
@@ -39,6 +38,11 @@ const renderCustomizedLabel = ({
 export default class FunctionsPieChart extends PureComponent {
   constructor(props) {
     super(props);
+    this.state = {
+      colors: this.props.data.map((d) => {
+        return getRandomColor();
+      }),
+    };
   }
 
   render() {
@@ -51,16 +55,13 @@ export default class FunctionsPieChart extends PureComponent {
             cy={200}
             labelLine={false}
             label={renderCustomizedLabel}
-            innerRadius={80}
-            outerRadius={180}
+            innerRadius={70}
+            outerRadius={170}
             fill="#8884d8"
             dataKey={this.props.pieDataKey}
           >
             {this.props.data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
+              <Cell key={`cell-${index}`} fill={this.state.colors[index]} />
             ))}
           </Pie>
           <Tooltip />
