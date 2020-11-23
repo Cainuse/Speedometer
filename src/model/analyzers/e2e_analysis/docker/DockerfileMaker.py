@@ -17,25 +17,21 @@ def build_dockerfile(program_file_path: str, program_args: list) -> str:
     :return: the path for the generated Dockerfile
     """
     dockerfile_contents = _load_template_dockerfile()
-    dockerfile_contents = _dockerfile_append_copy(dockerfile_contents, program_file_path, ".")
 
     program_file_name = path.basename(program_file_path)  # includes ".py"
+    dockerfile_contents = _dockerfile_append_copy(dockerfile_contents, program_file_name, ".")
+
     command = ["python", program_file_name]
     command.extend(program_args)
     dockerfile_contents = _dockerfile_append_cmd(dockerfile_contents, command)
 
     random_folder_name = _get_random_folder_name()
-    output_path = path.abspath(path.join(GENERATED_DOCKERFILES_PATH, random_folder_name, "Dockerfile"))
+    output_directory_path = path.abspath(path.join(GENERATED_DOCKERFILES_PATH, random_folder_name))
+
+    output_path = path.abspath(path.join(output_directory_path, "Dockerfile"))
     _write_dockerfile(dockerfile_contents, output_path)
 
-    #Temp
-    target_file = open("abs path to target file to run", "r")
-    content = target_file.read()
-
-    target_file_copy = open(path.join(GENERATED_DOCKERFILES_PATH, random_folder_name, "test.py"), "w+")
-    target_file_copy.write(content)
-    target_file_copy.close()
-    #####
+    _copy_file(program_file_path, output_directory_path)
     return output_path
 
 
@@ -50,6 +46,18 @@ def clear_generated_dockerfiles() -> bool:
     except Exception as e:
         print("Failed to delete file: " + str(e))
         return False
+
+
+def _copy_file(src_file_path: str, dest_dir_path: str):
+    """
+    Copies the given file to the given directory
+    :param src_file_path: path to file to copy
+    :param dest_dir_path: destination directory to copy file to
+    """
+    try:
+        shutil.copy(src_file_path, dest_dir_path)
+    except Exception as e:
+        raise Exception("Failed to copy {} to {}".format(src_file_path, dest_dir_path), e)
 
 
 def _dockerfile_append_cmd(dockerfile: str, command: list) -> str:
