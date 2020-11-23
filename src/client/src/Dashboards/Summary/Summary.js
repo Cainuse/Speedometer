@@ -29,17 +29,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const data = [
-  { n: 1, myScript: 4.11, "O(1)": 5.6, "O(n)": 7.8 },
-  { n: 3, myScript: 2.39, "O(1)": 3.6, "O(n)": 8.8 },
-  { n: 5, myScript: 1.37, "O(1)": 2.6, "O(n)": 9.8 },
-  { n: 4, myScript: 1.16, "O(1)": 1.6, "O(n)": 10.8 },
-  { n: 9, myScript: 2.29, "O(1)": 6.6, "O(n)": 11.8 },
-  { n: 11, myScript: 3.22, "O(1)": 7.6, "O(n)": 12.8 },
-  { n: 10, myScript: 4.11, "O(1)": 5.6, "O(n)": 7.8 },
-  { n: 15, myScript: 4.81, "O(1)": 7.96, "O(n)": 47.8 },
-  { n: 14, myScript: 19.11, "O(1)": 43.6, "O(n)": 7.8 },
-  { n: 19, myScript: 88.11, "O(1)": 32.6, "O(n)": 12.8 },
-  { n: 21, myScript: 32.11, "O(1)": 91.6, "O(n)": 22.8 },
+  { n: 1, total_runtime: 4.11, total_memory: 43, "O(1)": 5.6, "O(n)": 7.8 },
+  { n: 3, total_runtime: 2.39, total_memory: 43, "O(1)": 3.6, "O(n)": 8.8 },
+  { n: 5, total_runtime: 1.37, total_memory: 43, "O(1)": 2.6, "O(n)": 9.8 },
+  { n: 4, total_runtime: 1.16, total_memory: 43, "O(1)": 1.6, "O(n)": 10.8 },
+  { n: 9, total_runtime: 2.29, total_memory: 43, "O(1)": 6.6, "O(n)": 11.8 },
+  { n: 11, total_runtime: 3.22, total_memory: 43, "O(1)": 7.6, "O(n)": 12.8 },
+  { n: 10, total_runtime: 4.11, total_memory: 43, "O(1)": 5.6, "O(n)": 7.8 },
+  { n: 15, total_runtime: 4.81, total_memory: 43, "O(1)": 7.96, "O(n)": 47.8 },
+  { n: 14, total_runtime: 19.11, total_memory: 43, "O(1)": 43.6, "O(n)": 7.8 },
+  { n: 19, total_runtime: 88.11, total_memory: 43, "O(1)": 32.6, "O(n)": 12.8 },
+  { n: 21, total_runtime: 32.11, total_memory: 43, "O(1)": 91.6, "O(n)": 22.8 },
 ];
 
 const Summary = () => {
