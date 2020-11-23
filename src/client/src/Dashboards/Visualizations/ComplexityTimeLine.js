@@ -7,7 +7,17 @@ import TimelineConnector from "@material-ui/lab/TimelineConnector";
 import TimelineContent from "@material-ui/lab/TimelineContent";
 import TimelineOppositeContent from "@material-ui/lab/TimelineOppositeContent";
 import TimelineDot from "@material-ui/lab/TimelineDot";
-import FastfoodIcon from "@material-ui/icons/Fastfood";
+import DirectionsRunIcon from "@material-ui/icons/DirectionsRun";
+import EqualizerIcon from "@material-ui/icons/Equalizer";
+import TimelineIcon from "@material-ui/icons/Timeline";
+import BubbleChartIcon from "@material-ui/icons/BubbleChart";
+import BarChartIcon from "@material-ui/icons/BarChart";
+import TrendingUpIcon from "@material-ui/icons/TrendingUp";
+import AssessmentIcon from "@material-ui/icons/Assessment";
+import TrendingFlatIcon from "@material-ui/icons/TrendingFlat";
+import ShowChartIcon from "@material-ui/icons/ShowChart";
+import TrendingDownIcon from "@material-ui/icons/TrendingDown";
+import GraphicEqIcon from "@material-ui/icons/GraphicEq";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
@@ -20,10 +30,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const iconsList = [
+  <EqualizerIcon />,
+  <BubbleChartIcon />,
+  <TimelineIcon />,
+  <BarChartIcon />,
+  <TrendingUpIcon />,
+  <AssessmentIcon />,
+  <TrendingFlatIcon />,
+  <ShowChartIcon />,
+  <TrendingDownIcon />,
+  <TrendingDownIcon />,
+  <GraphicEqIcon />,
+];
+
+const colorsList = ["grey", "primary", "secondary"];
+const variants = ["default", "outlined"];
+
+/**
+ * Returns a random number between min (inclusive) and max (exclusive)
+ */
+const getRandIdx = (min, max) => {
+  return Math.floor(Math.random() * (max - min) + min);
+};
+
 const ComplexTimelineSeparator = (icon, connector) => {
+  const color = colorsList[getRandIdx(0, colorsList.length)];
+  const variant = variants[getRandIdx(0, variants.length)];
   return (
     <TimelineSeparator>
-      <TimelineDot>{icon}</TimelineDot>
+      <TimelineDot color={color} variant={variant}>
+        {icon}
+      </TimelineDot>
       {connector}
     </TimelineSeparator>
   );
@@ -31,19 +69,19 @@ const ComplexTimelineSeparator = (icon, connector) => {
 
 const ComplexTimelineItem = (time, fn, connector) => {
   const classes = useStyles();
+  const icon = iconsList[getRandIdx(0, iconsList.length)];
+
   return (
-    <TimelineItem>
+    <TimelineItem key={fn}>
       <TimelineOppositeContent>
         <Typography variant="body2" color="textSecondary">
           {time}
         </Typography>
       </TimelineOppositeContent>
-      {ComplexTimelineSeparator(<FastfoodIcon />, connector)}
+      {ComplexTimelineSeparator(icon, connector ? connector : null)}
       <TimelineContent>
         <Paper elevation={3} className={classes.paper}>
-          <Typography variant="h6" component="h1">
-            {fn}
-          </Typography>
+          <Typography variant="h6">{fn}</Typography>
         </Paper>
       </TimelineContent>
     </TimelineItem>

@@ -24,6 +24,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const codeString = `
+import os
+from typing import List
+import argparse
+import json
+
+class Result:
+    def __init__(self, accepted: bool, path: str):
+        self.accepted = accepted
+        self.path = path
+
+def prependNodeToPath(node, path) -> str:
+    return node if len(path) is 0 else (node + " -> " + path)`;
+
+const lineByLineData = [
+  {
+    proportion: 0.6,
+    code: codeString,
+  },
+  {
+    proportion: 0.1,
+    code: codeString,
+  },
+  {
+    proportion: 0.2,
+    code: codeString,
+  },
+  {
+    proportion: 0.1,
+    code: codeString,
+  },
+];
+
 const DashTabs = () => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
@@ -74,7 +107,7 @@ const DashTabs = () => {
         <SpaceComplexity />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <LineByLineComplexity codeInformations={[0, 1, 2]} />
+        <LineByLineComplexity codeInformations={lineByLineData} />
       </TabPanel>
     </div>
   );
@@ -91,7 +124,7 @@ const TabPanel = (props) => {
       aria-labelledby={`nav-tab-${index}`}
       {...other}
     >
-      {value === index && <Box p={7}>{children}</Box>}
+      {value === index && <Box p={5}>{children}</Box>}
     </div>
   );
 };

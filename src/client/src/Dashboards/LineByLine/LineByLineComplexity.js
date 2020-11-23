@@ -7,6 +7,20 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { hybrid } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { solarizedLight } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { srcery } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { zenburn } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { solarizedDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { sunburst } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { routeros } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { obsidian } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { kimbieDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { lioshi } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { far } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { github } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { gruvboxLight } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,44 +48,43 @@ const LineByLineComplexity = ({ codeInformations }) => {
     setExpanded(expansions);
   };
 
-  const codeString = `
-  import os
-  from typing import List
-  import argparse
-  import json
-  
-  class Result:
-      def __init__(self, accepted: bool, path: str):
-          self.accepted = accepted
-          self.path = path
-  
-  def prependNodeToPath(node, path) -> str:
-      return node if len(path) is 0 else (node + " -> " + path)`;
-
   return (
     <div className={classes.root}>
-      {codeInformations.map((index, info) => {
-        return (
-          <Accordion expanded={expanded[index]} onChange={handleChange(index)}>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id={`panel-${index}-header`}
-            >
-              <Typography
-                className={classes.heading}
-              >{`Section ${index}`}</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-                <SyntaxHighlighter language="python" style={darcula}>
-                  {codeString}
-                </SyntaxHighlighter>
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-        );
-      })}
+      <Grid container spacing={3}>
+        {codeInformations.map((info, index) => {
+          return (
+            <Grid item xs={6}>
+              <Accordion
+                expanded={expanded[index]}
+                onChange={handleChange(index)}
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id={`panel-${index}-header`}
+                >
+                  <Typography
+                    className={classes.heading}
+                  >{`Script Part ${index}`}</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>
+                    <Typography
+                      variant="h2"
+                      color={info.proportion > 0.2 ? "error" : "primary"}
+                    >
+                      {(info.proportion * 100).toString() + "%"}
+                    </Typography>
+                    <SyntaxHighlighter language="python" style={gruvboxLight}>
+                      {info.code}
+                    </SyntaxHighlighter>
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            </Grid>
+          );
+        })}
+      </Grid>
     </div>
   );
 };

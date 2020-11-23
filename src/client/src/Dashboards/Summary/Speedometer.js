@@ -6,10 +6,11 @@ const Speedometer = ({ value, valueText }) => {
   return (
     <ReactSpeedometer
       fluidWidth={true}
+      height="100%"
       minValue={0}
       maxValue={7}
       segments={7}
-      needleHeightRatio={0.62}
+      needleHeightRatio={0.65}
       value={value}
       currentValueText={valueText}
       customSegmentLabels={LABELS}
