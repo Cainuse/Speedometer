@@ -29,9 +29,22 @@ class line_by_line_runtime:
         self.line_num = linenum
         self.tot_run_time = runtime
 
+class class_runtime:
+    """
+    Python runtime of function as given by Scalene
+    """
+    file: str
+    name: str
+    tot_run_time: float
+
+    def __init__(self, file, name, runtime):
+        self.file = file
+        self.name = name
+        self.tot_run_time = runtime
+
 class ProfileAnalyzer:
 
-    results: dict = {"e2e": {}, "function": [], "line_by_line": []}
+    results: dict = {"class": [], "function": [], "line_by_line": []}
 
     def analyze(self,program_file_path: str, config: Config) -> None:
         """
@@ -66,27 +79,37 @@ class ProfileAnalyzer:
             file_name = a.split(": % of time")[0]
             reference_time = self.getRefTime(a)
             func = function_runtime(file_name, "", 0.0)
+            clas = class_runtime(file_name, "", 0.0)
 
             for l in file_dict[a]:
                 line = line_by_line_runtime(file_name, 0, 0.0)
                 line_split = l.split("│")
 
-                if line_split[4].startswith("def") and line_split[4].endswith(":"):
+                if line_split[4].strip().startswith("def") and line_split[4].strip().endswith(":"):
                     if func.name != "" and func.tot_run_time > 0.0:
                         self.results["function"].append(func)
                     func = function_runtime(file_name, line_split[4][4:len(line_split[4]) - 1], 0.0)
+
+                if line_split[4].strip().startswith("class") and line_split[4].strip().endswith(":"):
+                    if clas.name != "" and clas.tot_run_time > 0.0:
+                        self.results["class"].append(clas)
+                    clas = class_runtime(file_name, line_split[4][6:len(line_split[4]) - 1], 0.0)
 
                 if not (line_split[1].isspace() or line_split[2].isspace()):
                     line.line_num = int(line_split[0].strip())
                     lineTime = int(line_split[1].strip().replace("%", "")) / 100 * reference_time
                     line.tot_run_time = lineTime
                     func.tot_run_time += lineTime
+                    clas.tot_run_time += lineTime
 
                 if line.tot_run_time > 0.0:
                     self.results["line_by_line"].append(line)
 
             if func.name != "" and func.tot_run_time > 0.0:
                 self.results["function"].append(func)
+
+            if clas.name != "" and clas.tot_run_time > 0.0:
+                self.results["class"].append(clas)
 
     def ScaleneArrayStrip(self, arr: list, split_str: str, header_len: int) -> dict:
         """
