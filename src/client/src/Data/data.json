@@ -247,8 +247,42 @@
       { "name": "foo8()", "total_memory": 22 }
     ]
   },
-  "line_by_line": {
-    "line_by_line_runtime": [],
-    "line_by_line_memory": []
-  }
+  "line_by_line": [
+    {
+      "fileName": "test.py",
+      "scope": "body",
+      "line_from": 1,
+      "line_to": 10,
+      "total_runtime": 5,
+      "total_memory": 2,
+      "code": "stuff"
+    },
+    {
+      "fileName": "test.py",
+      "scope": "body",
+      "line_from": 11,
+      "line_to": 31,
+      "total_runtime": 5,
+      "total_memory": 1,
+      "code": "stuff"
+    },
+    {
+      "fileName": "test.py",
+      "scope": "foo()",
+      "line_from": 33,
+      "line_to": 38,
+      "total_runtime": 5,
+      "total_memory": 3,
+      "code": "stuff"
+    },
+    {
+      "fileName": "test.py",
+      "scope": "bar()",
+      "line_from": 40,
+      "line_to": 65,
+      "total_runtime": 5,
+      "total_memory": 10,
+      "code": "stuff"
+    }
+  ]
 }
