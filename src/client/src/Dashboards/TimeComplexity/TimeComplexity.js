@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
     justifyContent: "center",
-    height: "40vh",
+    height: "25rem",
   },
   timeline_paper: {
     padding: theme.spacing(3),

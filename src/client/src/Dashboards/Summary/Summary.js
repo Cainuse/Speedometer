@@ -1,8 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import { Box } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 import Speedometer from "./Speedometer";
 import SummaryInfo from "./SummaryInfo";
 import PerfLineChart from "../Visualizations/PerfLineChart";
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   viz_container: {
     padding: theme.spacing(2),
-    height: "77vh",
+    height: "50rem",
   },
   fullHeight: {
     height: "100%",
@@ -28,21 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const data = [
-  { n: 1, total_runtime: 4.11, total_memory: 43, "O(1)": 5.6, "O(n)": 7.8 },
-  { n: 3, total_runtime: 2.39, total_memory: 43, "O(1)": 3.6, "O(n)": 8.8 },
-  { n: 5, total_runtime: 1.37, total_memory: 43, "O(1)": 2.6, "O(n)": 9.8 },
-  { n: 4, total_runtime: 1.16, total_memory: 43, "O(1)": 1.6, "O(n)": 10.8 },
-  { n: 9, total_runtime: 2.29, total_memory: 43, "O(1)": 6.6, "O(n)": 11.8 },
-  { n: 11, total_runtime: 3.22, total_memory: 43, "O(1)": 7.6, "O(n)": 12.8 },
-  { n: 10, total_runtime: 4.11, total_memory: 43, "O(1)": 5.6, "O(n)": 7.8 },
-  { n: 15, total_runtime: 4.81, total_memory: 43, "O(1)": 7.96, "O(n)": 47.8 },
-  { n: 14, total_runtime: 19.11, total_memory: 43, "O(1)": 43.6, "O(n)": 7.8 },
-  { n: 19, total_runtime: 88.11, total_memory: 43, "O(1)": 32.6, "O(n)": 12.8 },
-  { n: 21, total_runtime: 32.11, total_memory: 43, "O(1)": 91.6, "O(n)": 22.8 },
-];
-
-const Summary = () => {
+const Summary = ({ dataset }) => {
   const classes = useStyles();
 
   const defaultProps = {
@@ -62,11 +49,13 @@ const Summary = () => {
           <Grid container spacing={3} className={classes.fullHeight}>
             <Grid item xs={12} className={classes.halfHeight}>
               <Paper className={classes.paper}>
+                <Typography>Time Complexity Speedometer</Typography>
                 <Speedometer value={5.5} valueText="Time Complexity" />
               </Paper>
             </Grid>
             <Grid item xs={12} className={classes.halfHeight}>
               <Paper className={classes.paper}>
+                <Typography>Space Complexity Speedometer</Typography>
                 <Speedometer value={3.5} valueText="Space Complexity" />
               </Paper>
             </Grid>
@@ -100,12 +89,20 @@ const Summary = () => {
           <Grid container spacing={3} className={classes.fullHeight}>
             <Grid item xs={12} className={classes.halfHeight}>
               <Paper className={classes.paper}>
-                <PerfLineChart data={data} yLabel="Time (ms)" yUnit="ms" />
+                <PerfLineChart
+                  data={dataset["e2e"]["e2e_runtime"]}
+                  yLabel="Time (ms)"
+                  yUnit="ms"
+                />
               </Paper>
             </Grid>
             <Grid item xs={12} className={classes.halfHeight}>
               <Paper className={classes.paper}>
-                <PerfLineChart data={data} yLabel="Memory (KB)" yUnit="kb" />
+                <PerfLineChart
+                  data={dataset["e2e"]["e2e_memory"]}
+                  yLabel="Memory (KB)"
+                  yUnit="kb"
+                />
               </Paper>
             </Grid>
           </Grid>
@@ -115,4 +112,10 @@ const Summary = () => {
   );
 };
 
-export default Summary;
+const mapStateToProps = (state) => {
+  return {
+    dataset: state.dataset,
+  };
+};
+
+export default connect(mapStateToProps)(Summary);
