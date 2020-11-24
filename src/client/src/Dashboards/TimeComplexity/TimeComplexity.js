@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const data = [
+const timeline_data = [
   {
     time: "00:00",
     fn: "foo()",
@@ -66,21 +67,9 @@ const data = [
   },
 ];
 
-const fnDataX = "name";
-const fnDataY = "time_proportion";
+const fnDataY = "total_runtime";
 
-const fnData = [
-  { [fnDataX]: "foo1()", [fnDataY]: 0.2 },
-  { [fnDataX]: "foo2()", [fnDataY]: 0.3 },
-  { [fnDataX]: "foo3()", [fnDataY]: 0.4 },
-  { [fnDataX]: "foo4()", [fnDataY]: 0.5 },
-  { [fnDataX]: "foo5()", [fnDataY]: 0.8 },
-  { [fnDataX]: "foo6()", [fnDataY]: 0.9 },
-  { [fnDataX]: "foo7()", [fnDataY]: 0.2 },
-  { [fnDataX]: "foo8()", [fnDataY]: 0.6 },
-];
-
-const TimeComplexity = () => {
+const TimeComplexity = ({ dataset }) => {
   const classes = useStyles();
 
   const defaultProps = {
@@ -99,20 +88,26 @@ const TimeComplexity = () => {
         <Grid item xs={12} sm={6}>
           <Paper className={classes.timeline_paper}>
             <Typography>Script Execution Timeline</Typography>
-            <ComplexityTimeLine data={data} />
+            <ComplexityTimeLine data={timeline_data} />
           </Paper>
         </Grid>
         <Grid container item xs={12} sm={6} spacing={3}>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
               <Typography>Relative Time Per Function Pie Chart</Typography>
-              <FunctionsPieChart data={fnData} pieDataKey={fnDataY} />
+              <FunctionsPieChart
+                data={dataset["function"]["function_runtime"]}
+                pieDataKey={fnDataY}
+              />
             </Paper>
           </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
               <Typography>Relative Time Per Function Bar Chart</Typography>
-              <ComposedBarChart data={fnData} barDataKey={fnDataY} />
+              <ComposedBarChart
+                data={dataset["function"]["function_runtime"]}
+                barDataKey={fnDataY}
+              />
             </Paper>
           </Grid>
         </Grid>
@@ -125,4 +120,10 @@ const TimeComplexity = () => {
   );
 };
 
-export default TimeComplexity;
+const mapStateToProps = (state) => {
+  return {
+    dataset: state.dataset,
+  };
+};
+
+export default connect(mapStateToProps)(TimeComplexity);

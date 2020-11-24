@@ -9,7 +9,7 @@ import { loadData } from "./Redux/Actions/DatasetActions";
 
 const store = createStore(rootReducer);
 
-// TODO: Populate the store with data received from the execution of py script
+// Populate the store with data received from the execution of py script
 store.dispatch(loadData());
 
 ReactDOM.render(

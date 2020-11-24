@@ -47,3 +47,17 @@ export const getRandomColor = () => {
   }
   return color;
 };
+
+export const getFilteredInputData = (data, type) => {
+  if (type === "e2e_runtime") {
+    return data["e2e"][type].map((d) => {
+      return { n: d["n"], total_runtime: d["total_runtime"] };
+    });
+  } else if (type === "e2e_memory") {
+    return data["e2e"][type].map((d) => {
+      return { n: d["n"], total_memory: d["total_memory"] };
+    });
+  }
+
+  return [];
+};
