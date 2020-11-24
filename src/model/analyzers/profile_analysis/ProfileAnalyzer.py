@@ -7,27 +7,27 @@ class function_runtime:
     """
     Python runtime of function as given by Scalene
     """
-    file: str
+    filename: str
     name: str
-    tot_run_time: float
+    total_run_time: float
 
-    def __init__(self, file, name, runtime):
-        self.file = file
+    def __init__(self, filename, name, runtime):
+        self.filename = filename
         self.name = name
-        self.tot_run_time = runtime
+        self.total_run_time = runtime
 
 class line_by_line_runtime:
     """
     Python runtime of individual line as given by Scalene
     """
-    file: str
+    filename: str
     line_num: int
-    tot_run_time: float
+    total_run_time: float
 
-    def __init__(self, file, linenum, runtime):
-        self.file = file
+    def __init__(self, filename, linenum, runtime):
+        self.filename = filename
         self.line_num = linenum
-        self.tot_run_time = runtime
+        self.total_run_time = runtime
 
 class class_runtime:
     """
@@ -65,7 +65,7 @@ class ProfileAnalyzer:
                 outArr[i] = outArr[i].strip()
             self.processLines(outArr)
         else:
-            print("File was too short for scalene to analyze")
+            raise("File was too short for scalene to analyze")
 
     def processLines(self, arr: list):
         """
