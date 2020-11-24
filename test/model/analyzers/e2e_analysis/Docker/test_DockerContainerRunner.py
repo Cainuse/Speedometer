@@ -12,3 +12,5 @@ def test_a_long_running_script():
 
     print("Total Runtime = {}, Max Mem Usage = {}, Usage by time = {}"
           .format(result.total_runtime_ms, result.max_memory_usage_bytes, result.memory_usage_by_time))
+
+    assert result.total_runtime_ms > 5000, "the script takes at least 5000 ms to run"

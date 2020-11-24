@@ -8,8 +8,6 @@ import time as Time
 from src.model.analyzers.e2e_analysis.result_types.TestResult import TestResult
 
 DOCKER_CLIENT = docker.from_env()
-# How often to poll in milli seconds
-UPDATE_FREQ = 20
 
 
 def run_and_inspect_docker_image(docker_image_name: str) -> TestResult:
@@ -35,8 +33,9 @@ def run_and_inspect_docker_image(docker_image_name: str) -> TestResult:
 
     started_time_date_time = datetime.strptime(started_time[:-2], "%Y-%m-%dT%H:%M:%S.%f")
     end_time_date_time = datetime.strptime(end_time[:-2], "%Y-%m-%dT%H:%M:%S.%f")
+    total_ms = int((end_time_date_time - started_time_date_time).total_seconds() * 1000)
 
-    result = TestResult((end_time_date_time - started_time_date_time).total_seconds(), max_mem_usage, mem_use_by_time)
+    result = TestResult(total_ms, max_mem_usage, mem_use_by_time)
     docker_container.remove()
     return result
 
@@ -69,7 +68,6 @@ def watch_container(container_id) -> Dict[int, float]:
     while docker_container.status != "exited":
         docker_stats = DOCKER_CLIENT.api.stats(container_id, stream=False)
         if docker_stats["memory_stats"] != {}:
-            # print(docker_stats)
             mem_use_by_time[Time.time()] = docker_stats["memory_stats"]["usage"] * 1.0
         docker_container.reload()
 
