@@ -1,6 +1,6 @@
 import { Button } from "@material-ui/core";
 import React, { PureComponent } from "react";
-import { getRandomColor } from "../../constants";
+import { getRandomColor } from "../../../constants";
 import {
   Label,
   LineChart,

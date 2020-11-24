@@ -7,7 +7,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { getRandomColor } from "../../constants";
+import { getRandomColor } from "../../../constants";
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({

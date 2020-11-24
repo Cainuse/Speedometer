@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import { Box, Typography } from "@material-ui/core";
 import Speedometer from "./Speedometer";
 import SummaryInfo from "./SummaryInfo";
-import PerfLineChart from "../Visualizations/PerfLineChart";
+import PerfLineChart from "../Visualizations/Line/PerfLineChart";
 
 const useStyles = makeStyles((theme) => ({
   root: {
