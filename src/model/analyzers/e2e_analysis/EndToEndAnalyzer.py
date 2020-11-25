@@ -83,10 +83,11 @@ class EndToEndAnalyzer:
 
         # TODO: implement this
         # TODO: maybe there should be a timeout?
-
-        for _ in range(runs):
-            results.append(run_and_inspect_docker_image(image_name))
-
+        try:
+            for _ in range(runs):
+                results.append(run_and_inspect_docker_image(image_name))
+        except:
+            print("An error occurred during run test container")
         return results
 
     def _build_dockerfile_for_input(self, program_file_path: str, input_size: int, config: Config) -> str:
