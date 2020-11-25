@@ -54,7 +54,7 @@ class ProfileAnalyzer:
 
     results: dict = {"class": [], "function": [], "line_by_line": []}
 
-    def analyze(self,program_file_path: str) -> None:
+    def analyze(self,program_file_path: str, config:Config) -> None:
         """
         Runs profile analyses on the given program
         :param program_file_path: path to the program to analyze
