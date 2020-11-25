@@ -19,6 +19,7 @@ const SummaryInfo = ({
       <Typography variant="subtitle1">{totalText}</Typography>
       <br />
       <br />
+      <br />
       <Typography variant="h1" style={{ fontSize: "5rem" }}>
         {highestVal}
       </Typography>
