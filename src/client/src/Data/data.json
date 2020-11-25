@@ -1,5 +1,10 @@
 {
+  "script_name": "test.py",
   "e2e": {
+    "e2e_total_average_time": 44.5,
+    "e2e_highest_runtime_function": "bar()",
+    "e2e_total_average_memory": 230,
+    "e2e_highest_memory_usage_function": "foo()",
     "e2e_runtime": [
       {
         "n": 1,

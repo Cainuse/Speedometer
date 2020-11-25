@@ -7,6 +7,7 @@ import { Box, Typography } from "@material-ui/core";
 import Speedometer from "./Speedometer";
 import SummaryInfo from "./SummaryInfo";
 import PerfLineChart from "../Visualizations/Line/PerfLineChart";
+import InfoPopup from "./InfoPopup";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
   halfHeight: {
     height: "50%",
   },
+  card_title: {
+    paddingLeft: "15%",
+  },
 }));
 
 const Summary = ({ dataset }) => {
@@ -39,23 +43,42 @@ const Summary = ({ dataset }) => {
     borderColor: "grey.500",
   };
 
+  const speedometerVals = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5];
+
   return (
     <div className={classes.root}>
       <Box borderBottom={1} {...defaultProps}>
-        Performance Summary for 'test.py'
+        Performance Summary for {dataset["script_name"]}
       </Box>
       <Grid container spacing={3}>
         <Grid item xs={4} className={classes.viz_container}>
           <Grid container spacing={3} className={classes.fullHeight}>
             <Grid item xs={12} className={classes.halfHeight}>
-              <Paper className={classes.paper}>
-                <Typography>Time Complexity Speedometer</Typography>
+              <Paper className={classes.paper} elevation={5}>
+                <Grid container>
+                  <Grid item xs={11} className={classes.card_title}>
+                    <Typography>Time Complexity Speedometer </Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <InfoPopup
+                      content="This Speedometer shows the average time complexity of your
+                  script."
+                    />
+                  </Grid>
+                </Grid>
                 <Speedometer value={5.5} valueText="Time Complexity" />
               </Paper>
             </Grid>
             <Grid item xs={12} className={classes.halfHeight}>
-              <Paper className={classes.paper}>
-                <Typography>Space Complexity Speedometer</Typography>
+              <Paper className={classes.paper} elevation={5}>
+                <Grid container>
+                  <Grid item xs={11} className={classes.card_title}>
+                    <Typography>Space Complexity Speedometer</Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <InfoPopup content="This Speedometer shows the average memory usage complexity of your script." />
+                  </Grid>
+                </Grid>
                 <Speedometer value={3.5} valueText="Space Complexity" />
               </Paper>
             </Grid>
@@ -64,22 +87,28 @@ const Summary = ({ dataset }) => {
         <Grid item xs={2} className={classes.viz_container}>
           <Grid container spacing={3} className={classes.fullHeight}>
             <Grid item xs={12} className={classes.halfHeight}>
-              <Paper className={classes.paper}>
+              <Paper className={classes.paper} elevation={5}>
                 <SummaryInfo
-                  totalVal="4.5s"
-                  totalText="Total Runtime"
-                  highestVal="bar()"
+                  totalVal={dataset["e2e"]["e2e_total_average_time"].toString()}
+                  totalText="Total Average Runtime"
+                  highestVal={dataset["e2e"]["e2e_highest_runtime_function"]}
                   highestText="Highest Runtime Function"
+                  type="runtime"
                 />
               </Paper>
             </Grid>
             <Grid item xs={12} className={classes.halfHeight}>
-              <Paper className={classes.paper}>
+              <Paper className={classes.paper} elevation={5}>
                 <SummaryInfo
-                  totalVal="29kb"
-                  totalText="Total Memory Usage"
-                  highestVal="foo()"
+                  totalVal={dataset["e2e"][
+                    "e2e_total_average_memory"
+                  ].toString()}
+                  totalText="Total Average Memory Usage"
+                  highestVal={
+                    dataset["e2e"]["e2e_highest_memory_usage_function"]
+                  }
                   highestText="Highest Memory Usage Function"
+                  type="memory"
                 />
               </Paper>
             </Grid>
@@ -88,7 +117,7 @@ const Summary = ({ dataset }) => {
         <Grid item xs={6} className={classes.viz_container}>
           <Grid container spacing={3} className={classes.fullHeight}>
             <Grid item xs={12} className={classes.halfHeight}>
-              <Paper className={classes.paper}>
+              <Paper className={classes.paper} elevation={5}>
                 <PerfLineChart
                   data={dataset["e2e"]["e2e_runtime"]}
                   yLabel="Time (ms)"
@@ -97,7 +126,7 @@ const Summary = ({ dataset }) => {
               </Paper>
             </Grid>
             <Grid item xs={12} className={classes.halfHeight}>
-              <Paper className={classes.paper}>
+              <Paper className={classes.paper} elevation={5}>
                 <PerfLineChart
                   data={dataset["e2e"]["e2e_memory"]}
                   yLabel="Memory (KB)"

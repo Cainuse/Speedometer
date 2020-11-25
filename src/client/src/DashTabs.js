@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
   },
   tabs_appbar: {
     backgroundColor: "#66d9ff",
-    color: "white",
   },
 }));
 
@@ -136,6 +135,11 @@ const LinkTabProps = (index) => {
   return {
     id: `nav-tab-${index}`,
     "aria-controls": `nav-tabpanel-${index}`,
+    style: {
+      textTransform: "none",
+      fontSize: "1.2rem",
+      color: "white",
+    },
   };
 };
 

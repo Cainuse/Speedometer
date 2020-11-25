@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Box, Typography } from "@material-ui/core";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { gruvboxLight } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { Grid } from "@material-ui/core";
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LineByLineComplexity = ({ codeInformations }) => {
+const LineByLineComplexity = ({ codeInformations, dataset }) => {
   const classes = useStyles();
 
   let expandedAcords = [];
@@ -29,6 +30,13 @@ const LineByLineComplexity = ({ codeInformations }) => {
 
   const [expanded, setExpanded] = useState(expandedAcords);
 
+  const defaultProps = {
+    bgcolor: "background.paper",
+    m: 1,
+    style: { width: "100%", height: "2rem", marginBottom: "1%" },
+    borderColor: "grey.500",
+  };
+
   const handleChange = (idx) => (_event, _isExpanded) => {
     let expansions = [...expanded];
     expansions[idx] = !expansions[idx];
@@ -37,6 +45,9 @@ const LineByLineComplexity = ({ codeInformations }) => {
 
   return (
     <div className={classes.root}>
+      <Box borderBottom={1} {...defaultProps}>
+        Line by Line Analysis for {dataset["script_name"]}
+      </Box>
       <Grid container spacing={3}>
         {codeInformations.map((info, index) => {
           return (
@@ -44,6 +55,7 @@ const LineByLineComplexity = ({ codeInformations }) => {
               <Accordion
                 expanded={expanded[index]}
                 onChange={handleChange(index)}
+                elevation={5}
               >
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
@@ -76,4 +88,10 @@ const LineByLineComplexity = ({ codeInformations }) => {
   );
 };
 
-export default LineByLineComplexity;
+const mapStateToProps = (state) => {
+  return {
+    dataset: state.dataset,
+  };
+};
+
+export default connect(mapStateToProps)(LineByLineComplexity);
