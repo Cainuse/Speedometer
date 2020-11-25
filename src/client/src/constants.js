@@ -21,15 +21,20 @@ export const LABELS = [
     color: "#555",
   },
   {
+    text: "O(nlog(n))",
+    position: "INSIDE",
+    color: "#555",
+    fontSize: "19px",
+  },
+  {
     text: "O(n)",
     position: "INSIDE",
     color: "#555",
   },
   {
-    text: "O(nlog(n))",
+    text: "O(log(n))",
     position: "INSIDE",
     color: "#555",
-    fontSize: "19px",
   },
   {
     text: "O(1)",

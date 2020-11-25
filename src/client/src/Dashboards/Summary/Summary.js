@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   viz_container: {
     padding: theme.spacing(2),
-    height: "50rem",
+    height: "52rem",
   },
   fullHeight: {
     height: "100%",
@@ -43,7 +43,29 @@ const Summary = ({ dataset }) => {
     borderColor: "grey.500",
   };
 
-  const speedometerVals = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5];
+  const getSpeedometerVal = (complexity) => {
+    const speedometerVals = [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5];
+    switch (complexity) {
+      case "nn":
+        return speedometerVals[0];
+      case "n!":
+        return speedometerVals[1];
+      case "n3":
+        return speedometerVals[2];
+      case "n2":
+        return speedometerVals[3];
+      case "nlogn":
+        return speedometerVals[4];
+      case "n":
+        return speedometerVals[5];
+      case "logn":
+        return speedometerVals[6];
+      case "1":
+        return speedometerVals[7];
+      default:
+        return 0;
+    }
+  };
 
   return (
     <div className={classes.root}>
@@ -66,7 +88,12 @@ const Summary = ({ dataset }) => {
                     />
                   </Grid>
                 </Grid>
-                <Speedometer value={5.5} valueText="Time Complexity" />
+                <Speedometer
+                  value={getSpeedometerVal(
+                    dataset["e2e"]["e2e_time_complexity"]
+                  )}
+                  valueText="Time Complexity"
+                />
               </Paper>
             </Grid>
             <Grid item xs={12} className={classes.halfHeight}>
@@ -79,7 +106,12 @@ const Summary = ({ dataset }) => {
                     <InfoPopup content="This Speedometer shows the average memory usage complexity of your script." />
                   </Grid>
                 </Grid>
-                <Speedometer value={3.5} valueText="Space Complexity" />
+                <Speedometer
+                  value={getSpeedometerVal(
+                    dataset["e2e"]["e2e_space_complexity"]
+                  )}
+                  valueText="Space Complexity"
+                />
               </Paper>
             </Grid>
           </Grid>
