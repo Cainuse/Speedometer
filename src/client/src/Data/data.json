@@ -309,172 +309,154 @@
       { "name": "foo8()", "total_memory": 22 }
     ]
   },
-  "line_by_line": {
-    "line_by_line_runtime": [
-      [
-        {
-          "fileName": "test1.py",
-          "line": 1,
-          "total_runtime": 0,
-          "total_memory": 25,
-          "code": "class Result:"
-        },
-        {
-          "fileName": "test1.py",
-          "line": 2,
-          "total_runtime": 0,
-          "total_memory": 65,
-          "code": "    def __init__(self, accepted: bool, path: str):"
-        },
-        {
-          "fileName": "test1.py",
-          "line": 3,
-          "total_runtime": 0,
-          "total_memory": 65,
-          "code": "        self.accepted = accepted"
-        },
-        {
-          "fileName": "test1.py",
-          "line": 4,
-          "total_runtime": 80,
-          "total_memory": 65,
-          "code": "        self.path = path1"
-        },
-        {
-          "fileName": "test1.py",
-          "line": 5,
-          "total_runtime": 2,
-          "total_memory": 65,
-          "code": "        self.path = path2"
-        },
-        {
-          "fileName": "test1.py",
-          "line": 6,
-          "total_runtime": 80,
-          "total_memory": 65,
-          "code": "        self.path = path3"
-        },
-        {
-          "fileName": "test1.py",
-          "line": 7,
-          "total_runtime": 1,
-          "total_memory": 65,
-          "code": "        self.path = path4"
-        },
-        {
-          "fileName": "test1.py",
-          "line": 8,
-          "total_runtime": 80,
-          "total_memory": 65,
-          "code": "        self.path = path5"
-        }
-      ],
-      [
-        {
-          "fileName": "test2.py",
-          "line": 1,
-          "total_runtime": 0,
-          "total_memory": 25,
-          "code": "class Result:"
-        },
-        {
-          "fileName": "test2.py",
-          "line": 2,
-          "total_runtime": 0,
-          "total_memory": 65,
-          "code": "    def __init__(self, accepted: bool, path: str):"
-        },
-        {
-          "fileName": "test2.py",
-          "line": 3,
-          "total_runtime": 0,
-          "total_memory": 65,
-          "code": "        self.accepted = accepted"
-        },
-        {
-          "fileName": "test2.py",
-          "line": 4,
-          "total_runtime": 80,
-          "total_memory": 65,
-          "code": "        self.path = path1"
-        },
-        {
-          "fileName": "test2.py",
-          "line": 5,
-          "total_runtime": 2,
-          "total_memory": 65,
-          "code": "        self.path = path2"
-        },
-        {
-          "fileName": "test2.py",
-          "line": 6,
-          "total_runtime": 80,
-          "total_memory": 65,
-          "code": "        self.path = path3"
-        },
-        {
-          "fileName": "test2.py",
-          "line": 7,
-          "total_runtime": 1,
-          "total_memory": 65,
-          "code": "        self.path = path4"
-        },
-        {
-          "fileName": "test2.py",
-          "line": 8,
-          "total_runtime": 80,
-          "total_memory": 65,
-          "code": "        self.path = path5"
-        }
-      ]
+  "line_by_line": [
+    [
+      {
+        "fileName": "test1.py",
+        "line": 1,
+        "total_runtime": 0,
+        "total_memory": 25,
+        "code": "class Result:",
+        "percent_runtime": 0,
+        "percent_memory": 20
+      },
+      {
+        "fileName": "test1.py",
+        "line": 2,
+        "total_runtime": 0,
+        "total_memory": 65,
+        "code": "    def __init__(self, accepted: bool, path: str):",
+        "percent_runtime": 10,
+        "percent_memory": 20
+      },
+      {
+        "fileName": "test1.py",
+        "line": 3,
+        "total_runtime": 0,
+        "total_memory": 65,
+        "code": "        self.accepted = accepted",
+        "percent_runtime": 0,
+        "percent_memory": 20
+      },
+      {
+        "fileName": "test1.py",
+        "line": 4,
+        "total_runtime": 80,
+        "total_memory": 65,
+        "code": "        self.path = path1",
+        "percent_runtime": 0,
+        "percent_memory": 20
+      },
+      {
+        "fileName": "test1.py",
+        "line": 5,
+        "total_runtime": 2,
+        "total_memory": 65,
+        "code": "        self.path = path2",
+        "percent_runtime": 20,
+        "percent_memory": 20
+      },
+      {
+        "fileName": "test1.py",
+        "line": 6,
+        "total_runtime": 80,
+        "total_memory": 65,
+        "code": "        self.path = path3",
+        "percent_runtime": 0,
+        "percent_memory": 20
+      },
+      {
+        "fileName": "test1.py",
+        "line": 7,
+        "total_runtime": 1,
+        "total_memory": 65,
+        "code": "        self.path = path4",
+        "percent_runtime": 50,
+        "percent_memory": 20
+      },
+      {
+        "fileName": "test1.py",
+        "line": 8,
+        "total_runtime": 80,
+        "total_memory": 65,
+        "code": "        self.path = path5",
+        "percent_runtime": 0,
+        "percent_memory": 20
+      }
     ],
-    "line_by_line_memory": [
-      [
-        {
-          "fileName": "test.py",
-          "line": 1,
-          "total_runtime": 1,
-          "total_memory": 10,
-          "code": "def prependNodeToPath(node, path) -> str:"
-        },
-        {
-          "fileName": "test.py",
-          "line": 2,
-          "total_runtime": 70,
-          "total_memory": 20,
-          "code": "    return node if len(path) is 0 else (node + \" -> \" + path)"
-        }
-      ],
-      [
-        {
-          "fileName": "test2.py",
-          "line": 3,
-          "total_runtime": 0,
-          "total_memory": 25,
-          "code": "class Result:"
-        },
-        {
-          "fileName": "test2.py",
-          "line": 4,
-          "total_runtime": 0,
-          "total_memory": 65,
-          "code": "    def __init__(self, accepted: bool, path: str):"
-        },
-        {
-          "fileName": "test2.py",
-          "line": 5,
-          "total_runtime": 0,
-          "total_memory": 65,
-          "code": "        self.accepted = accepted"
-        },
-        {
-          "fileName": "test2.py",
-          "line": 6,
-          "total_runtime": 80,
-          "total_memory": 65,
-          "code": "        self.path = path"
-        }
-      ]
+    [
+      {
+        "fileName": "test2.py",
+        "line": 1,
+        "total_runtime": 0,
+        "total_memory": 25,
+        "code": "class Result:",
+        "percent_runtime": 10,
+        "percent_memory": 20
+      },
+      {
+        "fileName": "test2.py",
+        "line": 2,
+        "total_runtime": 0,
+        "total_memory": 65,
+        "code": "    def __init__(self, accepted: bool, path: str):",
+        "percent_runtime": 10,
+        "percent_memory": 20
+      },
+      {
+        "fileName": "test2.py",
+        "line": 3,
+        "total_runtime": 0,
+        "total_memory": 65,
+        "code": "        self.accepted = accepted",
+        "percent_runtime": 0,
+        "percent_memory": 20
+      },
+      {
+        "fileName": "test2.py",
+        "line": 4,
+        "total_runtime": 80,
+        "total_memory": 65,
+        "code": "        self.path = path1",
+        "percent_runtime": 0,
+        "percent_memory": 20
+      },
+      {
+        "fileName": "test2.py",
+        "line": 5,
+        "total_runtime": 2,
+        "total_memory": 65,
+        "code": "        self.path = path2",
+        "percent_runtime": 1,
+        "percent_memory": 20
+      },
+      {
+        "fileName": "test2.py",
+        "line": 6,
+        "total_runtime": 80,
+        "total_memory": 65,
+        "code": "        self.path = path3",
+        "percent_runtime": 70,
+        "percent_memory": 20
+      },
+      {
+        "fileName": "test2.py",
+        "line": 7,
+        "total_runtime": 1,
+        "total_memory": 65,
+        "code": "        self.path = path4",
+        "percent_runtime": 40,
+        "percent_memory": 20
+      },
+      {
+        "fileName": "test2.py",
+        "line": 8,
+        "total_runtime": 80,
+        "total_memory": 65,
+        "code": "        self.path = path5",
+        "percent_runtime": 0,
+        "percent_memory": 20
+      }
     ]
-  }
+  ]
 }

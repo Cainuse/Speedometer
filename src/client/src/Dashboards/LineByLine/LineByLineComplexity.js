@@ -25,7 +25,7 @@ const LineByLineComplexity = ({ dataset }) => {
   const timeThreshold = 5;
 
   const [expanded, setExpanded] = useState(
-    dataset["line_by_line"]["line_by_line_runtime"].map(() => {
+    dataset["line_by_line"].map(() => {
       return true;
     })
   );
@@ -49,7 +49,7 @@ const LineByLineComplexity = ({ dataset }) => {
 
   const getLinesOfLargeTime = (lines) => {
     const max = lines.filter((lineObj) => {
-      return lineObj["total_runtime"] > timeThreshold;
+      return lineObj["percent_runtime"] > timeThreshold;
     });
     return max.length > 0 ? max.map((lineObj) => lineObj["line"]) : [];
   };
@@ -73,7 +73,6 @@ const LineByLineComplexity = ({ dataset }) => {
           marginTop: 0,
           marginBottom: 0,
           marginRight: 20,
-          minWidth: "1em",
         }}
         lineProps={(lineNumber) => {
           let style = { display: "block", minWidth: "1em" };
@@ -92,10 +91,10 @@ const LineByLineComplexity = ({ dataset }) => {
     return maxTimeLines.includes(line) ? (
       <Typography
         variant="h3"
-        color={lineObj["total_runtime"] > timeThreshold ? "error" : "primary"}
+        color={lineObj["percent_runtime"] > timeThreshold ? "error" : "primary"}
         style={{ fontSize: 25, paddingLeft: "40%", paddingTop: "2%" }}
       >
-        {`${lineObj["total_runtime"]}%`}
+        {`${lineObj["percent_runtime"]}%`}
       </Typography>
     ) : (
       <Typography variant="h3" style={{ height: "2rem" }} />
@@ -141,7 +140,7 @@ const LineByLineComplexity = ({ dataset }) => {
         Line by Line Analysis for {dataset["script_name"]}
       </Box>
       <Grid container spacing={3}>
-        {dataset["line_by_line"]["line_by_line_runtime"].map((lines, index) => {
+        {dataset["line_by_line"].map((lines, index) => {
           const fileName = getSnippetFileName(lines);
 
           return (
