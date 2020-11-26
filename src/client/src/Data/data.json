@@ -17,7 +17,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 3,
@@ -28,7 +29,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 5,
@@ -39,7 +41,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 4,
@@ -50,7 +53,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 9,
@@ -61,7 +65,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 11,
@@ -72,7 +77,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 10,
@@ -83,7 +89,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 15,
@@ -94,7 +101,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 14,
@@ -105,7 +113,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 19,
@@ -116,7 +125,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 21,
@@ -127,7 +137,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       }
     ],
     "e2e_memory": [
@@ -140,7 +151,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 3,
@@ -151,7 +163,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 5,
@@ -162,7 +175,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 4,
@@ -173,7 +187,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 9,
@@ -184,7 +199,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 11,
@@ -195,7 +211,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 10,
@@ -206,7 +223,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 15,
@@ -216,7 +234,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 14,
@@ -227,7 +246,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 19,
@@ -238,7 +258,8 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       },
       {
         "n": 21,
@@ -249,8 +270,21 @@
         "O(n\u00B2)": 10.1,
         "O(n\u00B3)": 33.3,
         "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2
+        "O(n\u207F)": 88.2,
+        "O(n!)": 82
       }
+    ]
+  },
+  "class": {
+    "class_runtime": [
+      { "name": "ClassA", "total_runtime": 93 },
+      { "name": "ClassB", "total_runtime": 100 },
+      { "name": "ClassC", "total_runtime": 221 }
+    ],
+    "class_memory": [
+      { "name": "ClassA", "total_memory": 61 },
+      { "name": "ClassB", "total_memory": 50 },
+      { "name": "ClassC", "total_memory": 120 }
     ]
   },
   "function": {
@@ -275,42 +309,172 @@
       { "name": "foo8()", "total_memory": 22 }
     ]
   },
-  "line_by_line": [
-    {
-      "fileName": "test.py",
-      "scope": "body",
-      "line_from": 1,
-      "line_to": 10,
-      "total_runtime": 5,
-      "total_memory": 2,
-      "code": "stuff"
-    },
-    {
-      "fileName": "test.py",
-      "scope": "body",
-      "line_from": 11,
-      "line_to": 31,
-      "total_runtime": 5,
-      "total_memory": 1,
-      "code": "stuff"
-    },
-    {
-      "fileName": "test.py",
-      "scope": "foo()",
-      "line_from": 33,
-      "line_to": 38,
-      "total_runtime": 5,
-      "total_memory": 3,
-      "code": "stuff"
-    },
-    {
-      "fileName": "test.py",
-      "scope": "bar()",
-      "line_from": 40,
-      "line_to": 65,
-      "total_runtime": 5,
-      "total_memory": 10,
-      "code": "stuff"
-    }
-  ]
+  "line_by_line": {
+    "line_by_line_runtime": [
+      [
+        {
+          "fileName": "test1.py",
+          "line": 1,
+          "total_runtime": 0,
+          "total_memory": 25,
+          "code": "class Result:"
+        },
+        {
+          "fileName": "test1.py",
+          "line": 2,
+          "total_runtime": 0,
+          "total_memory": 65,
+          "code": "    def __init__(self, accepted: bool, path: str):"
+        },
+        {
+          "fileName": "test1.py",
+          "line": 3,
+          "total_runtime": 0,
+          "total_memory": 65,
+          "code": "        self.accepted = accepted"
+        },
+        {
+          "fileName": "test1.py",
+          "line": 4,
+          "total_runtime": 80,
+          "total_memory": 65,
+          "code": "        self.path = path1"
+        },
+        {
+          "fileName": "test1.py",
+          "line": 5,
+          "total_runtime": 2,
+          "total_memory": 65,
+          "code": "        self.path = path2"
+        },
+        {
+          "fileName": "test1.py",
+          "line": 6,
+          "total_runtime": 80,
+          "total_memory": 65,
+          "code": "        self.path = path3"
+        },
+        {
+          "fileName": "test1.py",
+          "line": 7,
+          "total_runtime": 1,
+          "total_memory": 65,
+          "code": "        self.path = path4"
+        },
+        {
+          "fileName": "test1.py",
+          "line": 8,
+          "total_runtime": 80,
+          "total_memory": 65,
+          "code": "        self.path = path5"
+        }
+      ],
+      [
+        {
+          "fileName": "test2.py",
+          "line": 1,
+          "total_runtime": 0,
+          "total_memory": 25,
+          "code": "class Result:"
+        },
+        {
+          "fileName": "test2.py",
+          "line": 2,
+          "total_runtime": 0,
+          "total_memory": 65,
+          "code": "    def __init__(self, accepted: bool, path: str):"
+        },
+        {
+          "fileName": "test2.py",
+          "line": 3,
+          "total_runtime": 0,
+          "total_memory": 65,
+          "code": "        self.accepted = accepted"
+        },
+        {
+          "fileName": "test2.py",
+          "line": 4,
+          "total_runtime": 80,
+          "total_memory": 65,
+          "code": "        self.path = path1"
+        },
+        {
+          "fileName": "test2.py",
+          "line": 5,
+          "total_runtime": 2,
+          "total_memory": 65,
+          "code": "        self.path = path2"
+        },
+        {
+          "fileName": "test2.py",
+          "line": 6,
+          "total_runtime": 80,
+          "total_memory": 65,
+          "code": "        self.path = path3"
+        },
+        {
+          "fileName": "test2.py",
+          "line": 7,
+          "total_runtime": 1,
+          "total_memory": 65,
+          "code": "        self.path = path4"
+        },
+        {
+          "fileName": "test2.py",
+          "line": 8,
+          "total_runtime": 80,
+          "total_memory": 65,
+          "code": "        self.path = path5"
+        }
+      ]
+    ],
+    "line_by_line_memory": [
+      [
+        {
+          "fileName": "test.py",
+          "line": 1,
+          "total_runtime": 1,
+          "total_memory": 10,
+          "code": "def prependNodeToPath(node, path) -> str:"
+        },
+        {
+          "fileName": "test.py",
+          "line": 2,
+          "total_runtime": 70,
+          "total_memory": 20,
+          "code": "    return node if len(path) is 0 else (node + \" -> \" + path)"
+        }
+      ],
+      [
+        {
+          "fileName": "test2.py",
+          "line": 3,
+          "total_runtime": 0,
+          "total_memory": 25,
+          "code": "class Result:"
+        },
+        {
+          "fileName": "test2.py",
+          "line": 4,
+          "total_runtime": 0,
+          "total_memory": 65,
+          "code": "    def __init__(self, accepted: bool, path: str):"
+        },
+        {
+          "fileName": "test2.py",
+          "line": 5,
+          "total_runtime": 0,
+          "total_memory": 65,
+          "code": "        self.accepted = accepted"
+        },
+        {
+          "fileName": "test2.py",
+          "line": 6,
+          "total_runtime": 80,
+          "total_memory": 65,
+          "code": "        self.path = path"
+        }
+      ]
+    ]
+  }
 }

@@ -14,7 +14,7 @@ const Speedometer = ({ value, valueText }) => {
       value={value}
       currentValueText={valueText}
       customSegmentLabels={LABELS}
-      ringWidth={100}
+      ringWidth={80}
       needleTransitionDuration={3333}
       needleTransition="easeElastic"
       needleColor={"#3f51b5"}

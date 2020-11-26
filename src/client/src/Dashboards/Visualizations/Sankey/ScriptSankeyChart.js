@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import { Sankey, Tooltip } from "recharts";
-import _ from "lodash";
 import SankeyLink from "./SankeyLink";
 import SankeyNode from "./SankeyNode";
 
@@ -29,14 +28,14 @@ const data1 = {
 function ScriptSankeyChart() {
   return (
     <Sankey
-      width={1500}
+      width={1330}
       height={500}
       margin={{ top: 20, bottom: 20 }}
       data={data1}
       nodeWidth={15}
-      nodePadding={70}
+      nodePadding={50}
       linkCurvature={0.5}
-      iterations={64}
+      iterations={25}
       link={<SankeyLink />}
       node={<SankeyNode containerWidth={960} />}
     >

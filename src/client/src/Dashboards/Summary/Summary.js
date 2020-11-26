@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   viz_container: {
     padding: theme.spacing(2),
-    height: "52rem",
+    height: "51rem",
   },
   fullHeight: {
     height: "100%",

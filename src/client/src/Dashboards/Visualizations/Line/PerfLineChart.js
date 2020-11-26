@@ -206,7 +206,7 @@ export default class PerfLineChart extends PureComponent {
               );
             })}
 
-            <Legend align="right" verticalAlign="top" height={30} />
+            <Legend align="right" verticalAlign="top" height={50} />
 
             {refAreaLeft && refAreaRight ? (
               <ReferenceArea

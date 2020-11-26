@@ -111,7 +111,7 @@ const TimeComplexity = ({ dataset }) => {
             </Paper>
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={12}>
+        <Grid item xs={12}>
           <Typography>Relative Time Per Script module</Typography>
           <ScriptSankeyChart />
         </Grid>
