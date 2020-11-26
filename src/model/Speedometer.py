@@ -190,7 +190,7 @@ class Speedometer:
         e2e_object["e2e_space_complexity"] = self.find_O_fit(memory_fit_point, total_memory_points)
         output["e2e"] = e2e_object
 
-        with open('output_data.json', 'w') as outfile:
+        with open('client/src/Data/data.json', 'w') as outfile:
             json.dump(output, outfile)
         return output
 
