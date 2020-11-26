@@ -1,2 +1,3 @@
 pytest==6.1.2
+scalene==1.1.10
 docker==4.3.1

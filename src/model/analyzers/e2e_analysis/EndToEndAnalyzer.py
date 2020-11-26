@@ -2,10 +2,10 @@ from typing import List, Dict
 
 from src.model.Config import Config
 from src.model.analyzers.e2e_analysis.docker.DockerImageBuilder import build_docker_image
+from src.model.analyzers.e2e_analysis.docker.DockerContainerRunner import run_and_inspect_docker_image
 from src.model.analyzers.e2e_analysis.docker.DockerfileMaker import build_dockerfile
 from src.model.analyzers.e2e_analysis.result_types.InputSizeResult import InputSizeResult
 from src.model.analyzers.e2e_analysis.result_types.TestResult import TestResult
-
 
 class EndToEndAnalyzer:
     RUNS_PER_INPUT_SIZE: int = 3
@@ -79,34 +79,16 @@ class EndToEndAnalyzer:
         :return: a list of Result objects - one for each run
         """
 
+        results: List[TestResult] = []
+
         # TODO: implement this
         # TODO: maybe there should be a timeout?
-
-        # # Get information about the docker container
-        # output = subprocess.run(["docker", "inspect", "e2e"], stdout=subprocess.PIPE)
-        #
-        # # Convert bytes to string
-        # output = output.stdout.decode('utf-8')
-        #
-        # # Convert String to json and extract data
-        # output_json = json.loads(output)
-        #
-        # container = output_json[0]
-        #
-        # container_state = container["State"]
-        #
-        # container_start_time = container_state["StartedAt"]
-        # container_state_time = datetime.strptime(container_start_time[:-2], "%Y-%m-%dT%H:%M:%S.%f").microsecond
-        #
-        # container_end_time = container_state["FinishedAt"]
-        # container_end_time = datetime.strptime(container_end_time[:-2], "%Y-%m-%dT%H:%M:%S.%f").microsecond
-        #
-        # # Total runtime in microseconds
-        # print("Total Runtime is: " + str(container_end_time - container_state_time) + " microseconds")
-        # print("Total Runtime is: " + str((container_end_time - container_state_time) / 10 ** 6) + " seconds")
-        #
-        # # Delete Created Docker image and container after script executes
-        # os.system("docker rm e2e && docker rmi e2e")
+        try:
+            for _ in range(runs):
+                results.append(run_and_inspect_docker_image(image_name))
+        except:
+            print("An error occurred during run test container")
+        return results
 
     def _build_dockerfile_for_input(self, program_file_path: str, input_size: int, config: Config) -> str:
         """

@@ -39,37 +39,22 @@ def helper_test_dockerfile(program_file_path, args, expected_contents):
 
 
 def test_build_dockerfile_empty_args():
-    program_file_path = "./test.py"
+    program_file_path = "test/model/analyzers/e2e_analysis/Docker/resources/a_test_script.py"
     args = []
-    expected_contents = "FROM python\nCOPY ./test.py .\nCMD [\"python\", \"test.py\"]"
+    expected_contents = "FROM python\nCOPY a_test_script.py .\nCMD [\"python\", \"a_test_script.py\"]"
     helper_test_dockerfile(program_file_path, args, expected_contents)
 
 
 def test_build_dockerfile_one_args():
-    program_file_path = "./test.py"
+    program_file_path = "test/model/analyzers/e2e_analysis/Docker/resources/a_test_script.py"
     args = ["-d"]
-    expected_contents = "FROM python\nCOPY ./test.py .\nCMD [\"python\", \"test.py\", \"-d\"]"
+    expected_contents = "FROM python\nCOPY a_test_script.py .\nCMD [\"python\", \"a_test_script.py\", \"-d\"]"
     helper_test_dockerfile(program_file_path, args, expected_contents)
 
 
 def test_build_dockerfile_multiple_args():
-    program_file_path = "./test.py"
-    args = ["-d", "1000"]
-    expected_contents = "FROM python\nCOPY ./test.py .\nCMD [\"python\", \"test.py\", \"-d\", \"1000\"]"
-    helper_test_dockerfile(program_file_path, args, expected_contents)
-
-
-def test_build_dockerfile_relative_program_path():
-    program_file_path = "./some/relative/path/test.py"
+    program_file_path = "test/model/analyzers/e2e_analysis/Docker/resources/a_test_script.py"
     args = ["-d", "1000"]
     expected_contents = \
-        "FROM python\nCOPY ./some/relative/path/test.py .\nCMD [\"python\", \"test.py\", \"-d\", \"1000\"]"
-    helper_test_dockerfile(program_file_path, args, expected_contents)
-
-
-def test_build_dockerfile_absolute_program_path_unix():
-    program_file_path = "/c/some/absolute/path/test.py"
-    args = ["-d", "1000"]
-    expected_contents = \
-        "FROM python\nCOPY /c/some/absolute/path/test.py .\nCMD [\"python\", \"test.py\", \"-d\", \"1000\"]"
+        "FROM python\nCOPY a_test_script.py .\nCMD [\"python\", \"a_test_script.py\", \"-d\", \"1000\"]"
     helper_test_dockerfile(program_file_path, args, expected_contents)
