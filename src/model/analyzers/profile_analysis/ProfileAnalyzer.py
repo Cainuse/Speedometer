@@ -14,12 +14,14 @@ class function_runtime:
     total_run_time: float
     total_memory: float
     memory_percentage_of_total: float
+    time_percentage_of_total:int
 
-    def __init__(self, filename, name, runtime, memory):
+    def __init__(self, filename, name, runtime, memory,time_percentage):
         self.filename = filename
         self.name = name
         self.total_run_time = runtime
         self.total_memory = memory
+        self.time_percentage_of_total = time_percentage
 
 class line_by_line_runtime:
     """
@@ -31,13 +33,15 @@ class line_by_line_runtime:
     total_run_time: float
     total_memory: float
     memory_percentage_of_total: float
+    time_percentage_of_total:int
 
-    def __init__(self, filename, linenum, runtime, memory, linetext):
+    def __init__(self, filename, linenum, runtime, memory, linetext,time_percentage):
         self.filename = filename
         self.line_num = linenum
         self.total_run_time = runtime
         self.total_memory = memory
         self.line_text = linetext
+        self.time_percentage_of_total = time_percentage
 
 class class_runtime:
     """
@@ -48,12 +52,14 @@ class class_runtime:
     total_run_time: float
     total_memory: float
     memory_percentage_of_total: float
+    time_percentage_of_total:int
 
-    def __init__(self, filename, name, runtime, memory):
+    def __init__(self, filename, name, runtime, memory,time_percentage):
         self.filename = filename
         self.name = name
         self.total_run_time = runtime
         self.total_memory = memory
+        self.time_percentage_of_total = time_percentage
 
 class ProfileAnalyzer:
 
@@ -105,58 +111,62 @@ class ProfileAnalyzer:
             else:
                 file_name = a.split(": % of time")[0]
             reference_time = self.getRefTime(a) * 1000.0
-            func = function_runtime(file_name, "", 0.0, 0.0)
-            clas = class_runtime(file_name, "", 0.0, 0.0)
+            func = function_runtime(file_name, "", 0.0, 0.0,0)
+            func_indentation = ""
+            clas = class_runtime(file_name, "", 0.0, 0.0,0)
+            class_indentation = ""
 
             for l in file_dict[a]:
                 line_split = l.split("│")
                 code_position = len(line_split)-1
-                line = line_by_line_runtime(file_name, 0, 0.0, 0.0, line_split[code_position])
+                line = line_by_line_runtime(file_name, 0, 0.0, 0.0, line_split[code_position],0)
+                leading_whitespace = re.match(r"\s*", line_split[code_position]).group()
                 # Create function object when line starts with "def"
                 if line_split[code_position].strip().startswith("def") and line_split[code_position].strip().endswith(":"):
                     if func.name != "" and func.total_run_time > 0.0:
                         self.computeMemoryPercentageForSection(func,total_memory)
                         self.results["function"].append(func)
                     func_name = line_split[code_position].strip()[4:len(line_split[code_position]) - 1]
-                    func = function_runtime(file_name, func_name, 0.0, 0.0)
+                    func = function_runtime(file_name, func_name, 0.0, 0.0,0)
                 # Create class object when lines starts with "class"
-                if line_split[code_position].strip().startswith("class") and line_split[code_position].strip().endswith(":"):
+                elif line_split[code_position].strip().startswith("class") and line_split[code_position].strip().endswith(":"):
                     if clas.name != "" and clas.total_run_time > 0.0:
                         self.computeMemoryPercentageForSection(clas,total_memory)
                         self.results["class"].append(clas)
                     class_name = line_split[code_position].strip()[6:len(line_split[code_position]) - 1]
-                    clas = class_runtime(file_name, class_name, 0.0, 0.0)
+                    clas = class_runtime(file_name, class_name, 0.0, 0.0,0)
+                #If indentation matches that of previous function
+                elif leading_whitespace == func_indentation and func.name!="":
+                    self.computeMemoryPercentageForSection(func,total_memory)
+                    self.results["function"].append(func)
+                    func = function_runtime(file_name, "", 0.0, 0.0,0)
+                #If indentation matches that of previous class
+                elif leading_whitespace == class_indentation and clas.name!="":
+                    self.computeMemoryPercentageForSection(clas,total_memory)
+                    self.results["class"].append(clas)
+                    clas = class_runtime(file_name, "", 0.0, 0.0,0)
+
                 # If Scalene output determines line has significant time, calculate time in ms and add it to line/function/class objects
                 line.line_num = int(line_split[0].strip())
                 if not (line_split[1].isspace() and line_split[2].isspace()):
                     if line_split[1].isspace() and not(line_split[2].isspace()):
+                        lineTimePercentage = int(line_split[2].strip().replace("%", ""))
                         lineTime = int(line_split[2].strip().replace("%", "")) / 100 * reference_time
                     elif line_split[2].isspace() and not(line_split[1].isspace()):
+                        lineTimePercentage = int(line_split[1].strip().replace("%", ""))
                         lineTime = int(line_split[1].strip().replace("%", "")) / 100 * reference_time
                     else:
+                        lineTimePercentage = (int(line_split[1].strip().replace("%", "")) + int(line_split[2].strip().replace("%", "")))
                         lineTime = (int(line_split[1].strip().replace("%", "")) + int(line_split[2].strip().replace("%", ""))) / 100 * reference_time
                 else:
                     lineTime = 0.0
-                line.total_run_time = lineTime
-                func.total_run_time += lineTime
-                clas.total_run_time += lineTime
-                if len(line_split) > 5:
-                    if len(line_split[5].strip())==0:
-                        line_memory = 0.0
-                    else:
-                        line_memory = float(line_split[5])
-                    line.total_memory = line_memory
-                    self.computeMemoryPercentageForSection(line,total_memory)
-
-                    func.total_memory += lineTime
-                    clas.total_memory += lineTime
-                # Add line object to results
-                self.results["line_by_line"].append(line)
-            # If function object exists with data, add to results
+                    lineTimePercentage = 0
+                self.updateRelevantData(line,func,clas,line_split,lineTime,lineTimePercentage,total_memory)
+            # If function object exists that hasn't been saved (i.e. near the end of the file), add to results
             if func.name != "" and func.total_run_time > 0.0:
                 self.computeMemoryPercentageForSection(func,total_memory)
                 self.results["function"].append(func)
-            # If class object exists with data, add to results
+            # If class object exists that hasn't been saved (i.e. near the end of the file), add to results
             if clas.name != "" and clas.total_run_time > 0.0:
                 self.computeMemoryPercentageForSection(clas,total_memory)
                 self.results["class"].append(clas)
@@ -166,6 +176,26 @@ class ProfileAnalyzer:
             section.memory_percentage_of_total = 0.0            
         else: 
             section.memory_percentage_of_total = section.total_memory / total_memory 
+
+    def updateRelevantData(self,line:line_by_line_runtime, func:function_runtime, clas:class_runtime, line_split:list, lineTime:float, lineTimePercentage:int, total_memory:float):
+        line.total_run_time = lineTime
+        func.total_run_time += lineTime
+        clas.total_run_time += lineTime
+        line.time_percentage_of_total = lineTimePercentage
+        func.time_percentage_of_total += lineTimePercentage
+        clas.time_percentage_of_total += lineTimePercentage
+        if len(line_split) > 5:
+            if len(line_split[5].strip())==0:
+                line_memory = 0.0
+            else:
+                line_memory = float(line_split[5])
+            line.total_memory = line_memory
+            self.computeMemoryPercentageForSection(line,total_memory)
+
+            func.total_memory += line_memory
+            clas.total_memory += line_memory
+        # Add line object to results
+        self.results["line_by_line"].append(line)
 
     def ScaleneArrayStrip(self, arr: list, prim_split_str: str, sec_split_str: str, header_len: int) -> dict:
         """
