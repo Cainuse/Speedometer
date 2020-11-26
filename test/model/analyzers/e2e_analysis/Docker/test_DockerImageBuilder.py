@@ -21,7 +21,7 @@ def after_each():
 
 
 def test_valid_dockerfile():
-    dockerfile_path = os.path.join(CURRENT_DIR_PATH, "resources", "Dockerfile")
+    dockerfile_path = os.path.join(CURRENT_DIR_PATH, "resources", "minimal_dockerfile", "Dockerfile")
     name = DockerImageBuilder.build_docker_image(dockerfile_path)
     assert name in DockerImageBuilder.list_images()
 
