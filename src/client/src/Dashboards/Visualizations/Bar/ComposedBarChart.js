@@ -26,7 +26,7 @@ export default class ComposedBarChart extends PureComponent {
           margin={{
             top: 20,
             right: 20,
-            bottom: 20,
+            bottom: 30,
             left: 20,
           }}
         >
@@ -34,10 +34,10 @@ export default class ComposedBarChart extends PureComponent {
           <XAxis dataKey="name">
             <Label value="Function" offset={0} position="bottom" />
           </XAxis>
-          <YAxis>
+          <YAxis unit={"%"}>
             <Label
-              value="Time Proportion"
-              offset={-8}
+              value="Time Proportion (%)"
+              offset={-5}
               position="left"
               angle={-90}
             />

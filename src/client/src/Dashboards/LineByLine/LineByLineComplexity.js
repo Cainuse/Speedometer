@@ -7,8 +7,8 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Box, Typography } from "@material-ui/core";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { gruvboxLight } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { Grid } from "@material-ui/core";
+import { monoBlue } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,7 +68,7 @@ const LineByLineComplexity = ({ dataset }) => {
         showLineNumbers={true}
         startingLineNumber={lineNum}
         wrapLongLines={true}
-        style={gruvboxLight}
+        style={monoBlue}
         customStyle={{
           marginTop: 0,
           marginBottom: 0,
@@ -77,7 +77,7 @@ const LineByLineComplexity = ({ dataset }) => {
         lineProps={(lineNumber) => {
           let style = { display: "block", minWidth: "1em" };
           if (maxTimeLines.includes(lineNumber)) {
-            style.backgroundColor = "#F74A25";
+            style.backgroundColor = "#F19B89 ";
           }
           return { style };
         }}
@@ -137,7 +137,7 @@ const LineByLineComplexity = ({ dataset }) => {
   return (
     <div className={classes.root}>
       <Box borderBottom={1} {...defaultProps}>
-        Line by Line Analysis for {dataset["script_name"]}
+        Line by Line Runtime Performance Analysis for {dataset["script_name"]}
       </Box>
       <Grid container spacing={3}>
         {dataset["line_by_line"].map((lines, index) => {

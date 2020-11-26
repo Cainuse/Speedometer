@@ -8,6 +8,7 @@ import ComplexityTimeLine from "../Visualizations/TimeLine/ComplexityTimeLine";
 import FunctionsPieChart from "../Visualizations/Pie/FunctionsPieChart";
 import ComposedBarChart from "../Visualizations/Bar/ComposedBarChart";
 import ScriptSankeyChart from "../Visualizations/Sankey/ScriptSankeyChart";
+import InfoPopup from "../Visualizations/Popup/InfoPopup";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,13 +19,21 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
     justifyContent: "center",
-    height: "25rem",
+    height: "27rem",
   },
   timeline_paper: {
     padding: theme.spacing(3),
     textAlign: "center",
     color: theme.palette.text.secondary,
     justifyContent: "center",
+  },
+  card_title: {
+    paddingLeft: "10%",
+    paddingTop: "1.5%",
+  },
+  info_content: {
+    width: "20rem",
+    wordWrap: "break-word",
   },
 }));
 
@@ -94,7 +103,31 @@ const TimeComplexity = ({ dataset }) => {
         <Grid container item xs={12} sm={6} spacing={3}>
           <Grid item xs={12}>
             <Paper className={classes.paper} elevation={5}>
-              <Typography>Relative Time Per Function Pie Chart</Typography>
+              <Grid container>
+                <Grid item xs={11} className={classes.card_title}>
+                  <Typography>Relative Time Per Function Pie Chart</Typography>
+                </Grid>
+                <Grid item xs={1}>
+                  <InfoPopup
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "right",
+                    }}
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    content={
+                      <Typography className={classes.info_content}>
+                        This pie chart shows the proportion of time taken for
+                        each of the functions in your script relative to the
+                        overall script runtime.
+                      </Typography>
+                    }
+                  />
+                </Grid>
+              </Grid>
+
               <FunctionsPieChart
                 data={dataset["function"]["function_runtime"]}
                 pieDataKey={fnDataY}
@@ -103,7 +136,30 @@ const TimeComplexity = ({ dataset }) => {
           </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper} elevation={5}>
-              <Typography>Relative Time Per Function Bar Chart</Typography>
+              <Grid container>
+                <Grid item xs={11} className={classes.card_title}>
+                  <Typography>Relative Time Per Function Bar Chart</Typography>
+                </Grid>
+                <Grid item xs={1}>
+                  <InfoPopup
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "right",
+                    }}
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    content={
+                      <Typography className={classes.info_content}>
+                        This bar chart shows the proportion of time taken for
+                        each of the functions in your script for purposes of
+                        comparison and analysis.
+                      </Typography>
+                    }
+                  />
+                </Grid>
+              </Grid>
               <ComposedBarChart
                 data={dataset["function"]["function_runtime"]}
                 barDataKey={fnDataY}

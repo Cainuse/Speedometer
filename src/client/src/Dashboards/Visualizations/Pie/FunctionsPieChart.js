@@ -47,8 +47,8 @@ export default class FunctionsPieChart extends PureComponent {
 
   render() {
     return (
-      <ResponsiveContainer width="95%" height="100%">
-        <PieChart margin={{ left: 70 }}>
+      <ResponsiveContainer width="95%" height="100%" style={{ padding: "0" }}>
+        <PieChart margin={{ left: 70, bottom: 50 }}>
           <Pie
             data={this.props.data}
             cx={200}
