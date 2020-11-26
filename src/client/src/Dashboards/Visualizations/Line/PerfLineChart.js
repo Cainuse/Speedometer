@@ -1,6 +1,6 @@
 import { Button } from "@material-ui/core";
 import React, { PureComponent } from "react";
-import { getRandomColor } from "../../constants";
+import { getRandomColor } from "../../../constants";
 import {
   Label,
   LineChart,
@@ -206,7 +206,7 @@ export default class PerfLineChart extends PureComponent {
               );
             })}
 
-            <Legend align="right" verticalAlign="top" height={30} />
+            <Legend align="right" verticalAlign="top" height={50} />
 
             {refAreaLeft && refAreaRight ? (
               <ReferenceArea

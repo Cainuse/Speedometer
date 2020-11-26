@@ -1,12 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { Box, Typography } from "@material-ui/core";
-import ComplexityTimeLine from "../Visualizations/ComplexityTimeLine";
-import FunctionsPieChart from "../Visualizations/FunctionsPieChart";
-import ComposedBarChart from "../Visualizations/ComposedBarChart";
-import ScriptSankeyChart from "../Visualizations/ScriptSankeyChart";
+import ComplexityTimeLine from "../Visualizations/TimeLine/ComplexityTimeLine";
+import FunctionsPieChart from "../Visualizations/Pie/FunctionsPieChart";
+import ComposedBarChart from "../Visualizations/Bar/ComposedBarChart";
+import ScriptSankeyChart from "../Visualizations/Sankey/ScriptSankeyChart";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
     justifyContent: "center",
-    height: "40vh",
+    height: "25rem",
   },
   timeline_paper: {
     padding: theme.spacing(3),
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const data = [
+const timeline_data = [
   {
     time: "00:00",
     fn: "foo()",
@@ -66,27 +67,15 @@ const data = [
   },
 ];
 
-const fnDataX = "name";
-const fnDataY = "time_proportion";
+const fnDataY = "total_runtime";
 
-const fnData = [
-  { [fnDataX]: "foo1()", [fnDataY]: 0.2 },
-  { [fnDataX]: "foo2()", [fnDataY]: 0.3 },
-  { [fnDataX]: "foo3()", [fnDataY]: 0.4 },
-  { [fnDataX]: "foo4()", [fnDataY]: 0.5 },
-  { [fnDataX]: "foo5()", [fnDataY]: 0.8 },
-  { [fnDataX]: "foo6()", [fnDataY]: 0.9 },
-  { [fnDataX]: "foo7()", [fnDataY]: 0.2 },
-  { [fnDataX]: "foo8()", [fnDataY]: 0.6 },
-];
-
-const TimeComplexity = () => {
+const TimeComplexity = ({ dataset }) => {
   const classes = useStyles();
 
   const defaultProps = {
     bgcolor: "background.paper",
     m: 1,
-    style: { width: "100%", height: "2rem", marginBottom: "3%" },
+    style: { width: "100%", height: "2rem", marginBottom: "1%" },
     borderColor: "grey.500",
   };
 
@@ -97,26 +86,32 @@ const TimeComplexity = () => {
       </Box>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.timeline_paper}>
+          <Paper className={classes.timeline_paper} elevation={5}>
             <Typography>Script Execution Timeline</Typography>
-            <ComplexityTimeLine data={data} />
+            <ComplexityTimeLine data={timeline_data} />
           </Paper>
         </Grid>
         <Grid container item xs={12} sm={6} spacing={3}>
           <Grid item xs={12}>
-            <Paper className={classes.paper}>
+            <Paper className={classes.paper} elevation={5}>
               <Typography>Relative Time Per Function Pie Chart</Typography>
-              <FunctionsPieChart data={fnData} pieDataKey={fnDataY} />
+              <FunctionsPieChart
+                data={dataset["function"]["function_runtime"]}
+                pieDataKey={fnDataY}
+              />
             </Paper>
           </Grid>
           <Grid item xs={12}>
-            <Paper className={classes.paper}>
+            <Paper className={classes.paper} elevation={5}>
               <Typography>Relative Time Per Function Bar Chart</Typography>
-              <ComposedBarChart data={fnData} barDataKey={fnDataY} />
+              <ComposedBarChart
+                data={dataset["function"]["function_runtime"]}
+                barDataKey={fnDataY}
+              />
             </Paper>
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={12}>
+        <Grid item xs={12}>
           <Typography>Relative Time Per Script module</Typography>
           <ScriptSankeyChart />
         </Grid>
@@ -125,4 +120,10 @@ const TimeComplexity = () => {
   );
 };
 
-export default TimeComplexity;
+const mapStateToProps = (state) => {
+  return {
+    dataset: state.dataset,
+  };
+};
+
+export default connect(mapStateToProps)(TimeComplexity);

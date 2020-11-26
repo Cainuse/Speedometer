@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const iconsList = [
+  <DirectionsRunIcon />,
   <EqualizerIcon />,
   <BubbleChartIcon />,
   <TimelineIcon />,

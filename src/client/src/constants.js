@@ -21,15 +21,20 @@ export const LABELS = [
     color: "#555",
   },
   {
+    text: "O(nlog(n))",
+    position: "INSIDE",
+    color: "#555",
+    fontSize: "19px",
+  },
+  {
     text: "O(n)",
     position: "INSIDE",
     color: "#555",
   },
   {
-    text: "O(nlog(n))",
+    text: "O(log(n))",
     position: "INSIDE",
     color: "#555",
-    fontSize: "19px",
   },
   {
     text: "O(1)",
@@ -46,4 +51,18 @@ export const getRandomColor = () => {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
+};
+
+export const getFilteredInputData = (data, type) => {
+  if (type === "e2e_runtime") {
+    return data["e2e"][type].map((d) => {
+      return { n: d["n"], total_runtime: d["total_runtime"] };
+    });
+  } else if (type === "e2e_memory") {
+    return data["e2e"][type].map((d) => {
+      return { n: d["n"], total_memory: d["total_memory"] };
+    });
+  }
+
+  return [];
 };

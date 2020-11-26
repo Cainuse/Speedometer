@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import Paper from "@material-ui/core/Paper";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import AssessmentIcon from "@material-ui/icons/Assessment";
 import Summary from "./Dashboards/Summary/Summary";
 import SpaceComplexity from "./Dashboards/SpaceComplexity/SpaceComplexity";
 import TimeComplexity from "./Dashboards/TimeComplexity/TimeComplexity";
@@ -20,42 +17,8 @@ const useStyles = makeStyles((theme) => ({
   },
   tabs_appbar: {
     backgroundColor: "#66d9ff",
-    color: "white",
   },
 }));
-
-const codeString = `
-import os
-from typing import List
-import argparse
-import json
-
-class Result:
-    def __init__(self, accepted: bool, path: str):
-        self.accepted = accepted
-        self.path = path
-
-def prependNodeToPath(node, path) -> str:
-    return node if len(path) is 0 else (node + " -> " + path)`;
-
-const lineByLineData = [
-  {
-    proportion: 0.6,
-    code: codeString,
-  },
-  {
-    proportion: 0.1,
-    code: codeString,
-  },
-  {
-    proportion: 0.2,
-    code: codeString,
-  },
-  {
-    proportion: 0.1,
-    code: codeString,
-  },
-];
 
 const DashTabs = () => {
   const classes = useStyles();
@@ -107,7 +70,7 @@ const DashTabs = () => {
         <SpaceComplexity />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <LineByLineComplexity codeInformations={lineByLineData} />
+        <LineByLineComplexity />
       </TabPanel>
     </div>
   );
@@ -139,6 +102,11 @@ const LinkTabProps = (index) => {
   return {
     id: `nav-tab-${index}`,
     "aria-controls": `nav-tabpanel-${index}`,
+    style: {
+      textTransform: "none",
+      fontSize: "1.2rem",
+      color: "white",
+    },
   };
 };
 
