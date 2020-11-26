@@ -31,6 +31,12 @@ class ComplexityDatapoints:
         self.O_n_fact = {}
 
     def get_fit_data(self, e2e_results: dict, runtime_calc: bool):
+        """
+        Sets the key-value pairs for each fit line, n -> O(n)
+        :param e2e_results: results from the end to end analysis
+        :param runtime_calc: true if looking for runtime, false if looking for memory
+        """
+        # x_y_pairs is a mapping from n to average total runtime/memory from e2e results
         x_y_pairs = {}
         for i in e2e_results:
             if runtime_calc:
@@ -39,6 +45,9 @@ class ComplexityDatapoints:
                 x_y_pairs[i] = e2e_results[i].average.max_memory_usage_bytes
 
         # TODO
+
+
+        # below is my previous attempt/code to just make it work for now
         O1_Eq = [1]#np.polyfit(list(x_y_pairs.keys()), list(x_y_pairs.values()), 0)
         On_Eq = [1,0]#np.polyfit(list(x_y_pairs.keys()), list(x_y_pairs.values()), 1)
         On2_Eq = [1,0,0]#np.polyfit(list(x_y_pairs.keys()), list(x_y_pairs.values()), 2)
@@ -90,6 +99,7 @@ class Speedometer:
         output = {}
         output["script_name"] = program_file_path
 
+        # create class object, two arrays for runtime and memory containing original file name, avg time/memory per class
         class_runtime = []
         class_memory = []
         for c in profiler_results["class"]:
@@ -105,6 +115,8 @@ class Speedometer:
             })
         output["class"] = {"class_runtime": class_runtime, "class_memory": class_memory}
 
+        # create function object, two arrays for runtime and memory containing original file name, avg time/memory per function
+        # find function that takes longest/uses most memory
         function_runtimes = []
         function_memory = []
         max_fun_runtime = 0.0
@@ -130,6 +142,7 @@ class Speedometer:
                 max_fun_memory = f.total_memory
         output["function"] = {"function_runtime": function_runtimes, "function_memory": function_memory}
 
+        # create array of line objects with filename, line#, code content, runtime, and memory usage
         line_by_line = []
         for l in profiler_results["line_by_line"]:
             line_by_line.append({
@@ -146,12 +159,15 @@ class Speedometer:
         e2e_object = {}
         e2e_runtime = []
         e2e_memory = []
+        # calculate fit line data for runtime & memory
         runtime_fit_point = ComplexityDatapoints()
         runtime_fit_point.get_fit_data(e2e_results, True)
         memory_fit_point = ComplexityDatapoints()
         memory_fit_point.get_fit_data(e2e_results, False)
         total_runtime_points = []
         total_memory_points = []
+
+        #e2e object contains two arrays for runtime and memory containing the n parameter, avg runtime/memory, and associated fit data
         for i in e2e_results:
             e2e_runtime.append({
                 "n": str(i),
@@ -180,6 +196,7 @@ class Speedometer:
                 "memory_usage_by_time": e2e_results[i].average.memory_usage_by_time
             })
             total_memory_points.append(e2e_results[i].average.max_memory_usage_bytes)
+        # set E2E runtime/memory arrays, highest runtime/memory functions, total function runtime/memory usage, and calculate complexity of program
         e2e_object["e2e_runtime"] = e2e_runtime
         e2e_object["e2e_memory"] = e2e_memory
         e2e_object["e2e_highest_runtime_function"] = max_fun_runtime_name
