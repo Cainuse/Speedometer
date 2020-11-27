@@ -10,7 +10,7 @@ const Speedometer = ({ value, valueText }) => {
       minValue={0}
       maxValue={8}
       segments={8}
-      needleHeightRatio={0.65}
+      needleHeightRatio={0.72}
       value={value}
       currentValueText={valueText}
       customSegmentLabels={LABELS}

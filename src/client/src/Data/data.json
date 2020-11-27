@@ -1,462 +1,424 @@
 {
   "script_name": "test.py",
-  "e2e": {
-    "e2e_total_average_time": 44.5,
-    "e2e_highest_runtime_function": "bar()",
-    "e2e_total_average_memory": 230,
-    "e2e_highest_memory_usage_function": "foo()",
-    "e2e_time_complexity": "n3",
-    "e2e_space_complexity": "nlogn",
-    "e2e_runtime": [
+  "class": {
+    "class_runtime": [
       {
-        "n": 1,
-        "total_runtime": 4.11,
-        "O(1)": 5.6,
-        "O(log(n))": 6.3,
-        "O(n)": 7.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 3,
-        "total_runtime": 2.39,
-        "O(1)": 3.6,
-        "O(log(n))": 6.3,
-        "O(n)": 8.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 5,
-        "total_runtime": 1.37,
-        "O(1)": 2.6,
-        "O(log(n))": 6.3,
-        "O(n)": 9.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 4,
-        "total_runtime": 1.16,
-        "O(1)": 1.6,
-        "O(log(n))": 6.3,
-        "O(n)": 10.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 9,
-        "total_runtime": 2.29,
-        "O(1)": 6.6,
-        "O(log(n))": 6.3,
-        "O(n)": 11.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 11,
-        "total_runtime": 3.22,
-        "O(1)": 7.6,
-        "O(log(n))": 6.3,
-        "O(n)": 12.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 10,
-        "total_runtime": 4.11,
-        "O(1)": 5.6,
-        "O(log(n))": 6.3,
-        "O(n)": 7.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 15,
-        "total_runtime": 4.81,
-        "O(1)": 7.96,
-        "O(log(n))": 6.3,
-        "O(n)": 47.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 14,
-        "total_runtime": 19.11,
-        "O(1)": 43.6,
-        "O(log(n))": 6.3,
-        "O(n)": 7.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 19,
-        "total_runtime": 88.11,
-        "O(1)": 32.6,
-        "O(log(n))": 6.3,
-        "O(n)": 12.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 21,
-        "total_runtime": 32.11,
-        "O(1)": 91.6,
-        "O(log(n))": 6.3,
-        "O(n)": 22.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
+        "name": "test.py/Speedometer",
+        "total_runtime": 46.52,
+        "percent_runtime": 0.0
       }
     ],
-    "e2e_memory": [
+    "class_memory": [
       {
-        "n": 1,
-        "total_memory": 43,
-        "O(1)": 5.6,
-        "O(log(n))": 6.3,
-        "O(n)": 7.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 3,
-        "total_memory": 63,
-        "O(1)": 3.6,
-        "O(log(n))": 6.3,
-        "O(n)": 8.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 5,
-        "total_memory": 53,
-        "O(1)": 2.6,
-        "O(log(n))": 6.3,
-        "O(n)": 9.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 4,
-        "total_memory": 88,
-        "O(1)": 1.6,
-        "O(log(n))": 6.3,
-        "O(n)": 10.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 9,
-        "total_memory": 12,
-        "O(1)": 6.6,
-        "O(log(n))": 6.3,
-        "O(n)": 11.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 11,
-        "total_memory": 49,
-        "O(1)": 7.6,
-        "O(log(n))": 6.3,
-        "O(n)": 12.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 10,
-        "total_memory": 92,
-        "O(1)": 5.6,
-        "O(log(n))": 6.3,
-        "O(n)": 7.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 15,
-        "total_memory": 33,
-        "O(1)": 7.96,
-        "O(n)": 47.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 14,
-        "total_memory": 43,
-        "O(1)": 43.6,
-        "O(log(n))": 6.3,
-        "O(n)": 7.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 19,
-        "total_memory": 100,
-        "O(1)": 32.6,
-        "O(log(n))": 6.3,
-        "O(n)": 12.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
-      },
-      {
-        "n": 21,
-        "total_memory": 120,
-        "O(1)": 91.6,
-        "O(log(n))": 6.3,
-        "O(n)": 22.8,
-        "O(n\u00B2)": 10.1,
-        "O(n\u00B3)": 33.3,
-        "O(nlog(n))": 15.1,
-        "O(n\u207F)": 88.2,
-        "O(n!)": 82
+        "name": "test.py/Speedometer",
+        "total_memory": 3.2,
+        "percent_memory": 0.0
       }
     ]
   },
-  "class": {
-    "class_runtime": [
-      { "name": "ClassA", "total_runtime": 93 },
-      { "name": "ClassB", "total_runtime": 100 },
-      { "name": "ClassC", "total_runtime": 221 }
-    ],
-    "class_memory": [
-      { "name": "ClassA", "total_memory": 61 },
-      { "name": "ClassB", "total_memory": 50 },
-      { "name": "ClassC", "total_memory": 120 }
-    ]
+  "sankey": {
+    "sankey_runtime": {
+      "nodes": [
+        { "name": "Full Program" },
+        { "name": "Class 1" },
+        { "name": "Class 2" },
+        { "name": "bar1()" },
+        { "name": "bar2()" },
+        { "name": "foo1()" },
+        { "name": "foo2()" },
+        { "name": "foo3()" }
+      ],
+      "links": [
+        { "source": 0, "target": 1, "value": 140 },
+        { "source": 0, "target": 2, "value": 160 },
+        { "source": 1, "target": 3, "value": 50 },
+        { "source": 1, "target": 4, "value": 50 },
+        { "source": 2, "target": 5, "value": 10 },
+        { "source": 2, "target": 6, "value": 60 },
+        { "source": 2, "target": 7, "value": 20 }
+      ]
+    },
+    "sankey_memory": {
+      "nodes": [
+        { "name": "Full Program" },
+        { "name": "Class 1" },
+        { "name": "Class 2" },
+        { "name": "bar1()" },
+        { "name": "bar2()" },
+        { "name": "foo1()" },
+        { "name": "foo2()" },
+        { "name": "foo3()" }
+      ],
+      "links": [
+        { "source": 0, "target": 1, "value": 140 },
+        { "source": 0, "target": 2, "value": 160 },
+        { "source": 1, "target": 3, "value": 50 },
+        { "source": 1, "target": 4, "value": 50 },
+        { "source": 2, "target": 5, "value": 10 },
+        { "source": 2, "target": 6, "value": 60 },
+        { "source": 2, "target": 7, "value": 20 }
+      ]
+    }
   },
   "function": {
     "function_runtime": [
-      { "name": "foo1()", "total_runtime": 5 },
-      { "name": "foo2()", "total_runtime": 10 },
-      { "name": "foo3()", "total_runtime": 2 },
-      { "name": "foo4()", "total_runtime": 8 },
-      { "name": "foo5()", "total_runtime": 4 },
-      { "name": "foo6()", "total_runtime": 25 },
-      { "name": "foo7()", "total_runtime": 14 },
-      { "name": "foo8()", "total_runtime": 19 }
+      {
+        "name": "test.py/getSpeed()",
+        "total_runtime": 23.44,
+        "percent_runtime": 0.0
+      },
+      {
+        "name": "test.py/getPosition()",
+        "total_runtime": 23.08,
+        "percent_runtime": 0.0
+      }
     ],
     "function_memory": [
-      { "name": "foo1()", "total_memory": 12 },
-      { "name": "foo2()", "total_memory": 3 },
-      { "name": "foo3()", "total_memory": 52 },
-      { "name": "foo4()", "total_memory": 31 },
-      { "name": "foo5()", "total_memory": 1 },
-      { "name": "foo6()", "total_memory": 5 },
-      { "name": "foo7()", "total_memory": 18 },
-      { "name": "foo8()", "total_memory": 22 }
+      {
+        "name": "test.py/getSpeed()",
+        "total_memory": 1.0,
+        "percent_memory": 0.0
+      },
+      {
+        "name": "test.py/getPosition()",
+        "total_memory": 2.2,
+        "percent_memory": 0.0
+      }
     ]
   },
   "line_by_line": [
     [
       {
-        "fileName": "test1.py",
-        "line": 1,
-        "total_runtime": 0,
-        "total_memory": 25,
-        "code": "class Result:",
-        "percent_runtime": 0,
-        "percent_memory": 20
+        "fileName": "test.py",
+        "line_num": 1,
+        "code": "class Speedometer:",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0.0,
+        "percent_memory": 0.0
       },
       {
-        "fileName": "test1.py",
-        "line": 2,
-        "total_runtime": 0,
-        "total_memory": 65,
-        "code": "    def __init__(self, accepted: bool, path: str):",
-        "percent_runtime": 10,
-        "percent_memory": 20
+        "fileName": "test.py",
+        "line_num": 2,
+        "code": "   def getSpeed():",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0.0,
+        "percent_memory": 0.0
       },
       {
-        "fileName": "test1.py",
-        "line": 3,
-        "total_runtime": 0,
-        "total_memory": 65,
-        "code": "        self.accepted = accepted",
-        "percent_runtime": 0,
-        "percent_memory": 20
+        "fileName": "test.py",
+        "line_num": 3,
+        "code": "      do lots of things",
+        "total_runtime": 22.24,
+        "total_memory": 0.5,
+        "percent_runtime": 5.5,
+        "percent_memory": 0.0
       },
       {
-        "fileName": "test1.py",
-        "line": 4,
-        "total_runtime": 80,
-        "total_memory": 65,
-        "code": "        self.path = path1",
-        "percent_runtime": 0,
-        "percent_memory": 20
+        "fileName": "test.py",
+        "line_num": 4,
+        "code": "      if some condition:",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0.0,
+        "percent_memory": 0.0
       },
       {
-        "fileName": "test1.py",
-        "line": 5,
-        "total_runtime": 2,
-        "total_memory": 65,
-        "code": "        self.path = path2",
-        "percent_runtime": 20,
-        "percent_memory": 20
+        "fileName": "test.py",
+        "line_num": 5,
+        "code": "          conditional statement",
+        "total_runtime": 1.2,
+        "total_memory": 0.5,
+        "percent_runtime": 0.0,
+        "percent_memory": 0.0
       },
       {
-        "fileName": "test1.py",
-        "line": 6,
-        "total_runtime": 80,
-        "total_memory": 65,
-        "code": "        self.path = path3",
-        "percent_runtime": 0,
-        "percent_memory": 20
+        "fileName": "test.py",
+        "line_num": 6,
+        "code": "   def getPosition():",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0.0,
+        "percent_memory": 0.0
       },
       {
-        "fileName": "test1.py",
-        "line": 7,
-        "total_runtime": 1,
-        "total_memory": 65,
-        "code": "        self.path = path4",
-        "percent_runtime": 50,
-        "percent_memory": 20
-      },
-      {
-        "fileName": "test1.py",
-        "line": 8,
-        "total_runtime": 80,
-        "total_memory": 65,
-        "code": "        self.path = path5",
-        "percent_runtime": 0,
-        "percent_memory": 20
-      }
-    ],
-    [
-      {
-        "fileName": "test2.py",
-        "line": 1,
-        "total_runtime": 0,
-        "total_memory": 25,
-        "code": "class Result:",
-        "percent_runtime": 10,
-        "percent_memory": 20
-      },
-      {
-        "fileName": "test2.py",
-        "line": 2,
-        "total_runtime": 0,
-        "total_memory": 65,
-        "code": "    def __init__(self, accepted: bool, path: str):",
-        "percent_runtime": 10,
-        "percent_memory": 20
-      },
-      {
-        "fileName": "test2.py",
-        "line": 3,
-        "total_runtime": 0,
-        "total_memory": 65,
-        "code": "        self.accepted = accepted",
-        "percent_runtime": 0,
-        "percent_memory": 20
-      },
-      {
-        "fileName": "test2.py",
-        "line": 4,
-        "total_runtime": 80,
-        "total_memory": 65,
-        "code": "        self.path = path1",
-        "percent_runtime": 0,
-        "percent_memory": 20
-      },
-      {
-        "fileName": "test2.py",
-        "line": 5,
-        "total_runtime": 2,
-        "total_memory": 65,
-        "code": "        self.path = path2",
-        "percent_runtime": 1,
-        "percent_memory": 20
-      },
-      {
-        "fileName": "test2.py",
-        "line": 6,
-        "total_runtime": 80,
-        "total_memory": 65,
-        "code": "        self.path = path3",
-        "percent_runtime": 70,
-        "percent_memory": 20
-      },
-      {
-        "fileName": "test2.py",
-        "line": 7,
-        "total_runtime": 1,
-        "total_memory": 65,
-        "code": "        self.path = path4",
-        "percent_runtime": 40,
-        "percent_memory": 20
-      },
-      {
-        "fileName": "test2.py",
-        "line": 8,
-        "total_runtime": 80,
-        "total_memory": 65,
-        "code": "        self.path = path5",
-        "percent_runtime": 0,
-        "percent_memory": 20
+        "fileName": "test.py",
+        "line_num": 7,
+        "code": "       print(position)",
+        "total_runtime": 23.08,
+        "total_memory": 2.2,
+        "percent_runtime": 15,
+        "percent_memory": 0.0
       }
     ]
-  ]
+  ],
+  "e2e": {
+    "e2e_runtime": [
+      {
+        "n": "1",
+        "total_runtime": 1,
+        "O(1)": 1,
+        "O(log(n))": 0.0,
+        "O(n)": 1,
+        "O(n\u00b2)": 1,
+        "O(n\u00b3)": 1,
+        "O(nlog(n))": 0.0,
+        "O(n\u207f)": 1,
+        "O(n!)": 1
+      },
+      {
+        "n": "2",
+        "total_runtime": 4,
+        "O(1)": 1,
+        "O(log(n))": 0.69,
+        "O(n)": 2,
+        "O(n\u00b2)": 4,
+        "O(n\u00b3)": 8,
+        "O(nlog(n))": 1.39,
+        "O(n\u207f)": 4,
+        "O(n!)": 2
+      },
+      {
+        "n": "3",
+        "total_runtime": 9,
+        "O(1)": 1,
+        "O(log(n))": 1.1,
+        "O(n)": 3,
+        "O(n\u00b2)": 9,
+        "O(n\u00b3)": 27,
+        "O(nlog(n))": 3.3,
+        "O(n\u207f)": 27,
+        "O(n!)": 6
+      },
+      {
+        "n": "10",
+        "total_runtime": 100,
+        "O(1)": 1,
+        "O(log(n))": 2.3,
+        "O(n)": 10,
+        "O(n\u00b2)": 100,
+        "O(n\u00b3)": 1000,
+        "O(nlog(n))": 23.03,
+        "O(n\u207f)": 1000,
+        "O(n!)": 362
+      },
+      {
+        "n": "5",
+        "total_runtime": 25,
+        "O(1)": 1,
+        "O(log(n))": 1.61,
+        "O(n)": 5,
+        "O(n\u00b2)": 25,
+        "O(n\u00b3)": 125,
+        "O(nlog(n))": 8.05,
+        "O(n\u207f)": 3125,
+        "O(n!)": 120
+      },
+      {
+        "n": "20",
+        "total_runtime": 400,
+        "O(1)": 1,
+        "O(log(n))": 3.0,
+        "O(n)": 20,
+        "O(n\u00b2)": 400,
+        "O(n\u00b3)": 8000,
+        "O(nlog(n))": 59.91,
+        "O(n\u207f)": 100,
+        "O(n!)": 2430
+      },
+      {
+        "n": "9",
+        "total_runtime": 81,
+        "O(1)": 1,
+        "O(log(n))": 2.2,
+        "O(n)": 9,
+        "O(n\u00b2)": 81,
+        "O(n\u00b3)": 729,
+        "O(nlog(n))": 19.78,
+        "O(n\u207f)": 39,
+        "O(n!)": 360
+      },
+      {
+        "n": "15",
+        "total_runtime": 225,
+        "O(1)": 1,
+        "O(log(n))": 2.71,
+        "O(n)": 15,
+        "O(n\u00b2)": 225,
+        "O(n\u00b3)": 3375,
+        "O(nlog(n))": 40.62,
+        "O(n\u207f)": 43785,
+        "O(n!)": 1307
+      },
+      {
+        "n": "100",
+        "total_runtime": 10000,
+        "O(1)": 1,
+        "O(log(n))": 4.61,
+        "O(n)": 100,
+        "O(n\u00b2)": 1000,
+        "O(n\u00b3)": 1000,
+        "O(nlog(n))": 460.52,
+        "O(n\u207f)": 100,
+        "O(n!)": 9332
+      },
+      {
+        "n": "12",
+        "total_runtime": 144,
+        "O(1)": 1,
+        "O(log(n))": 2.48,
+        "O(n)": 12,
+        "O(n\u00b2)": 144,
+        "O(n\u00b3)": 1728,
+        "O(nlog(n))": 29.82,
+        "O(n\u207f)": 891,
+        "O(n!)": 4790
+      }
+    ],
+    "e2e_memory": [
+      {
+        "n": "1",
+        "total_memory": 1,
+        "O(1)": 1,
+        "O(log(n))": 0.0,
+        "O(n)": 1,
+        "O(n\u00b2)": 1,
+        "O(n\u00b3)": 1,
+        "O(nlog(n))": 0.0,
+        "O(n\u207f)": 1,
+        "O(n!)": 1,
+        "memory_usage_by_time": { "0": 10, "1": 20, "2": 30, "3": 40 }
+      },
+      {
+        "n": "2",
+        "total_memory": 2,
+        "O(1)": 1,
+        "O(log(n))": 0.69,
+        "O(n)": 2,
+        "O(n\u00b2)": 4,
+        "O(n\u00b3)": 8,
+        "O(nlog(n))": 1.39,
+        "O(n\u207f)": 4,
+        "O(n!)": 2,
+        "memory_usage_by_time": {
+          "0": 20,
+          "1": 30,
+          "2": 40,
+          "3": 50.5,
+          "4": 100.1
+        }
+      },
+      {
+        "n": "3",
+        "total_memory": 3,
+        "O(1)": 1,
+        "O(log(n))": 1.1,
+        "O(n)": 3,
+        "O(n\u00b2)": 9,
+        "O(n\u00b3)": 27,
+        "O(nlog(n))": 3.3,
+        "O(n\u207f)": 27,
+        "O(n!)": 6,
+        "memory_usage_by_time": { "0": 3, "1": 7, "2": 11 }
+      },
+      {
+        "n": "10",
+        "total_memory": 10,
+        "O(1)": 1,
+        "O(log(n))": 2.3,
+        "O(n)": 10,
+        "O(n\u00b2)": 100,
+        "O(n\u00b3)": 1000,
+        "O(nlog(n))": 23.03,
+        "O(n\u207f)": 1000,
+        "O(n!)": 3628800,
+        "memory_usage_by_time": { "0": 3, "1": 7, "2": 11 }
+      },
+      {
+        "n": "5",
+        "total_memory": 5,
+        "O(1)": 1,
+        "O(log(n))": 1.61,
+        "O(n)": 5,
+        "O(n\u00b2)": 25,
+        "O(n\u00b3)": 125,
+        "O(nlog(n))": 8.05,
+        "O(n\u207f)": 3125,
+        "O(n!)": 120,
+        "memory_usage_by_time": { "0": 3, "1": 7, "2": 11 }
+      },
+      {
+        "n": "20",
+        "total_memory": 20,
+        "O(1)": 1,
+        "O(log(n))": 3.0,
+        "O(n)": 20,
+        "O(n\u00b2)": 400,
+        "O(n\u00b3)": 8000,
+        "O(nlog(n))": 59.91,
+        "O(n\u207f)": 10400,
+        "O(n!)": 24300,
+        "memory_usage_by_time": { "0": 3, "1": 7, "2": 11 }
+      },
+      {
+        "n": "9",
+        "total_memory": 9,
+        "O(1)": 1,
+        "O(log(n))": 2.2,
+        "O(n)": 9,
+        "O(n\u00b2)": 81,
+        "O(n\u00b3)": 729,
+        "O(nlog(n))": 19.78,
+        "O(n\u207f)": 89,
+        "O(n!)": 362880,
+        "memory_usage_by_time": { "0": 3, "1": 7, "2": 11 }
+      },
+      {
+        "n": "15",
+        "total_memory": 15,
+        "O(1)": 1,
+        "O(log(n))": 2.71,
+        "O(n)": 15,
+        "O(n\u00b2)": 225,
+        "O(n\u00b3)": 3375,
+        "O(nlog(n))": 40.62,
+        "O(n\u207f)": 437875,
+        "O(n!)": 1300,
+        "memory_usage_by_time": { "0": 3, "1": 7, "2": 11 }
+      },
+      {
+        "n": "100",
+        "total_memory": 100,
+        "O(1)": 1,
+        "O(log(n))": 4.61,
+        "O(n)": 100,
+        "O(n\u00b2)": 10000,
+        "O(n\u00b3)": 1000000,
+        "O(nlog(n))": 460.52,
+        "O(n\u207f)": 1000,
+        "O(n!)": 9330,
+        "memory_usage_by_time": { "0": 3, "1": 7, "2": 11 }
+      },
+      {
+        "n": "12",
+        "total_memory": 12,
+        "O(1)": 1,
+        "O(log(n))": 2.48,
+        "O(n)": 12,
+        "O(n\u00b2)": 144,
+        "O(n\u00b3)": 1728,
+        "O(nlog(n))": 29.82,
+        "O(n\u207f)": 8916100448256,
+        "O(n!)": 479001600,
+        "memory_usage_by_time": { "0": 3, "1": 7, "2": 11 }
+      }
+    ],
+    "e2e_highest_runtime_function": "getSpeed()",
+    "e2e_highest_memory_usage_function": "getPosition()",
+    "e2e_total_average_time": 1098.9,
+    "e2e_total_average_memory": 17.7,
+    "e2e_time_complexity": "n2",
+    "e2e_space_complexity": "n"
+  }
 }

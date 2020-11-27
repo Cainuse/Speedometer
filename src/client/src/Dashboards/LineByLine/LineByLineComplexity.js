@@ -51,11 +51,11 @@ const LineByLineComplexity = ({ dataset }) => {
     const max = lines.filter((lineObj) => {
       return lineObj["percent_runtime"] > timeThreshold;
     });
-    return max.length > 0 ? max.map((lineObj) => lineObj["line"]) : [];
+    return max.length > 0 ? max.map((lineObj) => lineObj["line_num"]) : [];
   };
 
   const getCodeSnippet = (lines, line) => {
-    const lineObj = lines.find((lineObj) => lineObj.line == line);
+    const lineObj = lines.find((lineObj) => lineObj.line_num === line);
     return lineObj.code;
   };
 
@@ -86,7 +86,7 @@ const LineByLineComplexity = ({ dataset }) => {
   };
 
   const getPythonCodeProportionElement = (lines, line) => {
-    const lineObj = lines.find((lineObj) => lineObj.line == line);
+    const lineObj = lines.find((lineObj) => lineObj.line_num === line);
     const maxTimeLines = getLinesOfLargeTime(lines);
     return maxTimeLines.includes(line) ? (
       <Typography
@@ -102,7 +102,7 @@ const LineByLineComplexity = ({ dataset }) => {
   };
 
   const getLastLineNumber = (lines) => {
-    return lines[lines.length - 1].line;
+    return lines[lines.length - 1].line_num;
   };
 
   const getAccordDetails = (lines) => {

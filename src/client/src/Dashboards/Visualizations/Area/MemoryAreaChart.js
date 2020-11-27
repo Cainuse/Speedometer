@@ -31,9 +31,9 @@ export default class MemoryAreaChart extends PureComponent {
           <XAxis dataKey={this.props.xDataKey}>
             <Label value="Input Size (n)" offset={2} position="bottom" />
           </XAxis>
-          <YAxis unit="kb">
+          <YAxis>
             <Label
-              value="Memory Usage (KB)"
+              value="Memory Usage (MB)"
               offset={0}
               position="left"
               angle={-90}

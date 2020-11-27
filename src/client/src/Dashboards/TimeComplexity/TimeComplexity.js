@@ -163,13 +163,19 @@ const TimeComplexity = ({ dataset }) => {
               <ComposedBarChart
                 data={dataset["function"]["function_runtime"]}
                 barDataKey={fnDataY}
+                yLabel="Total Time (ms)"
               />
             </Paper>
           </Grid>
         </Grid>
         <Grid item xs={12}>
-          <Typography>Relative Time Per Script module</Typography>
-          <ScriptSankeyChart />
+          <Typography variant="subtitle1">
+            Sankey Chart representing runtime distribution broken down by
+            classes and functions
+          </Typography>
+          <Paper elevation={5}>
+            <ScriptSankeyChart data={dataset["sankey"]["sankey_runtime"]} />
+          </Paper>
         </Grid>
       </Grid>
     </div>

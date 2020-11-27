@@ -34,10 +34,10 @@ export default class ComposedBarChart extends PureComponent {
           <XAxis dataKey="name">
             <Label value="Function" offset={0} position="bottom" />
           </XAxis>
-          <YAxis unit={"%"}>
+          <YAxis>
             <Label
-              value="Time Proportion (%)"
-              offset={-5}
+              value={this.props.yLabel}
+              offset={12}
               position="left"
               angle={-90}
             />
