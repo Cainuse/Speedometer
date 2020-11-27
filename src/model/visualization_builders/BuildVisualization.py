@@ -5,7 +5,7 @@ import os
 from src.model.analyzers.e2e_analysis.result_types.InputSizeResult import InputSizeResult
 from src.model.data_transformers.ClosestFit import find_O_fit
 from src.model.data_transformers.ReferenceFits import FitData, get_reference_fits
-
+from src.model.data_transformers.SankeyDataCalculator import get_sankey_data
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 CLIENT_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "..", "..", "client"))
@@ -126,6 +126,12 @@ def build_visualization(program_file_path, profiler_results, e2e_results: Dict[i
     e2e_object["e2e_time_complexity"] = find_O_fit(fit_data_runtime, total_runtime_points)
     e2e_object["e2e_space_complexity"] = find_O_fit(fit_data_memory, total_memory_points)
     output["e2e"] = e2e_object
+
+    #create sankey data object
+    output["sankey"] = {
+        "sankey_runtime": get_sankey_data(profiler_results, True),
+        "sankey_memory": get_sankey_data(profiler_results, False)
+    }
 
     with open(DATA_FILE, 'w') as outfile:
         json.dump(output, outfile)
