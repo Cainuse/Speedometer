@@ -19,7 +19,7 @@ def package_visualization_and_open() -> None:
         _run_build_file_in_browser(dst)
     except:
         print(
-            "Failed to open the generated html file. Please open cpsc410_project2_team4/dist/build/index.html with a "
+            "Failed to open the generated html file. Please open dist/build/index.html with a "
             "web browser manually.")
 
 
