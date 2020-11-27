@@ -1,4 +1,9 @@
 import sys
+from os.path import abspath, join
+
+# add root directory to packages
+ROOT_PATH = abspath(join(abspath(__file__), "..", ".."))
+sys.path.insert(0, ROOT_PATH)
 
 from src.model.util import Config
 from src.model.Speedometer import Speedometer
