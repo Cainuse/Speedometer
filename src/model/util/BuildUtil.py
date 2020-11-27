@@ -4,7 +4,7 @@ import os
 import subprocess
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_PATH = os.path.dirname(os.path.dirname(CURRENT_DIR))
+PROJECT_PATH = os.path.abspath(os.path.join(CURRENT_DIR, "..", ".."))
 
 
 def package_visualization_and_open() -> None:

@@ -1,9 +1,15 @@
 import json
 from typing import Dict
+import os
 
 from src.model.analyzers.e2e_analysis.result_types.InputSizeResult import InputSizeResult
 from src.model.data_transformers.ClosestFit import find_O_fit
 from src.model.data_transformers.ReferenceFits import FitData, get_reference_fits
+
+
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+CLIENT_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "..", "..", "client"))
+DATA_FILE = os.path.abspath(os.path.join(CLIENT_DIR, "src", "Data", "data.json"))
 
 
 def build_visualization(program_file_path, profiler_results, e2e_results: Dict[int, InputSizeResult]) -> dict:
@@ -22,12 +28,12 @@ def build_visualization(program_file_path, profiler_results, e2e_results: Dict[i
         class_runtime.append({
             "name": c.filename + "/" + c.name,
             "total_runtime": c.total_run_time,
-            "percent_runtime": c.percent_runtime
+            "percent_runtime": c.time_percentage_of_total
         })
         class_memory.append({
             "name": c.filename + "/" + c.name,
             "total_memory": c.total_memory,
-            "percent_memory": c.percent_memory
+            "percent_memory": c.memory_percentage_of_total
         })
     output["class"] = {"class_runtime": class_runtime, "class_memory": class_memory}
 
@@ -43,7 +49,7 @@ def build_visualization(program_file_path, profiler_results, e2e_results: Dict[i
         function_runtimes.append({
             "name": f.filename + "/" + f.name,
             "total_runtime": f.total_run_time,
-            "percent_runtime": f.percent_runtime
+            "percent_runtime": f.time_percentage_of_total
         })
         if f.total_run_time > max_fun_runtime:
             max_fun_runtime_name = f.name
@@ -51,7 +57,7 @@ def build_visualization(program_file_path, profiler_results, e2e_results: Dict[i
         function_memory.append({
             "name": f.filename + "/" + f.name,
             "total_memory": f.total_memory,
-            "percent_memory": f.percent_memory
+            "percent_memory": f.memory_percentage_of_total
         })
         if f.total_memory > max_fun_memory:
             max_fun_memory_name = f.name
@@ -67,8 +73,8 @@ def build_visualization(program_file_path, profiler_results, e2e_results: Dict[i
             "code": l.line_text,
             "total_runtime": l.total_run_time,
             "total_memory": l.total_memory,
-            "percent_runtime": l.percent_runtime,
-            "percent_memory": l.percent_memory
+            "percent_runtime": l.time_percentage_of_total,
+            "percent_memory": l.memory_percentage_of_total
         })
     output["line_by_line"] = line_by_line
 
@@ -121,6 +127,6 @@ def build_visualization(program_file_path, profiler_results, e2e_results: Dict[i
     e2e_object["e2e_space_complexity"] = find_O_fit(fit_data_memory, total_memory_points)
     output["e2e"] = e2e_object
 
-    with open('client/src/Data/data.json', 'w') as outfile:
+    with open(DATA_FILE, 'w') as outfile:
         json.dump(output, outfile)
     return output

@@ -15,12 +15,13 @@ class function_runtime:
     memory_percentage_of_total: float
     time_percentage_of_total:int
 
-    def __init__(self, filename, name, runtime, memory,time_percentage):
+    def __init__(self, filename, name, runtime, memory, time_percentage, memory_percentage=None):
         self.filename = filename
         self.name = name
         self.total_run_time = runtime
         self.total_memory = memory
         self.time_percentage_of_total = time_percentage
+        self.memory_percentage_of_total = memory_percentage
 
     def __eq__(self, other):
         if (isinstance(other, function_runtime)):
@@ -42,13 +43,14 @@ class line_by_line_runtime:
     memory_percentage_of_total: float
     time_percentage_of_total:int
 
-    def __init__(self, filename, linenum, runtime, memory, linetext,time_percentage):
+    def __init__(self, filename, linenum, runtime, memory, linetext, time_percentage):
         self.filename = filename
         self.line_num = linenum
         self.total_run_time = runtime
         self.total_memory = memory
         self.line_text = linetext
         self.time_percentage_of_total = time_percentage
+        self.memory_percentage_of_total = -1
 
     def __eq__(self, other):
         if (isinstance(other, line_by_line_runtime)):
@@ -68,15 +70,16 @@ class class_runtime:
     total_memory: float
     memory_percentage_of_total: float
     time_percentage_of_total:int
-    class_functions:list #These will be integers, representing the index in results["function"]
+    class_functions: list #These will be integers, representing the index in results["function"]
 
-    def __init__(self, filename, name, runtime, memory,time_percentage):
+    def __init__(self, filename, name, runtime, memory,time_percentage, memory_percentage=None, class_functions=None):
         self.filename = filename
         self.name = name
         self.total_run_time = runtime
         self.total_memory = memory
         self.time_percentage_of_total = time_percentage
-        self.class_functions = []
+        self.class_functions = class_functions if class_functions is not None else []
+        self.memory_percentage_of_total = memory_percentage
 
     def __eq__(self, other):
         if (isinstance(other, class_runtime)):
