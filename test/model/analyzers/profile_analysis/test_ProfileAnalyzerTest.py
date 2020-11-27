@@ -110,6 +110,7 @@ def testParseOutputClassCase():
 
     class_data = ProfileAnalyzer.class_runtime("sratch.py","c",80.0,4.0,100)
     class_data.memory_percentage_of_total = 100.0
+    class_data.class_functions.append(0)
     function_data = ProfileAnalyzer.function_runtime("sratch.py","process(y)",80.0,4.0,100)
     function_data.memory_percentage_of_total = 100.0
     assert res["function"][0]==function_data
@@ -246,6 +247,7 @@ def testProcessLinesClassCase():
 
     class_data = ProfileAnalyzer.class_runtime("sratch.py","c",80.0,4.0,100)
     class_data.memory_percentage_of_total = 100.0
+    class_data.class_functions.append(0)
     function_data = ProfileAnalyzer.function_runtime("sratch.py","process(y)",80.0,4.0,100)
     function_data.memory_percentage_of_total = 100.0
     assert res["function"][0]==function_data

@@ -69,6 +69,7 @@ class class_runtime:
     total_memory: float
     memory_percentage_of_total: float
     time_percentage_of_total:int
+    class_functions:list #These will be integers, representing the index in results["function"]
 
     def __init__(self, filename, name, runtime, memory,time_percentage):
         self.filename = filename
@@ -76,13 +77,14 @@ class class_runtime:
         self.total_run_time = runtime
         self.total_memory = memory
         self.time_percentage_of_total = time_percentage
+        self.class_functions = []
 
     def __eq__(self, other):
         if (isinstance(other, class_runtime)):
             return ((self.filename == other.filename) and (self.name == other.name) and \
                 (self.total_run_time == other.total_run_time) and (self.total_memory == other.total_memory)  \
                     and (self.memory_percentage_of_total ==other.memory_percentage_of_total) and\
-                    (self.time_percentage_of_total == other.time_percentage_of_total))
+                    (self.time_percentage_of_total == other.time_percentage_of_total) and (self.class_functions == other.class_functions))
         return False
 
 class ProfileAnalyzer:
@@ -162,6 +164,8 @@ class ProfileAnalyzer:
                 elif leading_whitespace == func_indentation and func.name!="":
                     self.computeMemoryPercentageForSection(func,total_memory)
                     self.results["function"].append(func)
+                    if (clas.name !=""):
+                        clas.class_functions.append(len(self.results["function"])-1)
                     func = function_runtime(file_name, "", 0.0, 0.0,0)
                 #If indentation matches that of previous class
                 elif leading_whitespace == class_indentation and clas.name!="":
@@ -189,6 +193,8 @@ class ProfileAnalyzer:
             if func.name != "" and func.total_run_time > 0.0:
                 self.computeMemoryPercentageForSection(func,total_memory)
                 self.results["function"].append(func)
+                if (clas.name !=""):
+                    clas.class_functions.append(len(self.results["function"])-1)
             # If class object exists that hasn't been saved (i.e. near the end of the file), add to results
             if clas.name != "" and clas.total_run_time > 0.0:
                 self.computeMemoryPercentageForSection(clas,total_memory)
