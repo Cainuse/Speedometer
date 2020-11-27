@@ -31,7 +31,7 @@ class FitData:
         self.O_n_fact: Dict[int, int] = O_n_fact
 
 
-def get_fit_data(e2e_results: Dict[int, InputSizeResult], runtime_calc: bool) -> FitData:
+def get_reference_fits(e2e_results: Dict[int, InputSizeResult], runtime_calc: bool) -> FitData:
     """
     Sets the key-value pairs for each fit line, n -> O(n)
     :param e2e_results: results from the end to end analysis

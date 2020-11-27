@@ -1,8 +1,8 @@
 import sys
 
-from src.model.Util import Config
+from src.model.util import Config
 from src.model.Speedometer import Speedometer
-from src.model.Util.BuildUtil import package_visualization_and_open
+from src.model.util.BuildUtil import package_visualization_and_open
 
 
 def _parse_program_file_path() -> str:

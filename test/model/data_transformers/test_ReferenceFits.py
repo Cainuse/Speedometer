@@ -1,6 +1,6 @@
 import math
 
-from src.model.data_transformers.ComplexityDatapoints import get_o_1_data, get_o_n_data, get_o_n2_data, get_o_n3_data
+from src.model.data_transformers.ReferenceFits import get_o_1_data, get_o_n_data, get_o_n2_data, get_o_n3_data
 
 
 def test_get_o_1_data():
