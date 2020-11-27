@@ -39,11 +39,11 @@ def main():
     """
     Processes user-provided arguments to initiate Speedometer analysis
     """
-    # program_file_path: str = _parse_program_file_path()
-    # config: Config = _parse_config_file()
-    #
-    # speedometer = Speedometer()
-    # speedometer.run(program_file_path, config)
+    program_file_path: str = _parse_program_file_path()
+    config: Config = _parse_config_file()
+
+    speedometer = Speedometer()
+    speedometer.run(program_file_path, config)
 
     package_visualization_and_open()
 
