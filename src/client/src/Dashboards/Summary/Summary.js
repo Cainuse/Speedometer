@@ -7,7 +7,7 @@ import { Box, Typography } from "@material-ui/core";
 import Speedometer from "./Speedometer";
 import SummaryInfo from "./SummaryInfo";
 import PerfLineChart from "../Visualizations/Line/PerfLineChart";
-import InfoPopup from "./InfoPopup";
+import InfoPopup from "../Visualizations/Popup/InfoPopup";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   viz_container: {
     padding: theme.spacing(2),
-    height: "51rem",
+    height: "55rem",
   },
   fullHeight: {
     height: "100%",
@@ -29,7 +29,12 @@ const useStyles = makeStyles((theme) => ({
     height: "50%",
   },
   card_title: {
-    paddingLeft: "15%",
+    paddingLeft: "10%",
+    paddingTop: "1%",
+  },
+  info_content: {
+    width: "20rem",
+    wordWrap: "break-word",
   },
 }));
 
@@ -67,6 +72,29 @@ const Summary = ({ dataset }) => {
     }
   };
 
+  const getSpeedometerComplexityString = (complexity) => {
+    switch (complexity) {
+      case "nn":
+        return `O(n\u207F)`;
+      case "n!":
+        return `O(n!)`;
+      case "n3":
+        return `O(n\u00B3)`;
+      case "n2":
+        return `O(n\u00B2)`;
+      case "nlogn":
+        return `O(nlog(n))`;
+      case "n":
+        return `O(n)`;
+      case "logn":
+        return `O(log(n))`;
+      case "1":
+        return `O(1)`;
+      default:
+        return ``;
+    }
+  };
+
   return (
     <div className={classes.root}>
       <Box borderBottom={1} {...defaultProps}>
@@ -83,8 +111,31 @@ const Summary = ({ dataset }) => {
                   </Grid>
                   <Grid item xs={1}>
                     <InfoPopup
-                      content="This Speedometer shows the average time complexity of your
-                  script."
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "right",
+                      }}
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                      }}
+                      content={
+                        <div>
+                          <Typography className={classes.info_content}>
+                            This Speedometer shows the average time complexity
+                            of your script.
+                          </Typography>
+                          <br />
+                          <Typography className={classes.info_content}>
+                            The value
+                            {getSpeedometerComplexityString(
+                              dataset["e2e"]["e2e_time_complexity"]
+                            )}{" "}
+                            represents the performance of your script in terms
+                            of runtime.
+                          </Typography>
+                        </div>
+                      }
                     />
                   </Grid>
                 </Grid>
@@ -103,7 +154,33 @@ const Summary = ({ dataset }) => {
                     <Typography>Space Complexity Speedometer</Typography>
                   </Grid>
                   <Grid item xs={1}>
-                    <InfoPopup content="This Speedometer shows the average memory usage complexity of your script." />
+                    <InfoPopup
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "right",
+                      }}
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                      }}
+                      content={
+                        <div>
+                          <Typography className={classes.info_content}>
+                            This Speedometer shows the average memory usage
+                            complexity of your script.
+                          </Typography>
+                          <br />
+                          <Typography className={classes.info_content}>
+                            The value
+                            {getSpeedometerComplexityString(
+                              dataset["e2e"]["e2e_space_complexity"]
+                            )}{" "}
+                            represents the performance of your script in terms
+                            of memory usage.
+                          </Typography>
+                        </div>
+                      }
+                    />
                   </Grid>
                 </Grid>
                 <Speedometer
@@ -150,6 +227,45 @@ const Summary = ({ dataset }) => {
           <Grid container spacing={3} className={classes.fullHeight}>
             <Grid item xs={12} className={classes.halfHeight}>
               <Paper className={classes.paper} elevation={5}>
+                <Grid container>
+                  <Grid item xs={11} className={classes.card_title}>
+                    <Typography>
+                      Script Time Complexity vs Reference Complexities Line
+                      Chart
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <InfoPopup
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "right",
+                      }}
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                      }}
+                      content={
+                        <div>
+                          <Typography className={classes.info_content}>
+                            This chart shows the runtime performance of your
+                            script, represented by the line 'total_runtime', in
+                            comparison to the reference lines indicating
+                            absolute performance on the same inputs.
+                          </Typography>
+                          <br />
+                          <Typography className={classes.info_content}>
+                            You may notice that your script's runtime
+                            performance is closest to the line{" "}
+                            {getSpeedometerComplexityString(
+                              dataset["e2e"]["e2e_time_complexity"]
+                            )}
+                            .
+                          </Typography>
+                        </div>
+                      }
+                    />
+                  </Grid>
+                </Grid>
                 <PerfLineChart
                   data={dataset["e2e"]["e2e_runtime"]}
                   yLabel="Time (ms)"
@@ -159,6 +275,45 @@ const Summary = ({ dataset }) => {
             </Grid>
             <Grid item xs={12} className={classes.halfHeight}>
               <Paper className={classes.paper} elevation={5}>
+                <Grid container>
+                  <Grid item xs={11} className={classes.card_title}>
+                    <Typography>
+                      Script Time Complexity vs Reference Complexities Line
+                      Chart
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <InfoPopup
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "right",
+                      }}
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "right",
+                      }}
+                      content={
+                        <div>
+                          <Typography className={classes.info_content}>
+                            This chart shows the memory usage of your script,
+                            represented by the line 'total_memory', in
+                            comparison to the reference lines indicating
+                            absolute memory usage on the same inputs.
+                          </Typography>
+                          <br />
+                          <Typography className={classes.info_content}>
+                            You may notice that your script's memory usage is
+                            closest to the line{" "}
+                            {getSpeedometerComplexityString(
+                              dataset["e2e"]["e2e_space_complexity"]
+                            )}
+                            .
+                          </Typography>
+                        </div>
+                      }
+                    />
+                  </Grid>
+                </Grid>
                 <PerfLineChart
                   data={dataset["e2e"]["e2e_memory"]}
                   yLabel="Memory (KB)"
