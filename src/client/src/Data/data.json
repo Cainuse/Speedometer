@@ -1,5 +1,5 @@
 {
-  "script_name": "test.py",
+  "script_name": "solution.py",
   "class": {
     "class_runtime": [
       {
@@ -190,90 +190,6 @@
         "O(nlog(n))": 3.3,
         "O(n\u207f)": 27,
         "O(n!)": 6
-      },
-      {
-        "n": "10",
-        "total_runtime": 100,
-        "O(1)": 1,
-        "O(log(n))": 2.3,
-        "O(n)": 10,
-        "O(n\u00b2)": 100,
-        "O(n\u00b3)": 1000,
-        "O(nlog(n))": 23.03,
-        "O(n\u207f)": 1000,
-        "O(n!)": 362
-      },
-      {
-        "n": "5",
-        "total_runtime": 25,
-        "O(1)": 1,
-        "O(log(n))": 1.61,
-        "O(n)": 5,
-        "O(n\u00b2)": 25,
-        "O(n\u00b3)": 125,
-        "O(nlog(n))": 8.05,
-        "O(n\u207f)": 3125,
-        "O(n!)": 120
-      },
-      {
-        "n": "20",
-        "total_runtime": 400,
-        "O(1)": 1,
-        "O(log(n))": 3.0,
-        "O(n)": 20,
-        "O(n\u00b2)": 400,
-        "O(n\u00b3)": 8000,
-        "O(nlog(n))": 59.91,
-        "O(n\u207f)": 100,
-        "O(n!)": 2430
-      },
-      {
-        "n": "9",
-        "total_runtime": 81,
-        "O(1)": 1,
-        "O(log(n))": 2.2,
-        "O(n)": 9,
-        "O(n\u00b2)": 81,
-        "O(n\u00b3)": 729,
-        "O(nlog(n))": 19.78,
-        "O(n\u207f)": 39,
-        "O(n!)": 360
-      },
-      {
-        "n": "15",
-        "total_runtime": 225,
-        "O(1)": 1,
-        "O(log(n))": 2.71,
-        "O(n)": 15,
-        "O(n\u00b2)": 225,
-        "O(n\u00b3)": 3375,
-        "O(nlog(n))": 40.62,
-        "O(n\u207f)": 43785,
-        "O(n!)": 1307
-      },
-      {
-        "n": "100",
-        "total_runtime": 10000,
-        "O(1)": 1,
-        "O(log(n))": 4.61,
-        "O(n)": 100,
-        "O(n\u00b2)": 1000,
-        "O(n\u00b3)": 1000,
-        "O(nlog(n))": 460.52,
-        "O(n\u207f)": 100,
-        "O(n!)": 9332
-      },
-      {
-        "n": "12",
-        "total_runtime": 144,
-        "O(1)": 1,
-        "O(log(n))": 2.48,
-        "O(n)": 12,
-        "O(n\u00b2)": 144,
-        "O(n\u00b3)": 1728,
-        "O(nlog(n))": 29.82,
-        "O(n\u207f)": 891,
-        "O(n!)": 4790
       }
     ],
     "e2e_memory": [
@@ -321,103 +237,12 @@
         "O(n\u207f)": 27,
         "O(n!)": 6,
         "memory_usage_by_time": { "0": 3, "1": 7, "2": 11 }
-      },
-      {
-        "n": "10",
-        "total_memory": 10,
-        "O(1)": 1,
-        "O(log(n))": 2.3,
-        "O(n)": 10,
-        "O(n\u00b2)": 100,
-        "O(n\u00b3)": 1000,
-        "O(nlog(n))": 23.03,
-        "O(n\u207f)": 1000,
-        "O(n!)": 3628800,
-        "memory_usage_by_time": { "0": 3, "1": 7, "2": 11 }
-      },
-      {
-        "n": "5",
-        "total_memory": 5,
-        "O(1)": 1,
-        "O(log(n))": 1.61,
-        "O(n)": 5,
-        "O(n\u00b2)": 25,
-        "O(n\u00b3)": 125,
-        "O(nlog(n))": 8.05,
-        "O(n\u207f)": 3125,
-        "O(n!)": 120,
-        "memory_usage_by_time": { "0": 3, "1": 7, "2": 11 }
-      },
-      {
-        "n": "20",
-        "total_memory": 20,
-        "O(1)": 1,
-        "O(log(n))": 3.0,
-        "O(n)": 20,
-        "O(n\u00b2)": 400,
-        "O(n\u00b3)": 8000,
-        "O(nlog(n))": 59.91,
-        "O(n\u207f)": 10400,
-        "O(n!)": 24300,
-        "memory_usage_by_time": { "0": 3, "1": 7, "2": 11 }
-      },
-      {
-        "n": "9",
-        "total_memory": 9,
-        "O(1)": 1,
-        "O(log(n))": 2.2,
-        "O(n)": 9,
-        "O(n\u00b2)": 81,
-        "O(n\u00b3)": 729,
-        "O(nlog(n))": 19.78,
-        "O(n\u207f)": 89,
-        "O(n!)": 362880,
-        "memory_usage_by_time": { "0": 3, "1": 7, "2": 11 }
-      },
-      {
-        "n": "15",
-        "total_memory": 15,
-        "O(1)": 1,
-        "O(log(n))": 2.71,
-        "O(n)": 15,
-        "O(n\u00b2)": 225,
-        "O(n\u00b3)": 3375,
-        "O(nlog(n))": 40.62,
-        "O(n\u207f)": 437875,
-        "O(n!)": 1300,
-        "memory_usage_by_time": { "0": 3, "1": 7, "2": 11 }
-      },
-      {
-        "n": "100",
-        "total_memory": 100,
-        "O(1)": 1,
-        "O(log(n))": 4.61,
-        "O(n)": 100,
-        "O(n\u00b2)": 10000,
-        "O(n\u00b3)": 1000000,
-        "O(nlog(n))": 460.52,
-        "O(n\u207f)": 1000,
-        "O(n!)": 9330,
-        "memory_usage_by_time": { "0": 3, "1": 7, "2": 11 }
-      },
-      {
-        "n": "12",
-        "total_memory": 12,
-        "O(1)": 1,
-        "O(log(n))": 2.48,
-        "O(n)": 12,
-        "O(n\u00b2)": 144,
-        "O(n\u00b3)": 1728,
-        "O(nlog(n))": 29.82,
-        "O(n\u207f)": 8916100448256,
-        "O(n!)": 479001600,
-        "memory_usage_by_time": { "0": 3, "1": 7, "2": 11 }
       }
     ],
-    "e2e_highest_runtime_function": "getSpeed()",
-    "e2e_highest_memory_usage_function": "getPosition()",
-    "e2e_total_average_time": 1098.9,
-    "e2e_total_average_memory": 17.7,
+    "e2e_highest_runtime_function": "solve()",
+    "e2e_highest_memory_usage_function": "solve()",
+    "e2e_total_average_time": 2020.15,
+    "e2e_total_average_memory": 1,
     "e2e_time_complexity": "n2",
     "e2e_space_complexity": "n"
   }
