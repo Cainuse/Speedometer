@@ -1,6 +1,4 @@
 import math
-
-import pytest
 import numpy as np
 
 from src.model.Speedometer import Speedometer
