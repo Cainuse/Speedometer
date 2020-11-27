@@ -50,6 +50,7 @@ class line_by_line_runtime:
         self.total_memory = memory
         self.line_text = linetext
         self.time_percentage_of_total = time_percentage
+        self.memory_percentage_of_total = -1
 
     def __eq__(self, other):
         if (isinstance(other, line_by_line_runtime)):
