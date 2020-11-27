@@ -1,11 +1,13 @@
 import shutil
 import webbrowser
 import os
+import subprocess
 
-PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_PATH = os.path.dirname(os.path.dirname(CURRENT_DIR))
 
 
-def run_post_process() -> None:
+def package_visualization_and_open() -> None:
     """
     Run out-dated build folder removal, build react client,
     move build files to dist folder, and run the generated html file in that order
@@ -13,7 +15,12 @@ def run_post_process() -> None:
     _clean_up()
     _build_client()
     dst = _move_build_files()
-    _run_build_file_in_browser(dst)
+    try:
+        _run_build_file_in_browser(dst)
+    except:
+        print(
+            "Failed to open the generated html file. Please open cpsc410_project2_team4/dist/build/index.html with a "
+            "web browser manually.")
 
 
 def _clean_up() -> None:
@@ -29,13 +36,20 @@ def _build_client() -> None:
     """
     Builds the react client
     """
+
+    yarn_build_succ_msg = "The build folder is ready to be deployed."
+
     os.chdir("./client")
-    os.system("yarn install && yarn build")
+    install_output = subprocess.check_output(["yarn", "install"]).decode("utf-8")
+    build_output = subprocess.check_output(["yarn", "build"]).decode("utf-8")
+
+    if yarn_build_succ_msg not in build_output:
+        print("An error occurred while building client, please check you have the latest version of yarn installed.")
 
 
 def _move_build_files() -> str:
     """
-    Copies the files in the client build folder to the dist folder
+    Moves the files in the client build folder to the dist folder
     :return: Path of the destination folder
     :raises: Exception if any of the paths are invalid (file does not exist)
     """

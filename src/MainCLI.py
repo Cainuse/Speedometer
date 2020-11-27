@@ -2,7 +2,7 @@ import sys
 
 from src.model import Config
 from src.model.Speedometer import Speedometer
-from src.model.buildUtil import run_post_process
+from src.model.buildUtil import package_visualization_and_open
 
 
 def _parse_program_file_path() -> str:
@@ -39,14 +39,13 @@ def main():
     """
     Processes user-provided arguments to initiate Speedometer analysis
     """
-    program_file_path: str = _parse_program_file_path()
-    config: Config = _parse_config_file()
+    # program_file_path: str = _parse_program_file_path()
+    # config: Config = _parse_config_file()
+    #
+    # speedometer = Speedometer()
+    # speedometer.run(program_file_path, config)
 
-    speedometer = Speedometer()
-    speedometer.run(program_file_path, config)
-
-    # TODO: open the generated webpage in browser
-    run_post_process()
+    package_visualization_and_open()
 
 
 if __name__ == "__main__":
