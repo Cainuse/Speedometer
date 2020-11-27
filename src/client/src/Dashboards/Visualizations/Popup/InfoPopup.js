@@ -3,6 +3,7 @@ import Popover from "@material-ui/core/Popover";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import HelpIcon from "@material-ui/icons/Help";
+import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles((theme) => ({
   popover: {
@@ -13,48 +14,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const InfoPopup = ({ content }) => {
+const InfoPopup = ({ content, anchorOrigin, transformOrigin }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handlePopoverOpen = (event) => {
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handlePopoverClose = () => {
+  const handleClose = () => {
     setAnchorEl(null);
   };
 
   const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
 
   return (
     <div>
-      <Typography
-        aria-owns={open ? "mouse-over-popover" : undefined}
-        aria-haspopup="true"
-        onMouseEnter={handlePopoverOpen}
-        onMouseLeave={handlePopoverClose}
+      <IconButton
+        aria-label="learn-more"
+        aria-describedby={id}
+        color="primary"
+        onClick={handleClick}
       >
-        <HelpIcon color="primary" />
-      </Typography>
+        <HelpIcon />
+      </IconButton>
       <Popover
-        id="mouse-over-popover"
-        className={classes.popover}
+        id={id}
         classes={{
           paper: classes.paper,
         }}
         open={open}
         anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "left",
-        }}
-        onClose={handlePopoverClose}
-        disableRestoreFocus
+        anchorOrigin={anchorOrigin}
+        transformOrigin={transformOrigin}
+        onClose={handleClose}
       >
         <Typography>{content}</Typography>
       </Popover>
