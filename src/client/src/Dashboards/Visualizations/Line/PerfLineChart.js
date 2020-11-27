@@ -151,7 +151,7 @@ export default class PerfLineChart extends PureComponent {
           startIcon={<ZoomOutIcon />}
           style={{
             textTransform: "none",
-            marginRight: "85%",
+            marginRight: "80%",
           }}
         >
           Zoom Out
@@ -168,7 +168,7 @@ export default class PerfLineChart extends PureComponent {
               this.setState({ refAreaRight: e ? e.activeLabel : "" })
             }
             onMouseUp={this.zoom.bind(this)}
-            margin={{ top: 5, right: 10, left: 20, bottom: 27 }}
+            margin={{ top: 5, right: 10, left: 50, bottom: 37 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
@@ -177,18 +177,17 @@ export default class PerfLineChart extends PureComponent {
               domain={[left, right]}
               type="number"
             >
-              <Label value="Input Size (n)" offset={5} position="bottom" />
+              <Label value="Input Size (n)" offset={-1} position="bottom" />
             </XAxis>
             <YAxis
               allowDataOverflow
               domain={[bottom, top]}
               type="number"
               yAxisId="1"
-              unit={this.props.yUnit}
             >
               <Label
                 value={this.props.yLabel}
-                offset={0}
+                offset={25}
                 position="left"
                 angle={-90}
               />
