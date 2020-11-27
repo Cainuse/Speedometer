@@ -125,7 +125,7 @@ const Summary = ({ dataset }) => {
                       </Typography>
                       <br />
                       <Typography className={classes.info_content}>
-                        The value
+                        The value{" "}
                         {getSpeedometerComplexityString(
                           dataset["e2e"]["e2e_time_complexity"]
                         )}{" "}
@@ -178,7 +178,7 @@ const Summary = ({ dataset }) => {
                       </Typography>
                       <br />
                       <Typography className={classes.info_content}>
-                        The value
+                        The value{" "}
                         {getSpeedometerComplexityString(
                           dataset["e2e"]["e2e_space_complexity"]
                         )}{" "}
