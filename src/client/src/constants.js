@@ -21,7 +21,7 @@ export const LABELS = [
     color: "#555",
   },
   {
-    text: "O(nlog(n))",
+    text: "O(nlogn)",
     position: "INSIDE",
     color: "#555",
     fontSize: "19px",
@@ -32,7 +32,7 @@ export const LABELS = [
     color: "#555",
   },
   {
-    text: "O(log(n))",
+    text: "O(logn)",
     position: "INSIDE",
     color: "#555",
   },

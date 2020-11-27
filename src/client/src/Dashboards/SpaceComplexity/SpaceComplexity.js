@@ -141,12 +141,18 @@ const SpaceComplexity = ({ dataset }) => {
             <ComposedBarChart
               data={dataset["function"]["function_memory"]}
               barDataKey={fnDataY}
+              yLabel="Total Memory (mb)"
             />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={12}>
-          <Typography>Space Usage Per Script module</Typography>
-          <ScriptSankeyChart />
+          <Typography>
+            Sankey Chart representing memory usage distribution broken down by
+            classes and functions
+          </Typography>
+          <Paper elevation={5}>
+            <ScriptSankeyChart data={dataset["sankey"]["sankey_runtime"]} />
+          </Paper>
         </Grid>
       </Grid>
     </div>

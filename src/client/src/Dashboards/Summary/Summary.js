@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   viz_container: {
     padding: theme.spacing(2),
-    height: "55rem",
+    height: "35rem",
   },
   fullHeight: {
     height: "100%",
@@ -101,227 +101,206 @@ const Summary = ({ dataset }) => {
         Performance Summary for {dataset["script_name"]}
       </Box>
       <Grid container spacing={3}>
-        <Grid item xs={4} className={classes.viz_container}>
-          <Grid container spacing={3} className={classes.fullHeight}>
-            <Grid item xs={12} className={classes.halfHeight}>
-              <Paper className={classes.paper} elevation={5}>
-                <Grid container>
-                  <Grid item xs={11} className={classes.card_title}>
-                    <Typography>Time Complexity Speedometer </Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <InfoPopup
-                      anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "right",
-                      }}
-                      transformOrigin={{
-                        vertical: "top",
-                        horizontal: "right",
-                      }}
-                      content={
-                        <div>
-                          <Typography className={classes.info_content}>
-                            This Speedometer shows the average time complexity
-                            of your script.
-                          </Typography>
-                          <br />
-                          <Typography className={classes.info_content}>
-                            The value
-                            {getSpeedometerComplexityString(
-                              dataset["e2e"]["e2e_time_complexity"]
-                            )}{" "}
-                            represents the performance of your script in terms
-                            of runtime.
-                          </Typography>
-                        </div>
-                      }
-                    />
-                  </Grid>
-                </Grid>
-                <Speedometer
-                  value={getSpeedometerVal(
-                    dataset["e2e"]["e2e_time_complexity"]
-                  )}
-                  valueText="Time Complexity"
-                />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} className={classes.halfHeight}>
-              <Paper className={classes.paper} elevation={5}>
-                <Grid container>
-                  <Grid item xs={11} className={classes.card_title}>
-                    <Typography>Space Complexity Speedometer</Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <InfoPopup
-                      anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "right",
-                      }}
-                      transformOrigin={{
-                        vertical: "top",
-                        horizontal: "right",
-                      }}
-                      content={
-                        <div>
-                          <Typography className={classes.info_content}>
-                            This Speedometer shows the average memory usage
-                            complexity of your script.
-                          </Typography>
-                          <br />
-                          <Typography className={classes.info_content}>
-                            The value
-                            {getSpeedometerComplexityString(
-                              dataset["e2e"]["e2e_space_complexity"]
-                            )}{" "}
-                            represents the performance of your script in terms
-                            of memory usage.
-                          </Typography>
-                        </div>
-                      }
-                    />
-                  </Grid>
-                </Grid>
-                <Speedometer
-                  value={getSpeedometerVal(
-                    dataset["e2e"]["e2e_space_complexity"]
-                  )}
-                  valueText="Space Complexity"
-                />
-              </Paper>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item xs={2} className={classes.viz_container}>
-          <Grid container spacing={3} className={classes.fullHeight}>
-            <Grid item xs={12} className={classes.halfHeight}>
-              <Paper className={classes.paper} elevation={5}>
-                <SummaryInfo
-                  totalVal={dataset["e2e"]["e2e_total_average_time"].toString()}
-                  totalText="Total Average Runtime"
-                  highestVal={dataset["e2e"]["e2e_highest_runtime_function"]}
-                  highestText="Highest Runtime Function"
-                  type="runtime"
-                />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} className={classes.halfHeight}>
-              <Paper className={classes.paper} elevation={5}>
-                <SummaryInfo
-                  totalVal={dataset["e2e"][
-                    "e2e_total_average_memory"
-                  ].toString()}
-                  totalText="Total Average Memory Usage"
-                  highestVal={
-                    dataset["e2e"]["e2e_highest_memory_usage_function"]
+        <Grid item xs={6} className={classes.viz_container}>
+          <Paper className={classes.paper} elevation={5}>
+            <Grid container>
+              <Grid item xs={11} className={classes.card_title}>
+                <Typography>Time Complexity Speedometer </Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <InfoPopup
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  content={
+                    <div>
+                      <Typography className={classes.info_content}>
+                        This Speedometer shows the average time complexity of
+                        your script.
+                      </Typography>
+                      <br />
+                      <Typography className={classes.info_content}>
+                        The value
+                        {getSpeedometerComplexityString(
+                          dataset["e2e"]["e2e_time_complexity"]
+                        )}{" "}
+                        represents the performance of your script in terms of
+                        runtime.
+                      </Typography>
+                    </div>
                   }
-                  highestText="Highest Memory Usage Function"
-                  type="memory"
                 />
-              </Paper>
+              </Grid>
             </Grid>
-          </Grid>
+            <Speedometer
+              value={getSpeedometerVal(dataset["e2e"]["e2e_time_complexity"])}
+              valueText="Time Complexity"
+            />
+          </Paper>
         </Grid>
         <Grid item xs={6} className={classes.viz_container}>
-          <Grid container spacing={3} className={classes.fullHeight}>
-            <Grid item xs={12} className={classes.halfHeight}>
-              <Paper className={classes.paper} elevation={5}>
-                <Grid container>
-                  <Grid item xs={11} className={classes.card_title}>
-                    <Typography>
-                      Script Time Complexity vs Reference Complexities Line
-                      Chart
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <InfoPopup
-                      anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "right",
-                      }}
-                      transformOrigin={{
-                        vertical: "top",
-                        horizontal: "right",
-                      }}
-                      content={
-                        <div>
-                          <Typography className={classes.info_content}>
-                            This chart shows the runtime performance of your
-                            script, represented by the line 'total_runtime', in
-                            comparison to the reference lines indicating
-                            absolute performance on the same inputs.
-                          </Typography>
-                          <br />
-                          <Typography className={classes.info_content}>
-                            You may notice that your script's runtime
-                            performance is closest to the line{" "}
-                            {getSpeedometerComplexityString(
-                              dataset["e2e"]["e2e_time_complexity"]
-                            )}
-                            .
-                          </Typography>
-                        </div>
-                      }
-                    />
-                  </Grid>
-                </Grid>
-                <PerfLineChart
-                  data={dataset["e2e"]["e2e_runtime"]}
-                  yLabel="Time (ms)"
-                  yUnit="ms"
+          <Paper className={classes.paper} elevation={5}>
+            <SummaryInfo
+              totalVal={dataset["e2e"]["e2e_total_average_time"].toString()}
+              totalText="Total Average Runtime"
+              highestVal={dataset["e2e"]["e2e_highest_runtime_function"]}
+              highestText="Highest Runtime Function"
+              type="runtime"
+            />
+          </Paper>
+        </Grid>
+        <Grid item xs={6} className={classes.viz_container}>
+          <Paper className={classes.paper} elevation={5}>
+            <Grid container>
+              <Grid item xs={11} className={classes.card_title}>
+                <Typography>Space Complexity Speedometer</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <InfoPopup
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  content={
+                    <div>
+                      <Typography className={classes.info_content}>
+                        This Speedometer shows the average memory usage
+                        complexity of your script.
+                      </Typography>
+                      <br />
+                      <Typography className={classes.info_content}>
+                        The value
+                        {getSpeedometerComplexityString(
+                          dataset["e2e"]["e2e_space_complexity"]
+                        )}{" "}
+                        represents the performance of your script in terms of
+                        memory usage.
+                      </Typography>
+                    </div>
+                  }
                 />
-              </Paper>
+              </Grid>
             </Grid>
-            <Grid item xs={12} className={classes.halfHeight}>
-              <Paper className={classes.paper} elevation={5}>
-                <Grid container>
-                  <Grid item xs={11} className={classes.card_title}>
-                    <Typography>
-                      Script Time Complexity vs Reference Complexities Line
-                      Chart
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={1}>
-                    <InfoPopup
-                      anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "right",
-                      }}
-                      transformOrigin={{
-                        vertical: "top",
-                        horizontal: "right",
-                      }}
-                      content={
-                        <div>
-                          <Typography className={classes.info_content}>
-                            This chart shows the memory usage of your script,
-                            represented by the line 'total_memory', in
-                            comparison to the reference lines indicating
-                            absolute memory usage on the same inputs.
-                          </Typography>
-                          <br />
-                          <Typography className={classes.info_content}>
-                            You may notice that your script's memory usage is
-                            closest to the line{" "}
-                            {getSpeedometerComplexityString(
-                              dataset["e2e"]["e2e_space_complexity"]
-                            )}
-                            .
-                          </Typography>
-                        </div>
-                      }
-                    />
-                  </Grid>
-                </Grid>
-                <PerfLineChart
-                  data={dataset["e2e"]["e2e_memory"]}
-                  yLabel="Memory (KB)"
-                  yUnit="kb"
+            <Speedometer
+              value={getSpeedometerVal(dataset["e2e"]["e2e_space_complexity"])}
+              valueText="Space Complexity"
+            />
+          </Paper>
+        </Grid>
+
+        <Grid item xs={6} className={classes.viz_container}>
+          <Paper className={classes.paper} elevation={5}>
+            <SummaryInfo
+              totalVal={dataset["e2e"]["e2e_total_average_memory"].toString()}
+              totalText="Total Average Memory Usage"
+              highestVal={dataset["e2e"]["e2e_highest_memory_usage_function"]}
+              highestText="Highest Memory Usage Function"
+              type="memory"
+            />
+          </Paper>
+        </Grid>
+        <Grid item xs={12} className={classes.viz_container}>
+          <Paper className={classes.paper} elevation={5}>
+            <Grid container>
+              <Grid item xs={11} className={classes.card_title}>
+                <Typography>
+                  Script Time Complexity vs Reference Complexities Line Chart
+                </Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <InfoPopup
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  content={
+                    <div>
+                      <Typography className={classes.info_content}>
+                        This chart shows the runtime performance of your script,
+                        represented by the line 'total_runtime', in comparison
+                        to the reference lines indicating absolute performance
+                        on the same inputs.
+                      </Typography>
+                      <br />
+                      <Typography className={classes.info_content}>
+                        You may notice that your script's runtime performance is
+                        closest to the line{" "}
+                        {getSpeedometerComplexityString(
+                          dataset["e2e"]["e2e_time_complexity"]
+                        )}
+                        .
+                      </Typography>
+                    </div>
+                  }
                 />
-              </Paper>
+              </Grid>
             </Grid>
-          </Grid>
+            <PerfLineChart
+              data={dataset["e2e"]["e2e_runtime"]}
+              yLabel="Time (ms)"
+            />
+          </Paper>
+        </Grid>
+        <Grid item xs={12} className={classes.viz_container}>
+          <Paper className={classes.paper} elevation={5}>
+            <Grid container>
+              <Grid item xs={11} className={classes.card_title}>
+                <Typography>
+                  Script Time Complexity vs Reference Complexities Line Chart
+                </Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <InfoPopup
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  content={
+                    <div>
+                      <Typography className={classes.info_content}>
+                        This chart shows the memory usage of your script,
+                        represented by the line 'total_memory', in comparison to
+                        the reference lines indicating absolute memory usage on
+                        the same inputs.
+                      </Typography>
+                      <br />
+                      <Typography className={classes.info_content}>
+                        You may notice that your script's memory usage is
+                        closest to the line{" "}
+                        {getSpeedometerComplexityString(
+                          dataset["e2e"]["e2e_space_complexity"]
+                        )}
+                        .
+                      </Typography>
+                    </div>
+                  }
+                />
+              </Grid>
+            </Grid>
+            <PerfLineChart
+              data={dataset["e2e"]["e2e_memory"].map(
+                ({ memory_usage_by_time, ...memObj }) => memObj
+              )}
+              yLabel="Memory (MB)"
+            />
+          </Paper>
         </Grid>
       </Grid>
     </div>
