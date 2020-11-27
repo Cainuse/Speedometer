@@ -1,6 +1,5 @@
-from src.model import Config
+from src.model.util import Config
 import os
-import sys
 import re
 import math
 from typing import Union
@@ -91,7 +90,7 @@ class ProfileAnalyzer:
 
     results: dict = {"class": [], "function": [], "line_by_line": []}
 
-    def analyze(self,program_file_path: str, config:Config) -> None:
+    def analyze(self, program_file_path: str, config: Config) -> None:
         """
         Runs profile analyses on the given program
         :param program_file_path: path to the program to analyze

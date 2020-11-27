@@ -3,10 +3,10 @@ from os import path
 
 import pytest
 
-from src.model.Config import Config
+from src.model.util.Config import Config
 
 CURRENT_DIR_PATH = os.path.dirname(os.path.abspath(__file__))
-PATH_TO_SAMPLE_CONFIGS = path.abspath(path.join(CURRENT_DIR_PATH, "resources", "sample_configs"))
+PATH_TO_SAMPLE_CONFIGS = path.abspath(path.join(CURRENT_DIR_PATH, "..", "resources", "sample_configs"))
 
 
 def test_sample_config_complete():

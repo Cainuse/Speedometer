@@ -1,8 +1,8 @@
 import json
 from typing import Dict
 
-from src.model import Config
-from src.model.ComplexityDatapoints import FitData, get_fit_data
+from src.model.Util import Config
+from src.model.data_transformers.ComplexityDatapoints import FitData, get_fit_data
 from src.model.analyzers.e2e_analysis.EndToEndAnalyzer import EndToEndAnalyzer
 from src.model.analyzers.e2e_analysis.result_types.InputSizeResult import InputSizeResult
 from src.model.analyzers.profile_analysis.ProfileAnalyzer import ProfileAnalyzer
