@@ -138,8 +138,9 @@ export default class PerfLineChart extends PureComponent {
         style={{
           userSelect: "none",
           width: "90%",
-          height: "90%",
+          height: "80%",
           marginLeft: "6%",
+          marginBottom: "5%",
         }}
       >
         <Button
@@ -150,7 +151,7 @@ export default class PerfLineChart extends PureComponent {
           startIcon={<ZoomOutIcon />}
           style={{
             textTransform: "none",
-            marginRight: "80%",
+            marginRight: "85%",
           }}
         >
           Zoom Out
@@ -167,7 +168,7 @@ export default class PerfLineChart extends PureComponent {
               this.setState({ refAreaRight: e ? e.activeLabel : "" })
             }
             onMouseUp={this.zoom.bind(this)}
-            margin={{ top: 5, right: 10, left: 20, bottom: 25 }}
+            margin={{ top: 5, right: 10, left: 20, bottom: 27 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
