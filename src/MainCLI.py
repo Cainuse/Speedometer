@@ -92,6 +92,7 @@ def main():
         Logger.debug("Loading the python program to analyze", force=True)
         program_file_path: str = _parse_program_file_path(args)
         Logger.debug("Python program {} loaded".format(program_file_path))
+
         Logger.debug("Loading the associated config file")
         config: Config = _parse_config_file(args)
         Logger.debug("Config file {} loaded".format(config.path))

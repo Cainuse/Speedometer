@@ -4,6 +4,9 @@ import re
 import math
 from typing import Union
 
+from src.model.util.Logger import debug
+
+
 class function_runtime:
     """
     Python runtime of function as given by Scalene
@@ -100,6 +103,7 @@ class ProfileAnalyzer:
         :param config: config object for user-defined configuration
         """
         self.results={"class": [], "function": [], "line_by_line": []}
+        debug("Running scalene profile analysis")
         p = os.popen('scalene ' + program_file_path)
         output = p.read()
         self.parseOutput(output)
