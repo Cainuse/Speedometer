@@ -78,7 +78,8 @@ class TestBuildVisualization:
         46.52,
         3.2,
         100,
-        100
+        100,
+        [0, 1]
     )
 
     FUN_OBJECT_1 = function_runtime(
