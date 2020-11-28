@@ -7,6 +7,7 @@ from src.model.analyzers.e2e_analysis.result_types.TestResult import TestResult
 from src.model.analyzers.profile_analysis.ProfileAnalyzer import class_runtime
 from src.model.analyzers.profile_analysis.ProfileAnalyzer import function_runtime
 from src.model.analyzers.profile_analysis.ProfileAnalyzer import line_by_line_runtime
+from src.model.data_transformers.ReferenceFits import FitData, get_reference_fits
 from src.model.visualization_builders.BuildVisualization import build_visualization
 
 
@@ -163,330 +164,6 @@ class TestBuildVisualization:
         49.61
     )
 
-    O_1t = np.polyfit([1,2,3], [TEST_RESULT_1.total_runtime_ms,TEST_RESULT_2.total_runtime_ms,TEST_RESULT_3.total_runtime_ms], 0)
-    O_nt = np.polyfit([1,2,3], [TEST_RESULT_1.total_runtime_ms,TEST_RESULT_2.total_runtime_ms,TEST_RESULT_3.total_runtime_ms], 1)
-    O_n2t = np.polyfit([1,2,3], [TEST_RESULT_1.total_runtime_ms,TEST_RESULT_2.total_runtime_ms,TEST_RESULT_3.total_runtime_ms], 2)
-    O_n3t = np.polyfit([1,2,3], [TEST_RESULT_1.total_runtime_ms,TEST_RESULT_2.total_runtime_ms,TEST_RESULT_3.total_runtime_ms], 3)
-    O_1m = np.polyfit([1,2,3], [TEST_RESULT_1.max_memory_usage_bytes,TEST_RESULT_2.max_memory_usage_bytes,TEST_RESULT_3.max_memory_usage_bytes], 0)
-    O_nm = np.polyfit([1,2,3], [TEST_RESULT_1.max_memory_usage_bytes,TEST_RESULT_2.max_memory_usage_bytes,TEST_RESULT_3.max_memory_usage_bytes], 1)
-    O_n2m = np.polyfit([1,2,3], [TEST_RESULT_1.max_memory_usage_bytes,TEST_RESULT_2.max_memory_usage_bytes,TEST_RESULT_3.max_memory_usage_bytes], 2)
-    O_n3m = np.polyfit([1,2,3], [TEST_RESULT_1.max_memory_usage_bytes,TEST_RESULT_2.max_memory_usage_bytes,TEST_RESULT_3.max_memory_usage_bytes], 3)
-    O_logn = 1
-    O_nlogn = 1
-    O_nn = 1
-    O_nfact = 1
-
-    output = {
-        "script_name": "test.py",
-        "class": {
-            'class_runtime': [{
-              'name': 'test.py/Speedometer',
-              'total_runtime': CLASS_OBJECT_1.total_run_time
-            }],
-            'class_memory': [{
-                'name': 'test.py/Speedometer',
-                'total_memory': CLASS_OBJECT_1.total_memory
-            }]},
-        "function": {
-            'function_runtime': [{
-              'name': 'test.py/getSpeed()',
-              'total_runtime': FUN_OBJECT_1.total_run_time
-            }, {
-              'name': 'test.py/getPosition()',
-              'total_runtime': FUN_OBJECT_2.total_run_time
-            }],
-            'function_memory': [{
-              'name': 'test.py/getSpeed()',
-              'total_runtime': FUN_OBJECT_1.total_memory
-            }, {
-              'name': 'test.py/getPosition()',
-              'total_runtime': FUN_OBJECT_2.total_memory
-            }]},
-        "line_by_line": [{
-            "fileName": LINE_OBJECT_1.filename,
-            "line_num": LINE_OBJECT_1.line_num,
-            "code": LINE_OBJECT_1.line_text,
-            "total_runtime": LINE_OBJECT_1.total_run_time,
-            "total_memory": LINE_OBJECT_1.total_memory
-        }, {
-            "fileName": LINE_OBJECT_2.filename,
-            "line_num": LINE_OBJECT_2.line_num,
-            "code": LINE_OBJECT_2.line_text,
-            "total_runtime": LINE_OBJECT_2.total_run_time,
-            "total_memory": LINE_OBJECT_2.total_memory
-        }, {
-            "fileName": LINE_OBJECT_3.filename,
-            "line_num": LINE_OBJECT_3.line_num,
-            "code": LINE_OBJECT_3.line_text,
-            "total_runtime": LINE_OBJECT_3.total_run_time,
-            "total_memory": LINE_OBJECT_3.total_memory
-        }, {
-            "fileName": LINE_OBJECT_4.filename,
-            "line_num": LINE_OBJECT_4.line_num,
-            "code": LINE_OBJECT_4.line_text,
-            "total_runtime": LINE_OBJECT_4.total_run_time,
-            "total_memory": LINE_OBJECT_4.total_memory
-        }, {
-            "fileName": LINE_OBJECT_5.filename,
-            "line_num": LINE_OBJECT_5.line_num,
-            "code": LINE_OBJECT_5.line_text,
-            "total_runtime": LINE_OBJECT_5.total_run_time,
-            "total_memory": LINE_OBJECT_5.total_memory
-        }, {
-            "fileName": LINE_OBJECT_6.filename,
-            "line_num": LINE_OBJECT_6.line_num,
-            "code": LINE_OBJECT_6.line_text,
-            "total_runtime": LINE_OBJECT_6.total_run_time,
-            "total_memory": LINE_OBJECT_6.total_memory
-        }, {
-            "fileName": LINE_OBJECT_7.filename,
-            "line_num": LINE_OBJECT_7.line_num,
-            "code": LINE_OBJECT_7.line_text,
-            "total_runtime": LINE_OBJECT_7.total_run_time,
-            "total_memory": LINE_OBJECT_7.total_memory
-        }],
-        "e2e": {
-            "e2e_runtime": [{
-                "n": 1,
-                "total_runtime": TEST_RESULT_1.total_runtime_ms,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(1),
-                "O(n)": O_nt[0]*1+O_nt[1],
-                "O(n\u00B2)": O_n2t[0]*1**2+O_n2t[1]*1+O_n2t[2],
-                "O(n\u00B3)": O_n3t[0]*1**3+O_n3t[1]*1**2+O_n3t[2]*1+O_n3t[3],
-                "O(nlog(n))": 1*math.log(1),
-                "O(n\u207F)": 1**1,
-                "O(n!)": math.factorial(1)
-            }, {
-                "n": 2,
-                "total_runtime": TEST_RESULT_2.total_runtime_ms,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(2),
-                "O(n)": O_nt[0]*2+O_nt[1],
-                "O(n\u00B2)": O_n2t[0]*2**2+O_n2t[1]*2+O_n2t[2],
-                "O(n\u00B3)": O_n3t[0]*2**3+O_n3t[1]*2**2+O_n3t[2]*2+O_n3t[3],
-                "O(nlog(n))": 2*math.log(2),
-                "O(n\u207F)": 2**2,
-                "O(n!)": math.factorial(2)
-            }, {
-                "n": 3,
-                "total_runtime": TEST_RESULT_3.total_runtime_ms,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(3),
-                "O(n)": O_nt[0]*3+O_nt[1],
-                "O(n\u00B2)": O_n2t[0]*3**2+O_n2t[1]*3+O_n2t[2],
-                "O(n\u00B3)": O_n3t[0]*3**3+O_n3t[1]*3**2+O_n3t[2]*3+O_n3t[3],
-                "O(nlog(n))": 3*math.log(3),
-                "O(n\u207F)": 3**3,
-                "O(n!)": math.factorial(3)
-            }, {
-                "n": 10,
-                "total_runtime": TEST_RESULT_4.total_runtime_ms,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(10),
-                "O(n)": O_nt[0] * 10 + O_nt[1],
-                "O(n\u00B2)": O_n2t[0] * 10 ** 2 + O_n2t[1] * 10 + O_n2t[2],
-                "O(n\u00B3)": O_n3t[0] * 10 ** 3 + O_n3t[1] * 10 ** 2 + O_n3t[2] * 10 + O_n3t[3],
-                "O(nlog(n))": 10 * math.log(10),
-                "O(n\u207F)": 10 ** 10,
-                "O(n!)": math.factorial(10)
-            }, {
-                "n": 5,
-                "total_runtime": TEST_RESULT_5.total_runtime_ms,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(5),
-                "O(n)": O_nt[0] * 5 + O_nt[1],
-                "O(n\u00B2)": O_n2t[0] * 5 ** 2 + O_n2t[1] * 5 + O_n2t[2],
-                "O(n\u00B3)": O_n3t[0] * 5 ** 3 + O_n3t[1] * 5 ** 2 + O_n3t[2] * 5 + O_n3t[3],
-                "O(nlog(n))": 5 * math.log(5),
-                "O(n\u207F)": 5 ** 5,
-                "O(n!)": math.factorial(5)
-            }, {
-                "n": 20,
-                "total_runtime": TEST_RESULT_6.total_runtime_ms,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(20),
-                "O(n)": O_nt[0] * 20 + O_nt[1],
-                "O(n\u00B2)": O_n2t[0] * 20 ** 2 + O_n2t[1] * 20 + O_n2t[2],
-                "O(n\u00B3)": O_n3t[0] * 20 ** 3 + O_n3t[1] * 20 ** 2 + O_n3t[2] * 20 + O_n3t[3],
-                "O(nlog(n))": 20 * math.log(20),
-                "O(n\u207F)": 20 ** 20,
-                "O(n!)": math.factorial(20)
-            }, {
-                "n": 9,
-                "total_runtime": TEST_RESULT_7.total_runtime_ms,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(9),
-                "O(n)": O_nt[0] * 9 + O_nt[1],
-                "O(n\u00B2)": O_n2t[0] * 9 ** 2 + O_n2t[1] * 9 + O_n2t[2],
-                "O(n\u00B3)": O_n3t[0] * 9 ** 3 + O_n3t[1] * 9 ** 2 + O_n3t[2] * 9 + O_n3t[3],
-                "O(nlog(n))": 9 * math.log(9),
-                "O(n\u207F)": 9 ** 9,
-                "O(n!)": math.factorial(9)
-            }, {
-                "n": 15,
-                "total_runtime": TEST_RESULT_8.total_runtime_ms,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(15),
-                "O(n)": O_nt[0] * 15 + O_nt[1],
-                "O(n\u00B2)": O_n2t[0] * 15 ** 2 + O_n2t[1] * 15 + O_n2t[2],
-                "O(n\u00B3)": O_n3t[0] * 15 ** 3 + O_n3t[1] * 15 ** 2 + O_n3t[2] * 15 + O_n3t[3],
-                "O(nlog(n))": 15 * math.log(15),
-                "O(n\u207F)": 15 ** 15,
-                "O(n!)": math.factorial(15)
-            }, {
-                "n": 50,
-                "total_runtime": TEST_RESULT_9.total_runtime_ms,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(50),
-                "O(n)": O_nt[0] * 50 + O_nt[1],
-                "O(n\u00B2)": O_n2t[0] * 50 ** 2 + O_n2t[1] * 50 + O_n2t[2],
-                "O(n\u00B3)": O_n3t[0] * 50 ** 3 + O_n3t[1] * 50 ** 2 + O_n3t[2] * 50 + O_n3t[3],
-                "O(nlog(n))": 50 * math.log(50),
-                "O(n\u207F)": 50 ** 50,
-                "O(n!)": math.factorial(50)
-            }, {
-                "n": 12,
-                "total_runtime": TEST_RESULT_10.total_runtime_ms,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(12),
-                "O(n)": O_nt[0] * 12 + O_nt[1],
-                "O(n\u00B2)": O_n2t[0] * 12 ** 2 + O_n2t[1] * 12 + O_n2t[2],
-                "O(n\u00B3)": O_n3t[0] * 12 ** 3 + O_n3t[1] * 12 ** 2 + O_n3t[2] * 12 + O_n3t[3],
-                "O(nlog(n))": 12 * math.log(12),
-                "O(n\u207F)": 12 ** 12,
-                "O(n!)": math.factorial(12)
-            }],
-            "e2e_memory": [{
-                "n": 1,
-                "total_runtime": TEST_RESULT_1.max_memory_usage_bytes,
-                "O(1)": O_1m[0],
-                "O(log(n))": math.log(1),
-                "O(n)": O_nm[0]*1+O_nm[1],
-                "O(n\u00B2)": O_n2m[0]*1**2+O_n2m[1]*1+O_n2m[2],
-                "O(n\u00B3)": O_n3m[0]*1**3+O_n3m[1]*1**2+O_n3m[2]*1+O_n3m[3],
-                "O(nlog(n))": 1*math.log(1),
-                "O(n\u207F)": 1**1,
-                "O(n!)": math.factorial(1),
-                "memory_usage_by_time": TEST_RESULT_1.memory_usage_by_time
-            }, {
-                "n": 2,
-                "total_runtime": TEST_RESULT_2.max_memory_usage_bytes,
-                "O(1)": O_1m[0],
-                "O(log(n))": math.log(2),
-                "O(n)": O_nm[0]*2+O_nm[1],
-                "O(n\u00B2)": O_n2m[0]*2**2+O_n2m[1]*2+O_n2m[2],
-                "O(n\u00B3)": O_n3m[0]*2**3+O_n3m[1]*2**2+O_n3m[2]*2+O_n3m[3],
-                "O(nlog(n))": 2*math.log(2),
-                "O(n\u207F)": 2**2,
-                "O(n!)": math.factorial(2),
-                "memory_usage_by_time": TEST_RESULT_2.memory_usage_by_time
-            }, {
-                "n": 3,
-                "total_runtime": TEST_RESULT_3.max_memory_usage_bytes,
-                "O(1)": O_1m[0],
-                "O(log(n))": math.log(3),
-                "O(n)": O_nm[0]*3+O_nm[1],
-                "O(n\u00B2)": O_n2m[0]*3**2+O_n2m[1]*3+O_n2m[2],
-                "O(n\u00B3)": O_n3m[0]*3**3+O_n3m[1]*3**2+O_n3m[2]*3+O_n3m[3],
-                "O(nlog(n))": 3*math.log(3),
-                "O(n\u207F)": 3**3,
-                "O(n!)": math.factorial(3),
-                "memory_usage_by_time": TEST_RESULT_3.memory_usage_by_time
-            }, {
-                "n": 10,
-                "total_runtime": TEST_RESULT_4.max_memory_usage_bytes,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(10),
-                "O(n)": O_nt[0] * 10 + O_nt[1],
-                "O(n\u00B2)": O_n2t[0] * 10 ** 2 + O_n2t[1] * 10 + O_n2t[2],
-                "O(n\u00B3)": O_n3t[0] * 10 ** 3 + O_n3t[1] * 10 ** 2 + O_n3t[2] * 10 + O_n3t[3],
-                "O(nlog(n))": 10 * math.log(10),
-                "O(n\u207F)": 10 ** 10,
-                "O(n!)": math.factorial(10),
-                "memory_usage_by_time": TEST_RESULT_4.memory_usage_by_time
-            }, {
-                "n": 5,
-                "total_runtime": TEST_RESULT_5.max_memory_usage_bytes,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(5),
-                "O(n)": O_nt[0] * 5 + O_nt[1],
-                "O(n\u00B2)": O_n2t[0] * 5 ** 2 + O_n2t[1] * 5 + O_n2t[2],
-                "O(n\u00B3)": O_n3t[0] * 5 ** 3 + O_n3t[1] * 5 ** 2 + O_n3t[2] * 5 + O_n3t[3],
-                "O(nlog(n))": 5 * math.log(5),
-                "O(n\u207F)": 5 ** 5,
-                "O(n!)": math.factorial(5),
-                "memory_usage_by_time": TEST_RESULT_5.memory_usage_by_time
-            }, {
-                "n": 20,
-                "total_runtime": TEST_RESULT_6.max_memory_usage_bytes,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(20),
-                "O(n)": O_nt[0] * 20 + O_nt[1],
-                "O(n\u00B2)": O_n2t[0] * 20 ** 2 + O_n2t[1] * 20 + O_n2t[2],
-                "O(n\u00B3)": O_n3t[0] * 20 ** 3 + O_n3t[1] * 20 ** 2 + O_n3t[2] * 20 + O_n3t[3],
-                "O(nlog(n))": 20 * math.log(20),
-                "O(n\u207F)": 20 ** 20,
-                "O(n!)": math.factorial(20),
-                "memory_usage_by_time": TEST_RESULT_6.memory_usage_by_time
-            }, {
-                "n": 9,
-                "total_runtime": TEST_RESULT_7.max_memory_usage_bytes,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(9),
-                "O(n)": O_nt[0] * 9 + O_nt[1],
-                "O(n\u00B2)": O_n2t[0] * 9 ** 2 + O_n2t[1] * 9 + O_n2t[2],
-                "O(n\u00B3)": O_n3t[0] * 9 ** 3 + O_n3t[1] * 9 ** 2 + O_n3t[2] * 9 + O_n3t[3],
-                "O(nlog(n))": 9 * math.log(9),
-                "O(n\u207F)": 9 ** 9,
-                "O(n!)": math.factorial(9),
-                "memory_usage_by_time": TEST_RESULT_7.memory_usage_by_time
-            }, {
-                "n": 15,
-                "total_runtime": TEST_RESULT_8.max_memory_usage_bytes,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(15),
-                "O(n)": O_nt[0] * 15 + O_nt[1],
-                "O(n\u00B2)": O_n2t[0] * 15 ** 2 + O_n2t[1] * 15 + O_n2t[2],
-                "O(n\u00B3)": O_n3t[0] * 15 ** 3 + O_n3t[1] * 15 ** 2 + O_n3t[2] * 15 + O_n3t[3],
-                "O(nlog(n))": 15 * math.log(15),
-                "O(n\u207F)": 15 ** 15,
-                "O(n!)": math.factorial(15),
-                "memory_usage_by_time": TEST_RESULT_8.memory_usage_by_time
-            }, {
-                "n": 50,
-                "total_runtime": TEST_RESULT_9.max_memory_usage_bytes,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(50),
-                "O(n)": O_nt[0] * 50 + O_nt[1],
-                "O(n\u00B2)": O_n2t[0] * 50 ** 2 + O_n2t[1] * 50 + O_n2t[2],
-                "O(n\u00B3)": O_n3t[0] * 50 ** 3 + O_n3t[1] * 50 ** 2 + O_n3t[2] * 50 + O_n3t[3],
-                "O(nlog(n))": 50 * math.log(50),
-                "O(n\u207F)": 50 ** 50,
-                "O(n!)": math.factorial(50),
-                "memory_usage_by_time": TEST_RESULT_9.memory_usage_by_time
-            }, {
-                "n": 12,
-                "total_runtime": TEST_RESULT_10.max_memory_usage_bytes,
-                "O(1)": O_1t[0],
-                "O(log(n))": math.log(12),
-                "O(n)": O_nt[0] * 12 + O_nt[1],
-                "O(n\u00B2)": O_n2t[0] * 12 ** 2 + O_n2t[1] * 12 + O_n2t[2],
-                "O(n\u00B3)": O_n3t[0] * 12 ** 3 + O_n3t[1] * 12 ** 2 + O_n3t[2] * 12 + O_n3t[3],
-                "O(nlog(n))": 12 * math.log(12),
-                "O(n\u207F)": 12 ** 12,
-                "O(n!)": math.factorial(12),
-                "memory_usage_by_time": TEST_RESULT_10.memory_usage_by_time
-            }],
-            "e2e_highest_runtime_function": "getSpeed()",
-            "e2e_highest_memory_usage_function": "getPosition()",
-            "e2e_total_average_time": 1098.9,
-            "e2e_total_average_memory": 17.7,
-            "e2e_time_complexity": "n2",
-            "e2e_space_complexity": "n"
-        }
-    }
-
     e2e_result = {
         1: InputSizeResult(TEST_RESULT_1,[TEST_RESULT_1,TEST_RESULT_2,TEST_RESULT_3]),
         2: InputSizeResult(TEST_RESULT_2,[TEST_RESULT_1,TEST_RESULT_2,TEST_RESULT_3]),
@@ -496,13 +173,376 @@ class TestBuildVisualization:
         20: InputSizeResult(TEST_RESULT_6, [TEST_RESULT_4,TEST_RESULT_5,TEST_RESULT_6]),
         9: InputSizeResult(TEST_RESULT_7, [TEST_RESULT_7,TEST_RESULT_8,TEST_RESULT_9]),
         15: InputSizeResult(TEST_RESULT_8, [TEST_RESULT_4,TEST_RESULT_5,TEST_RESULT_6]),
-        100: InputSizeResult(TEST_RESULT_9, [TEST_RESULT_4,TEST_RESULT_5,TEST_RESULT_6]),
+        50: InputSizeResult(TEST_RESULT_9, [TEST_RESULT_4,TEST_RESULT_5,TEST_RESULT_6]),
         12: InputSizeResult(TEST_RESULT_10, [TEST_RESULT_4,TEST_RESULT_5,TEST_RESULT_6])
     }
     profile_result = {
         "class": [CLASS_OBJECT_1],
         "function": [FUN_OBJECT_1, FUN_OBJECT_2],
         "line_by_line": [LINE_OBJECT_1, LINE_OBJECT_2, LINE_OBJECT_3, LINE_OBJECT_4, LINE_OBJECT_5, LINE_OBJECT_6, LINE_OBJECT_7]
+    }
+
+    fit_data_runtime: FitData = get_reference_fits(e2e_result, True)
+    fit_data_memory: FitData = get_reference_fits(e2e_result, False)
+
+    output = {
+        "script_name": "test.py",
+        "class": {
+            'class_runtime': [{
+              'name': 'test.py/Speedometer',
+              'total_runtime': CLASS_OBJECT_1.total_run_time,
+              'percent_runtime': CLASS_OBJECT_1.time_percentage_of_total
+            }],
+            'class_memory': [{
+                'name': 'test.py/Speedometer',
+                'total_memory': CLASS_OBJECT_1.total_memory,
+                'percent_memory': CLASS_OBJECT_1.memory_percentage_of_total
+            }]},
+        "function": {
+            'function_runtime': [{
+              'name': 'test.py/getSpeed()',
+              'total_runtime': FUN_OBJECT_1.total_run_time,
+              'percent_runtime': FUN_OBJECT_1.time_percentage_of_total
+            }, {
+              'name': 'test.py/getPosition()',
+              'total_runtime': FUN_OBJECT_2.total_run_time,
+              'percent_runtime': FUN_OBJECT_2.time_percentage_of_total
+            }],
+            'function_memory': [{
+              'name': 'test.py/getSpeed()',
+              'total_memory': FUN_OBJECT_1.total_memory,
+              'percent_memory': FUN_OBJECT_1.memory_percentage_of_total
+            }, {
+              'name': 'test.py/getPosition()',
+              'total_memory': FUN_OBJECT_2.total_memory,
+              'percent_memory': FUN_OBJECT_2.memory_percentage_of_total
+            }]},
+        "line_by_line": [{
+            "fileName": LINE_OBJECT_1.filename,
+            "line_num": LINE_OBJECT_1.line_num,
+            "code": LINE_OBJECT_1.line_text,
+            "total_runtime": LINE_OBJECT_1.total_run_time,
+            "total_memory": LINE_OBJECT_1.total_memory,
+            "percent_runtime": LINE_OBJECT_1.time_percentage_of_total,
+            "percent_memory": LINE_OBJECT_1.memory_percentage_of_total
+        }, {
+            "fileName": LINE_OBJECT_2.filename,
+            "line_num": LINE_OBJECT_2.line_num,
+            "code": LINE_OBJECT_2.line_text,
+            "total_runtime": LINE_OBJECT_2.total_run_time,
+            "total_memory": LINE_OBJECT_2.total_memory,
+            "percent_runtime": LINE_OBJECT_2.time_percentage_of_total,
+            "percent_memory": LINE_OBJECT_2.memory_percentage_of_total
+        }, {
+            "fileName": LINE_OBJECT_3.filename,
+            "line_num": LINE_OBJECT_3.line_num,
+            "code": LINE_OBJECT_3.line_text,
+            "total_runtime": LINE_OBJECT_3.total_run_time,
+            "total_memory": LINE_OBJECT_3.total_memory,
+            "percent_runtime": LINE_OBJECT_3.time_percentage_of_total,
+            "percent_memory": LINE_OBJECT_3.memory_percentage_of_total
+        }, {
+            "fileName": LINE_OBJECT_4.filename,
+            "line_num": LINE_OBJECT_4.line_num,
+            "code": LINE_OBJECT_4.line_text,
+            "total_runtime": LINE_OBJECT_4.total_run_time,
+            "total_memory": LINE_OBJECT_4.total_memory,
+            "percent_runtime": LINE_OBJECT_4.time_percentage_of_total,
+            "percent_memory": LINE_OBJECT_4.memory_percentage_of_total
+        }, {
+            "fileName": LINE_OBJECT_5.filename,
+            "line_num": LINE_OBJECT_5.line_num,
+            "code": LINE_OBJECT_5.line_text,
+            "total_runtime": LINE_OBJECT_5.total_run_time,
+            "total_memory": LINE_OBJECT_5.total_memory,
+            "percent_runtime": LINE_OBJECT_5.time_percentage_of_total,
+            "percent_memory": LINE_OBJECT_5.memory_percentage_of_total
+        }, {
+            "fileName": LINE_OBJECT_6.filename,
+            "line_num": LINE_OBJECT_6.line_num,
+            "code": LINE_OBJECT_6.line_text,
+            "total_runtime": LINE_OBJECT_6.total_run_time,
+            "total_memory": LINE_OBJECT_6.total_memory,
+            "percent_runtime": LINE_OBJECT_6.time_percentage_of_total,
+            "percent_memory": LINE_OBJECT_6.memory_percentage_of_total
+        }, {
+            "fileName": LINE_OBJECT_7.filename,
+            "line_num": LINE_OBJECT_7.line_num,
+            "code": LINE_OBJECT_7.line_text,
+            "total_runtime": LINE_OBJECT_7.total_run_time,
+            "total_memory": LINE_OBJECT_7.total_memory,
+            "percent_runtime": LINE_OBJECT_7.time_percentage_of_total,
+            "percent_memory": LINE_OBJECT_7.memory_percentage_of_total
+        }],
+        "e2e": {
+            "e2e_runtime": [{
+                "n": 1,
+                "total_runtime": TEST_RESULT_1.total_runtime_ms,
+                "O(1)": round(fit_data_runtime.O_1[1], 2),
+                "O(log(n))": round(fit_data_runtime.O_logn[1], 2),
+                "O(n)": round(fit_data_runtime.O_n[1], 2),
+                "O(n\u00B2)": round(fit_data_runtime.O_n2[1], 2),
+                "O(n\u00B3)": round(fit_data_runtime.O_n3[1], 2),
+                "O(nlog(n))": round(fit_data_runtime.O_nlogn[1], 2),
+                "O(n\u207F)": round(fit_data_runtime.O_nn[1], 2),
+                "O(n!)": round(fit_data_runtime.O_n_fact[1], 2)
+            }, {
+                "n": 2,
+                "total_runtime": TEST_RESULT_2.total_runtime_ms,
+                "O(1)": round(fit_data_runtime.O_1[2], 2),
+                "O(log(n))": round(fit_data_runtime.O_logn[2], 2),
+                "O(n)": round(fit_data_runtime.O_n[2], 2),
+                "O(n\u00B2)": round(fit_data_runtime.O_n2[2], 2),
+                "O(n\u00B3)": round(fit_data_runtime.O_n3[2], 2),
+                "O(nlog(n))": round(fit_data_runtime.O_nlogn[2], 2),
+                "O(n\u207F)": round(fit_data_runtime.O_nn[2], 2),
+                "O(n!)": round(fit_data_runtime.O_n_fact[2], 2)
+            }, {
+                "n": 3,
+                "total_runtime": TEST_RESULT_3.total_runtime_ms,
+                "O(1)": round(fit_data_runtime.O_1[3], 2),
+                "O(log(n))": round(fit_data_runtime.O_logn[3], 2),
+                "O(n)": round(fit_data_runtime.O_n[3], 2),
+                "O(n\u00B2)": round(fit_data_runtime.O_n2[3], 2),
+                "O(n\u00B3)": round(fit_data_runtime.O_n3[3], 2),
+                "O(nlog(n))": round(fit_data_runtime.O_nlogn[3], 2),
+                "O(n\u207F)": round(fit_data_runtime.O_nn[3], 2),
+                "O(n!)": round(fit_data_runtime.O_n_fact[3], 2)
+            }, {
+                "n": 10,
+                "total_runtime": TEST_RESULT_4.total_runtime_ms,
+                "O(1)": round(fit_data_runtime.O_1[10], 2),
+                "O(log(n))": round(fit_data_runtime.O_logn[10], 2),
+                "O(n)": round(fit_data_runtime.O_n[10], 2),
+                "O(n\u00B2)": round(fit_data_runtime.O_n2[10], 2),
+                "O(n\u00B3)": round(fit_data_runtime.O_n3[10], 2),
+                "O(nlog(n))": round(fit_data_runtime.O_nlogn[10], 2),
+                "O(n\u207F)": round(fit_data_runtime.O_nn[10], 2),
+                "O(n!)": round(fit_data_runtime.O_n_fact[10], 2)
+            }, {
+                "n": 5,
+                "total_runtime": TEST_RESULT_5.total_runtime_ms,
+                "O(1)": round(fit_data_runtime.O_1[5], 2),
+                "O(log(n))": round(fit_data_runtime.O_logn[5], 2),
+                "O(n)": round(fit_data_runtime.O_n[5], 2),
+                "O(n\u00B2)": round(fit_data_runtime.O_n2[5], 2),
+                "O(n\u00B3)": round(fit_data_runtime.O_n3[5], 2),
+                "O(nlog(n))": round(fit_data_runtime.O_nlogn[5], 2),
+                "O(n\u207F)": round(fit_data_runtime.O_nn[5], 2),
+                "O(n!)": round(fit_data_runtime.O_n_fact[5], 2)
+            }, {
+                "n": 20,
+                "total_runtime": TEST_RESULT_6.total_runtime_ms,
+                "O(1)": round(fit_data_runtime.O_1[20], 2),
+                "O(log(n))": round(fit_data_runtime.O_logn[20], 2),
+                "O(n)": round(fit_data_runtime.O_n[20], 2),
+                "O(n\u00B2)": round(fit_data_runtime.O_n2[20], 2),
+                "O(n\u00B3)": round(fit_data_runtime.O_n3[20], 2),
+                "O(nlog(n))": round(fit_data_runtime.O_nlogn[20], 2),
+                "O(n\u207F)": round(fit_data_runtime.O_nn[20], 2),
+                "O(n!)": round(fit_data_runtime.O_n_fact[20], 2)
+            }, {
+                "n": 9,
+                "total_runtime": TEST_RESULT_7.total_runtime_ms,
+                "O(1)": round(fit_data_runtime.O_1[9], 2),
+                "O(log(n))": round(fit_data_runtime.O_logn[9], 2),
+                "O(n)": round(fit_data_runtime.O_n[9], 2),
+                "O(n\u00B2)": round(fit_data_runtime.O_n2[9], 2),
+                "O(n\u00B3)": round(fit_data_runtime.O_n3[9], 2),
+                "O(nlog(n))": round(fit_data_runtime.O_nlogn[9], 2),
+                "O(n\u207F)": round(fit_data_runtime.O_nn[9], 2),
+                "O(n!)": round(fit_data_runtime.O_n_fact[9], 2)
+            }, {
+                "n": 15,
+                "total_runtime": TEST_RESULT_8.total_runtime_ms,
+                "O(1)": round(fit_data_runtime.O_1[15], 2),
+                "O(log(n))": round(fit_data_runtime.O_logn[15], 2),
+                "O(n)": round(fit_data_runtime.O_n[15], 2),
+                "O(n\u00B2)": round(fit_data_runtime.O_n2[15], 2),
+                "O(n\u00B3)": round(fit_data_runtime.O_n3[15], 2),
+                "O(nlog(n))": round(fit_data_runtime.O_nlogn[15], 2),
+                "O(n\u207F)": round(fit_data_runtime.O_nn[15], 2),
+                "O(n!)": round(fit_data_runtime.O_n_fact[15], 2)
+            }, {
+                "n": 50,
+                "total_runtime": TEST_RESULT_9.total_runtime_ms,
+                "O(1)": round(fit_data_runtime.O_1[50], 2),
+                "O(log(n))": round(fit_data_runtime.O_logn[50], 2),
+                "O(n)": round(fit_data_runtime.O_n[50], 2),
+                "O(n\u00B2)": round(fit_data_runtime.O_n2[50], 2),
+                "O(n\u00B3)": round(fit_data_runtime.O_n3[50], 2),
+                "O(nlog(n))": round(fit_data_runtime.O_nlogn[50], 2),
+                "O(n\u207F)": round(fit_data_runtime.O_nn[50], 2),
+                "O(n!)": round(fit_data_runtime.O_n_fact[50], 2),
+                "O(n!)": round(fit_data_runtime.O_n_fact[50], 2)
+            }, {
+                "n": 12,
+                "total_runtime": TEST_RESULT_10.total_runtime_ms,
+                "O(1)": round(fit_data_runtime.O_1[12], 2),
+                "O(log(n))": round(fit_data_runtime.O_logn[12], 2),
+                "O(n)": round(fit_data_runtime.O_n[12], 2),
+                "O(n\u00B2)": round(fit_data_runtime.O_n2[12], 2),
+                "O(n\u00B3)": round(fit_data_runtime.O_n3[12], 2),
+                "O(nlog(n))": round(fit_data_runtime.O_nlogn[12], 2),
+                "O(n\u207F)": round(fit_data_runtime.O_nn[12], 2),
+                "O(n!)": round(fit_data_runtime.O_n_fact[12], 2)
+            }],
+            "e2e_memory": [{
+                "n": 1,
+                "total_memory": TEST_RESULT_1.max_memory_usage_bytes,
+                "O(1)": round(fit_data_memory.O_1[1], 2),
+                "O(log(n))": round(fit_data_memory.O_logn[1], 2),
+                "O(n)": round(fit_data_memory.O_n[1], 2),
+                "O(n\u00B2)": round(fit_data_memory.O_n2[1], 2),
+                "O(n\u00B3)": round(fit_data_memory.O_n3[1], 2),
+                "O(nlog(n))": round(fit_data_memory.O_nlogn[1], 2),
+                "O(n\u207F)": round(fit_data_memory.O_nn[1], 2),
+                "O(n!)": round(fit_data_memory.O_n_fact[1], 2),
+                "memory_usage_by_time": TEST_RESULT_1.memory_usage_by_time
+            }, {
+                "n": 2,
+                "total_memory": TEST_RESULT_2.max_memory_usage_bytes,
+                "O(1)": round(fit_data_memory.O_1[2], 2),
+                "O(log(n))": round(fit_data_memory.O_logn[2], 2),
+                "O(n)": round(fit_data_memory.O_n[2], 2),
+                "O(n\u00B2)": round(fit_data_memory.O_n2[2], 2),
+                "O(n\u00B3)": round(fit_data_memory.O_n3[2], 2),
+                "O(nlog(n))": round(fit_data_memory.O_nlogn[2], 2),
+                "O(n\u207F)": round(fit_data_memory.O_nn[2], 2),
+                "O(n!)": round(fit_data_memory.O_n_fact[2], 2),
+                "memory_usage_by_time": TEST_RESULT_2.memory_usage_by_time
+            }, {
+                "n": 3,
+                "total_memory": TEST_RESULT_3.max_memory_usage_bytes,
+                "O(1)": round(fit_data_memory.O_1[3], 2),
+                "O(log(n))": round(fit_data_memory.O_logn[3], 2),
+                "O(n)": round(fit_data_memory.O_n[3], 2),
+                "O(n\u00B2)": round(fit_data_memory.O_n2[3], 2),
+                "O(n\u00B3)": round(fit_data_memory.O_n3[3], 2),
+                "O(nlog(n))": round(fit_data_memory.O_nlogn[3], 2),
+                "O(n\u207F)": round(fit_data_memory.O_nn[3], 2),
+                "O(n!)": round(fit_data_memory.O_n_fact[3], 2),
+                "memory_usage_by_time": TEST_RESULT_3.memory_usage_by_time
+            }, {
+                "n": 10,
+                "total_memory": TEST_RESULT_4.max_memory_usage_bytes,
+                "O(1)": round(fit_data_memory.O_1[10], 2),
+                "O(log(n))": round(fit_data_memory.O_logn[10], 2),
+                "O(n)": round(fit_data_memory.O_n[10], 2),
+                "O(n\u00B2)": round(fit_data_memory.O_n2[10], 2),
+                "O(n\u00B3)": round(fit_data_memory.O_n3[10], 2),
+                "O(nlog(n))": round(fit_data_memory.O_nlogn[10], 2),
+                "O(n\u207F)": round(fit_data_memory.O_nn[10], 2),
+                "O(n!)": round(fit_data_memory.O_n_fact[10], 2),
+                "memory_usage_by_time": TEST_RESULT_4.memory_usage_by_time
+            }, {
+                "n": 5,
+                "total_memory": TEST_RESULT_5.max_memory_usage_bytes,
+                "O(1)": round(fit_data_memory.O_1[5], 2),
+                "O(log(n))": round(fit_data_memory.O_logn[5], 2),
+                "O(n)": round(fit_data_memory.O_n[5], 2),
+                "O(n\u00B2)": round(fit_data_memory.O_n2[5], 2),
+                "O(n\u00B3)": round(fit_data_memory.O_n3[5], 2),
+                "O(nlog(n))": round(fit_data_memory.O_nlogn[5], 2),
+                "O(n\u207F)": round(fit_data_memory.O_nn[5], 2),
+                "O(n!)": round(fit_data_memory.O_n_fact[5], 2),
+                "memory_usage_by_time": TEST_RESULT_5.memory_usage_by_time
+            }, {
+                "n": 20,
+                "total_memory": TEST_RESULT_6.max_memory_usage_bytes,
+                "O(1)": round(fit_data_memory.O_1[20], 2),
+                "O(log(n))": round(fit_data_memory.O_logn[20], 2),
+                "O(n)": round(fit_data_memory.O_n[20], 2),
+                "O(n\u00B2)": round(fit_data_memory.O_n2[20], 2),
+                "O(n\u00B3)": round(fit_data_memory.O_n3[20], 2),
+                "O(nlog(n))": round(fit_data_memory.O_nlogn[20], 2),
+                "O(n\u207F)": round(fit_data_memory.O_nn[20], 2),
+                "O(n!)": round(fit_data_memory.O_n_fact[20], 2),
+                "memory_usage_by_time": TEST_RESULT_6.memory_usage_by_time
+            }, {
+                "n": 9,
+                "total_memory": TEST_RESULT_7.max_memory_usage_bytes,
+                "O(1)": round(fit_data_memory.O_1[9], 2),
+                "O(log(n))": round(fit_data_memory.O_logn[9], 2),
+                "O(n)": round(fit_data_memory.O_n[9], 2),
+                "O(n\u00B2)": round(fit_data_memory.O_n2[9], 2),
+                "O(n\u00B3)": round(fit_data_memory.O_n3[9], 2),
+                "O(nlog(n))": round(fit_data_memory.O_nlogn[9], 2),
+                "O(n\u207F)": round(fit_data_memory.O_nn[9], 2),
+                "O(n!)": round(fit_data_memory.O_n_fact[9], 2),
+                "memory_usage_by_time": TEST_RESULT_7.memory_usage_by_time
+            }, {
+                "n": 15,
+                "total_memory": TEST_RESULT_8.max_memory_usage_bytes,
+                "O(1)": round(fit_data_memory.O_1[15], 2),
+                "O(log(n))": round(fit_data_memory.O_logn[15], 2),
+                "O(n)": round(fit_data_memory.O_n[15], 2),
+                "O(n\u00B2)": round(fit_data_memory.O_n2[15], 2),
+                "O(n\u00B3)": round(fit_data_memory.O_n3[15], 2),
+                "O(nlog(n))": round(fit_data_memory.O_nlogn[15], 2),
+                "O(n\u207F)": round(fit_data_memory.O_nn[15], 2),
+                "O(n!)": round(fit_data_memory.O_n_fact[15], 2),
+                "memory_usage_by_time": TEST_RESULT_8.memory_usage_by_time
+            }, {
+                "n": 50,
+                "total_memory": TEST_RESULT_9.max_memory_usage_bytes,
+                "O(1)": round(fit_data_memory.O_1[50], 2),
+                "O(log(n))": round(fit_data_memory.O_logn[50], 2),
+                "O(n)": round(fit_data_memory.O_n[50], 2),
+                "O(n\u00B2)": round(fit_data_memory.O_n2[50], 2),
+                "O(n\u00B3)": round(fit_data_memory.O_n3[50], 2),
+                "O(nlog(n))": round(fit_data_memory.O_nlogn[50], 2),
+                "O(n\u207F)": round(fit_data_memory.O_nn[50], 2),
+                "O(n!)": round(fit_data_memory.O_n_fact[50], 2),
+                "memory_usage_by_time": TEST_RESULT_9.memory_usage_by_time
+            }, {
+                "n": 12,
+                "total_memory": TEST_RESULT_10.max_memory_usage_bytes,
+                "O(1)": round(fit_data_memory.O_1[12], 2),
+                "O(log(n))": round(fit_data_memory.O_logn[12], 2),
+                "O(n)": round(fit_data_memory.O_n[12], 2),
+                "O(n\u00B2)": round(fit_data_memory.O_n2[12], 2),
+                "O(n\u00B3)": round(fit_data_memory.O_n3[12], 2),
+                "O(nlog(n))": round(fit_data_memory.O_nlogn[12], 2),
+                "O(n\u207F)": round(fit_data_memory.O_nn[12], 2),
+                "O(n!)": round(fit_data_memory.O_n_fact[12], 2),
+                "memory_usage_by_time": TEST_RESULT_10.memory_usage_by_time
+            }],
+            "e2e_highest_runtime_function": "getSpeed()",
+            "e2e_highest_memory_usage_function": "getPosition()",
+            "e2e_total_average_time": 348.9,
+            "e2e_total_average_memory": 12.7,
+            "e2e_time_complexity": "n2",
+            "e2e_space_complexity": "n"
+        },
+        "sankey": {
+            "sankey_runtime": {
+                "nodes": [
+                    {"name": "test.py"},
+                    {"name": "Speedometer"},
+                    {"name": "getSpeed()"},
+                    {"name": "getPosition()"},
+                ],
+                "links": [
+                    {"source": 0, "target": 1, "value": 46.52},
+                    {"source": 1, "target": 2, "value": 23.44},
+                    {"source": 1, "target": 3, "value": 23.08},
+                ]
+            },
+            "sankey_memory": {
+                "nodes": [
+                    {"name": "test.py"},
+                    {"name": "Speedometer"},
+                    {"name": "getSpeed()"},
+                    {"name": "getPosition()"},
+                ],
+                "links": [
+                    {"source": 0, "target": 1, "value": 3.2},
+                    {"source": 1, "target": 2, "value": 1.0},
+                    {"source": 1, "target": 3, "value": 2.2},
+                ]
+            }
+        }
     }
 
     # @pytest.fixture(autouse=True)
@@ -514,40 +554,52 @@ class TestBuildVisualization:
 
     def compare_object(self, obj1: dict, obj2: dict) -> bool:
         if len(obj1.keys()) != len(obj2.keys()):
+            print("Len Obj: ", obj1.keys(), obj2.keys())
             return False
         for k in obj1:
-            if obj1[k] is dict:
-                if obj2[k] is dict:
+            if isinstance(obj1[k], dict):
+                if isinstance(obj2[k], dict):
                     if not self.compare_object(obj1[k], obj2[k]):
                         return False
                 else:
+                    print("Compare Obj: ", k, obj1[k], obj2[k], obj1, obj2)
                     return False
-            if obj1[k] is list:
-                if obj2[k] is list:
-                    if not self.compare_arrays(obj1[k], obj2[k]):
+            else:
+                if isinstance(obj1[k], list):
+                    if isinstance(obj2[k], list):
+                        if not self.compare_arrays(obj1[k], obj2[k]):
+                            return False
+                    else:
+                        print("Compare Obj2: ", k, obj1[k], obj2[k], obj1, obj2)
                         return False
                 else:
-                    return False
-            if not obj1[k] == obj2[k]:
-                return False
+                    if not obj1[k] == obj2[k]:
+                        print("Obj Eq: ", k, obj1[k], obj2[k], obj1, obj2)
+                        return False
         return True
 
     def compare_arrays(self, obj1: list, obj2: list) -> bool:
         if len(obj1) != len(obj2):
+            print("Len list: ", obj1, obj2)
             return False
         for k in range(len(obj1)):
-            if obj1[k] is dict:
-                if obj2[k] is dict:
+            if isinstance(obj1[k], dict):
+                if isinstance(obj2[k], dict):
                     if not self.compare_object(obj1[k], obj2[k]):
                         return False
                 else:
+                    print("Compare List: ", k, obj1[k], obj2[k], obj1, obj2)
                     return False
-            if obj1[k] is list:
-                if obj2[k] is list:
-                    if not self.compare_arrays(obj1[k], obj2[k]):
+            else:
+                if isinstance(obj1[k], list):
+                    if isinstance(obj2[k], list):
+                        if not self.compare_arrays(obj1[k], obj2[k]):
+                            return False
+                    else:
+                        print("Compare List2: ", k, obj1[k], obj2[k], obj1, obj2)
                         return False
                 else:
-                    return False
-            if not obj1[k] == obj2[k]:
-                return False
+                    if not obj1[k] == obj2[k]:
+                        print("List Eq: ", k, obj1[k], obj2[k], obj1, obj2)
+                        return False
         return True
