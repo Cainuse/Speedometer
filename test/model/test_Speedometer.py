@@ -513,7 +513,7 @@ class TestBuildVisualization:
             "e2e_total_average_time": 348.9,
             "e2e_total_average_memory": 12.7,
             "e2e_time_complexity": "n2",
-            "e2e_space_complexity": "n"
+            "e2e_space_complexity": "n3"
         },
         "sankey": {
             "sankey_runtime": {
@@ -524,9 +524,9 @@ class TestBuildVisualization:
                     {"name": "getPosition()"},
                 ],
                 "links": [
-                    {"source": 0, "target": 1, "value": 46.52},
-                    {"source": 1, "target": 2, "value": 23.44},
-                    {"source": 1, "target": 3, "value": 23.08},
+                    {"source": 0, "target": 1, "value": 100},
+                    {"source": 1, "target": 2, "value": 50.39},
+                    {"source": 1, "target": 3, "value": 49.61},
                 ]
             },
             "sankey_memory": {
@@ -537,9 +537,9 @@ class TestBuildVisualization:
                     {"name": "getPosition()"},
                 ],
                 "links": [
-                    {"source": 0, "target": 1, "value": 3.2},
-                    {"source": 1, "target": 2, "value": 1.0},
-                    {"source": 1, "target": 3, "value": 2.2},
+                    {"source": 0, "target": 1, "value": 100},
+                    {"source": 1, "target": 2, "value": 31.25},
+                    {"source": 1, "target": 3, "value": 68.75},
                 ]
             }
         }
