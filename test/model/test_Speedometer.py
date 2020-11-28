@@ -513,7 +513,7 @@ class TestBuildVisualization:
             "e2e_total_average_time": 348.9,
             "e2e_total_average_memory": 12.7,
             "e2e_time_complexity": "n2",
-            "e2e_space_complexity": "n3"
+            "e2e_space_complexity": "n"
         },
         "sankey": {
             "sankey_runtime": {
