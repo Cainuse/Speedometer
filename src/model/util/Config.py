@@ -7,12 +7,14 @@ class Config:
     ARGS_PROP = "arguments"
 
     args: Dict[int, List[str]]
+    path: str
 
     def __init__(self, config_file_path):
         """
         Inits a Config class object
         :param config_file_path: path to the config file
         """
+        self.path = config_file_path
         string_data = self._get_file_as_str(config_file_path)
         json_data = json.loads(string_data)
         self.args = self._parse_args(json_data)
@@ -43,11 +45,6 @@ class Config:
         :return: data as string
         :raises Exception: if file does not exist or there is an error reading the file
         """
-        if not os.path.exists(path):
-            raise Exception("Cannot read {}. The path does not exist.".format(path))
-        if not os.path.isfile(path):
-            raise Exception("Cannot read {}. The is not a file.".format(path))
-
         try:
             with open(path, "r") as file:
                 return file.read()
