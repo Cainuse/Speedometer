@@ -63,6 +63,8 @@ def get_o_1_data(x_values: List[int], y_values: List[float]) -> Dict[int, int]:
 
 def get_o_logn_data(x_values: List[int], y_values: List[float]) -> Dict[int, int]:
     log_x_values = numpy.log(x_values)
+    if max(log_x_values) > 10**12:
+        return {x: -1 for x in range(min(x_values), max(x_values) + 1)}
     f = get_polyfit_function(log_x_values, y_values, 1)
     min_x = min(x_values)
     max_x = max(x_values)
@@ -86,6 +88,8 @@ def get_o_nlogn_data(x_values: List[int], y_values: List[float]) -> Dict[int, in
         return x * numpy.log(x)
 
     x_log_x_values = [x_log_x(x) for x in x_values]
+    if max(x_log_x_values) > 10**12:
+        return {x: -1 for x in range(min(x_values), max(x_values) + 1)}
     f = get_polyfit_function(x_log_x_values, y_values, 1)
     min_x = min(x_values)
     max_x = max(x_values)
@@ -97,6 +101,8 @@ def get_o_nn_data(x_values: List[int], y_values: List[float]) -> Dict[int, int]:
         return math.pow(x, x)
 
     x_to_the_x_values = [x_to_the_x(x) for x in x_values]
+    if max(x_to_the_x_values) > 10**12:
+        return {x: -1 for x in range(min(x_values), max(x_values) + 1)}
     f = get_polyfit_function(x_to_the_x_values, y_values, 1)
     min_x = min(x_values)
     max_x = max(x_values)
@@ -108,6 +114,8 @@ def get_o_n_fact_data(x_values: List[int], y_values: List[float]) -> Dict[int, i
         return math.factorial(x)
 
     x_fact_values = [x_fact(x) for x in x_values]
+    if max(x_fact_values) > 10**12:
+        return {x: -1 for x in range(min(x_values), max(x_values) + 1)}
     f = get_polyfit_function(x_fact_values, y_values, 1)
     min_x = min(x_values)
     max_x = max(x_values)
