@@ -91,28 +91,28 @@ def build_visualization(program_file_path, profiler_results, e2e_results: Dict[i
     for i in e2e_results:
         e2e_runtime.append({
             "n": str(i),
-            "total_runtime": e2e_results[i].average.total_runtime_ms,
-            "O(1)": fit_data_runtime.O_1[i],
-            "O(log(n))": fit_data_runtime.O_logn[i],
-            "O(n)": fit_data_runtime.O_n[i],
-            "O(n\u00B2)": fit_data_runtime.O_n2[i],
-            "O(n\u00B3)": fit_data_runtime.O_n3[i],
-            "O(nlog(n))": fit_data_runtime.O_nlogn[i],
-            "O(n\u207F)": fit_data_runtime.O_nn[i],
-            "O(n!)": fit_data_runtime.O_n_fact[i]
+            "total_runtime": round(e2e_results[i].average.total_runtime_ms, 2),
+            "O(1)": round(fit_data_runtime.O_1[i], 2),
+            "O(log(n))": round(fit_data_runtime.O_logn[i], 2),
+            "O(n)": round(fit_data_runtime.O_n[i], 2),
+            "O(n\u00B2)": round(fit_data_runtime.O_n2[i], 2),
+            "O(n\u00B3)": round(fit_data_runtime.O_n3[i], 2),
+            "O(nlog(n))": round(fit_data_runtime.O_nlogn[i], 2),
+            "O(n\u207F)": round(fit_data_runtime.O_nn[i], 2),
+            "O(n!)": round(fit_data_runtime.O_n_fact[i], 2)
         })
         total_runtime_points.append(e2e_results[i].average.total_runtime_ms)
         e2e_memory.append({
             "n": str(i),
-            "total_memory": e2e_results[i].average.max_memory_usage_bytes,
-            "O(1)": fit_data_memory.O_1[i],
-            "O(log(n))": fit_data_memory.O_logn[i],
-            "O(n)": fit_data_memory.O_n[i],
-            "O(n\u00B2)": fit_data_memory.O_n2[i],
-            "O(n\u00B3)": fit_data_memory.O_n3[i],
-            "O(nlog(n))": fit_data_memory.O_nlogn[i],
-            "O(n\u207F)": fit_data_memory.O_nn[i],
-            "O(n!)": fit_data_memory.O_n_fact[i],
+            "total_memory": round(e2e_results[i].average.max_memory_usage_bytes, 2),
+            "O(1)": round(fit_data_memory.O_1[i], 2),
+            "O(log(n))": round(fit_data_memory.O_logn[i], 2),
+            "O(n)": round(fit_data_memory.O_n[i], 2),
+            "O(n\u00B2)": round(fit_data_memory.O_n2[i], 2),
+            "O(n\u00B3)": round(fit_data_memory.O_n3[i], 2),
+            "O(nlog(n))": round(fit_data_memory.O_nlogn[i], 2),
+            "O(n\u207F)": round(fit_data_memory.O_nn[i], 2),
+            "O(n!)": round(fit_data_memory.O_n_fact[i], 2),
             "memory_usage_by_time": e2e_results[i].average.memory_usage_by_time
         })
         total_memory_points.append(e2e_results[i].average.max_memory_usage_bytes)
@@ -121,8 +121,8 @@ def build_visualization(program_file_path, profiler_results, e2e_results: Dict[i
     e2e_object["e2e_memory"] = e2e_memory
     e2e_object["e2e_highest_runtime_function"] = max_fun_runtime_name
     e2e_object["e2e_highest_memory_usage_function"] = max_fun_memory_name
-    e2e_object["e2e_total_average_time"] = sum(total_runtime_points) / len(e2e_runtime)
-    e2e_object["e2e_total_average_memory"] = sum(total_memory_points) / len(e2e_memory)
+    e2e_object["e2e_total_average_time"] = round(sum(total_runtime_points) / len(e2e_runtime), 2)
+    e2e_object["e2e_total_average_memory"] = round(sum(total_memory_points) / len(e2e_memory), 2)
     e2e_object["e2e_time_complexity"] = find_O_fit(fit_data_runtime, total_runtime_points)
     e2e_object["e2e_space_complexity"] = find_O_fit(fit_data_memory, total_memory_points)
     output["e2e"] = e2e_object

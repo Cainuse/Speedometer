@@ -60,4 +60,6 @@ def least_squares(data_y, fit_y) -> float:
     ls_sum = 0.0
     for i in range(len(data_y)):
         ls_sum += (data_y[i] - fit_y[i]) ** 2
+        if ls_sum > 1.0e+20:
+            break
     return ls_sum
