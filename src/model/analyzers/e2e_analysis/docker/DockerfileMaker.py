@@ -6,23 +6,37 @@ from src.model.analyzers.e2e_analysis.docker import DockerUtil
 
 CURRENT_DIR_PATH = os.path.dirname(os.path.abspath(__file__))
 GENERATED_DOCKERFILES_PATH = path.abspath(path.join(CURRENT_DIR_PATH, "generated_dockerfiles"))
-TEMPLATE_PATH = path.abspath(path.join(CURRENT_DIR_PATH, "DockerfileTemplate"))
+PYTHON_TEMPLATE_PATH = path.abspath(path.join(CURRENT_DIR_PATH, "PythonDockerfileTemplate"))
+SCALENE_TEMPLATE_PATH = path.abspath(path.join(CURRENT_DIR_PATH, "ScaleneDockerfileTemplate"))
 
 
-def build_dockerfile(program_file_path: str, program_args: list) -> str:
+def build_python_dockerfile(program_file_path: str, program_args: list) -> str:
     """
     Creates a Dockerfile to test the given program with the given command
     :param program_file_path: **absolute** path to python program that will be run
     :param program_args: arguments to pass the python program
     :return: the path for the generated Dockerfile
     """
-    dockerfile_contents = _load_template_dockerfile()
 
-    program_file_name = path.basename(program_file_path)  # includes ".py"
-    dockerfile_contents = _dockerfile_append_copy(dockerfile_contents, program_file_name, ".")
-
+    program_file_name = path.basename(program_file_path)
     command = ["python", program_file_name]
     command.extend(program_args)
+    return build_dockerfile(PYTHON_TEMPLATE_PATH, program_file_path, command)
+
+
+def build_scalene_dockerfile(program_file_path: str, program_args: list) -> str:
+    program_file_name = path.basename(program_file_path)
+    command = ["scalene", program_file_name]
+    command.extend(program_args)
+    return build_dockerfile(SCALENE_TEMPLATE_PATH, program_file_path, command)
+
+
+def build_dockerfile(template_path: str, program_file_path: str, command: list) -> str:
+    dockerfile_contents = _load_template_dockerfile(template_path)
+
+    program_file_name = path.basename(program_file_path)
+    dockerfile_contents = _dockerfile_append_copy(dockerfile_contents, program_file_name, ".")
+
     dockerfile_contents = _dockerfile_append_cmd(dockerfile_contents, command)
 
     random_folder_name = _get_random_folder_name()
@@ -90,11 +104,11 @@ def _dockerfile_append_copy(dockerfile: str, target: str, destination: str) -> s
     return dockerfile + "\nCOPY {target} {destination}".format(target=target, destination=destination)
 
 
-def _load_template_dockerfile() -> str:
+def _load_template_dockerfile(path: str) -> str:
     """
     :return: template dockerfile as string
     """
-    with open(TEMPLATE_PATH, "r+") as file:
+    with open(path, "r+") as file:
         return file.read()
 
 

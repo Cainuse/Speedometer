@@ -6,6 +6,8 @@ from typing import Dict
 import docker
 import time as Time
 
+from docker.models.containers import ContainerCollection, Container
+
 from src.model.analyzers.e2e_analysis.result_types.TestResult import TestResult
 
 DOCKER_CLIENT = docker.from_env()
@@ -19,8 +21,7 @@ def run_and_inspect_docker_image(docker_image_name: str) -> TestResult:
     :return: TestResult containing total running time, maximum memory usage and memory usage by time
     """
 
-    docker_image = DOCKER_CLIENT.images.get(docker_image_name)
-    docker_container = DOCKER_CLIENT.containers.create(docker_image)
+    docker_container = create_docker_container(docker_image_name)
 
     watcher_results = _create_watchers(docker_container)
     docker_container.start()
@@ -38,6 +39,11 @@ def run_and_inspect_docker_image(docker_image_name: str) -> TestResult:
     result = TestResult(total_ms, max_mem_usage, mem_use_by_time)
     docker_container.remove()
     return result
+
+
+def create_docker_container(docker_image_name: str, command=None) -> Container:
+    docker_image = DOCKER_CLIENT.images.get(docker_image_name)
+    return DOCKER_CLIENT.containers.create(docker_image, command=command)
 
 
 def _parse_watcher_results(watcher_results) -> (Dict[int, float], float):

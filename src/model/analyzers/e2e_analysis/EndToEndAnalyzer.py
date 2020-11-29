@@ -3,7 +3,7 @@ from typing import List, Dict
 from src.model.util.Config import Config
 from src.model.analyzers.e2e_analysis.docker.DockerImageBuilder import build_docker_image, delete_all_docker_images
 from src.model.analyzers.e2e_analysis.docker.DockerContainerRunner import run_and_inspect_docker_image
-from src.model.analyzers.e2e_analysis.docker.DockerfileMaker import build_dockerfile
+from src.model.analyzers.e2e_analysis.docker.DockerfileMaker import build_python_dockerfile
 from src.model.analyzers.e2e_analysis.result_types.InputSizeResult import InputSizeResult
 from src.model.analyzers.e2e_analysis.result_types.TestResult import TestResult
 from src.model.util.Logger import debug
@@ -112,4 +112,4 @@ class EndToEndAnalyzer:
         :param config: user provided config
         :return: path to generated dockerfile
         """
-        return build_dockerfile(program_file_path, config.get_args_for(input_size))
+        return build_python_dockerfile(program_file_path, config.get_args_for(input_size))
