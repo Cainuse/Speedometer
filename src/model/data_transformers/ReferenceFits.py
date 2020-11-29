@@ -4,6 +4,7 @@ import math
 import numpy
 
 from numpy import poly1d
+from numpy.polynomial import polynomial as poly
 
 from src.model.analyzers.e2e_analysis.result_types.InputSizeResult import InputSizeResult
 
@@ -130,5 +131,5 @@ def get_polyfit(x_values: List[int], y_values: List[float], deg: int) -> Dict[in
 
 
 def get_polyfit_function(x_values: List[float], y_values: List[float], deg: int) -> poly1d:
-    coefficients = numpy.polyfit(x_values, y_values, deg=deg)
+    coefficients = poly.polyfit(x_values, y_values, deg=[deg, 0])
     return numpy.poly1d(coefficients)
