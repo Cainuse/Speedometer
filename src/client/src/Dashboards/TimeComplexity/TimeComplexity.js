@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { Box, Typography } from "@material-ui/core";
-import ComplexityTimeLine from "../Visualizations/TimeLine/ComplexityTimeLine";
 import FunctionsPieChart from "../Visualizations/Pie/FunctionsPieChart";
 import ComposedBarChart from "../Visualizations/Bar/ComposedBarChart";
 import ScriptSankeyChart from "../Visualizations/Sankey/ScriptSankeyChart";
