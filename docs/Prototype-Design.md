@@ -27,11 +27,11 @@ This file contains commands that will run the `unknownComplexity.py` with differ
 ```json
 {
     "input_size": {
-        "1": "python unknownComplexity.py \"a file name\" 1",
-        "10": "python unknownComplexity.py \"a file name\" 10",
-        "100": "python unknownComplexity.py \"a file name\" 100",
-        "1000": "python unknownComplexity.py \"a file name\" 1000",
-        "10000": "python unknownComplexity.py \"a file name\" 10000",
+        "1": ["a file name", 1],
+        "10": ["a file name", 10],
+        "100": ["a file name", 100],
+        "1000": ["a file name", 1000],
+        "10000": ["a file name", 10000],
     }
 }
 ```
