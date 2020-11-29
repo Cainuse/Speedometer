@@ -121,6 +121,7 @@ class ProfileAnalyzer:
         debug("Starting scalene run")
         debug("Scalene command used = {}".format(command))
         output = check_output(command, encoding='UTF-8', cwd=os.path.abspath(program_file_dir))
+        debug(output)
         debug("Parsing output")
         self.parseOutput(output)
         

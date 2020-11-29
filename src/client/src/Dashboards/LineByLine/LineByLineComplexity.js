@@ -64,7 +64,7 @@ const LineByLineComplexity = ({ dataset }) => {
     return (
       <SyntaxHighlighter
         language="python"
-        children={codeSnippet}
+        children={codeSnippet === "" ? " " : codeSnippet}
         showLineNumbers={true}
         startingLineNumber={lineNum}
         wrapLongLines={true}
