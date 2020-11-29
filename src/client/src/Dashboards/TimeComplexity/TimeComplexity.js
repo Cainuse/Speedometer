@@ -36,45 +36,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const timeline_data = [
-  {
-    time: "00:00",
-    fn: "foo()",
-  },
-  {
-    time: "00:05",
-    fn: "bar()",
-  },
-  {
-    time: "00:10",
-    fn: "bla1()",
-  },
-  {
-    time: "00:15",
-    fn: "bla2()",
-  },
-  {
-    time: "00:20",
-    fn: "bla3()",
-  },
-  {
-    time: "00:25",
-    fn: "bla4()",
-  },
-  {
-    time: "00:30",
-    fn: "bla5()",
-  },
-  {
-    time: "00:40",
-    fn: "bla6()",
-  },
-  {
-    time: "00:59",
-    fn: "bla7()",
-  },
-];
-
 const fnDataY = "total_runtime";
 
 const TimeComplexity = ({ dataset }) => {

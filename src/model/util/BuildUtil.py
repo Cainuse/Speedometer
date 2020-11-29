@@ -12,7 +12,6 @@ def package_visualization_and_open() -> None:
     Run out-dated build folder removal, build react client,
     move build files to dist folder, and run the generated html file in that order
     """
-    print(CURRENT_DIR)
     _clean_up()
     _build_client()
     dst = _move_build_files()

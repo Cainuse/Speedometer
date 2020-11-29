@@ -41,6 +41,15 @@ export default class PerfLineChart extends PureComponent {
     return yTypes;
   }
 
+  getMaxScriptTime(data) {
+    return Math.max.apply(
+      Math,
+      data.map((o) => {
+        return o.total_runtime;
+      })
+    );
+  }
+
   getLineColours(data) {
     let lineColours = {};
     this.getYTypes(data).forEach((yType) => {
