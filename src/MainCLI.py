@@ -111,6 +111,7 @@ def main():
         Logger.set_stage("PROGRAM ERROR")
         Logger.debug("Error analyzing program", force=True)
         Logger.debug("Full Stack Trace - " + str(e), force=True)
+        raise e
 
 
 if __name__ == "__main__":

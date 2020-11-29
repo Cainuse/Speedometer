@@ -126,7 +126,9 @@ class ProfileAnalyzer:
         debug("Starting the scalene docker container")
         container.start()
         container.wait()
-        return bytes(container.logs()).decode('UTF-8')
+        output =  bytes(container.logs()).decode('UTF-8')
+        container.stop()
+        return output
 
         
     def parseOutput(self,output:str):
@@ -300,10 +302,10 @@ class ProfileAnalyzer:
         Helper function for calculating time from Scalene output
         :param header: Scalene output line that includes filename, total time, and % of time for file
         """
-        timeString = header.split(": % of time = ")[1]
-        timeSplit = timeString.split("% out of   ")
+        timeString = header.split(": % of time =")[1]
+        timeSplit = timeString.split("% out of")
         timeSplit[1] = timeSplit[1].replace("s.", "")
-        return float(timeSplit[0]) / 100 * float(timeSplit[1])
+        return float(timeSplit[0].strip()) / 100 * float(timeSplit[1].strip())
 
 
     def get_results(self) -> dict:

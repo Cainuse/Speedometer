@@ -44,18 +44,15 @@ def _build_client() -> None:
 
     try:
         debug("Installing yarn dependencies for visualization")
-        process = subprocess.Popen(
-            ["yarn", "install"], cwd=CLIENT_SRC)  # TODO: PIPE if debug is off
+        debug(CLIENT_SRC)
+        process = subprocess.Popen(["yarn", "install"], cwd=CLIENT_SRC)  # TODO: PIPE if debug is off
         process.wait()
         debug("Compiling visualization code")
-        build_output = subprocess.check_output(["yarn", "build"],
-                                               cwd=CLIENT_SRC).decode("utf-8")
+        build_output = subprocess.check_output(["yarn", "build"], cwd=CLIENT_SRC).decode("utf-8")
         if yarn_build_succ_msg not in build_output:
             raise Exception("An error occurred while building client")
     except Exception as e:
-        raise Exception(
-            "Could not build visualization. Ensure you have the latest version of yarn installed.",
-            e)
+        raise Exception("Could not build visualization. Ensure you have the latest version of yarn installed.", e)
 
 
 def _move_build_files() -> str:
