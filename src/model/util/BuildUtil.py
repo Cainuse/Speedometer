@@ -4,7 +4,7 @@ import os
 import subprocess
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_PATH = os.path.abspath(os.path.join(CURRENT_DIR, "..", ".."))
+PROJECT_PATH = os.path.abspath(os.path.join(CURRENT_DIR, "..", "..", ".."))
 
 
 def package_visualization_and_open() -> None:
@@ -12,6 +12,7 @@ def package_visualization_and_open() -> None:
     Run out-dated build folder removal, build react client,
     move build files to dist folder, and run the generated html file in that order
     """
+    print(CURRENT_DIR)
     _clean_up()
     _build_client()
     dst = _move_build_files()

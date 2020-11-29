@@ -1,1 +1,218 @@
-{"script_name": "test.py", "class": {"class_runtime": [{"name": "test.py/Speedometer", "total_runtime": 46.52, "percent_runtime": 100}], "class_memory": [{"name": "test.py/Speedometer", "total_memory": 3.2, "percent_memory": 100}]}, "function": {"function_runtime": [{"name": "test.py/getSpeed()", "total_runtime": 23.44, "percent_runtime": 50.39}, {"name": "test.py/getPosition()", "total_runtime": 23.08, "percent_runtime": 49.61}], "function_memory": [{"name": "test.py/getSpeed()", "total_memory": 1.0, "percent_memory": 31.25}, {"name": "test.py/getPosition()", "total_memory": 2.2, "percent_memory": 68.75}]}, "line_by_line": [{"fileName": "test.py", "line_num": 1, "code": "class Speedometer:", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0.0, "percent_memory": -1}, {"fileName": "test.py", "line_num": 2, "code": "   def getSpeed():", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0.0, "percent_memory": -1}, {"fileName": "test.py", "line_num": 3, "code": "      do lots of things", "total_runtime": 22.24, "total_memory": 0.5, "percent_runtime": 47.81, "percent_memory": -1}, {"fileName": "test.py", "line_num": 4, "code": "      if some condition:", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0.0, "percent_memory": -1}, {"fileName": "test.py", "line_num": 5, "code": "          conditional statement", "total_runtime": 1.2, "total_memory": 0.5, "percent_runtime": 2.58, "percent_memory": -1}, {"fileName": "test.py", "line_num": 6, "code": "   def getPosition():", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0.0, "percent_memory": -1}, {"fileName": "test.py", "line_num": 7, "code": "       print(position)", "total_runtime": 23.08, "total_memory": 2.2, "percent_runtime": 49.61, "percent_memory": -1}], "e2e": {"e2e_runtime": [{"n": 1, "total_runtime": 1, "O(1)": 1, "O(log(n))": 445.39, "O(n)": -247.81, "O(n\u00b2)": 1.0, "O(n\u00b3)": 75.94, "O(nlog(n))": 12.89, "O(n\u207f)": -1, "O(n!)": -1}, {"n": 2, "total_runtime": 4, "O(1)": 1, "O(log(n))": 69.73, "O(n)": -546.62, "O(n\u00b2)": 1.0, "O(n\u00b3)": 607.35, "O(nlog(n))": -185.1, "O(n\u207f)": -1, "O(n!)": -1}, {"n": 3, "total_runtime": 9, "O(1)": 1, "O(log(n))": -150.01, "O(n)": -845.43, "O(n\u00b2)": 1.0, "O(n\u00b3)": 2049.76, "O(nlog(n))": -457.82, "O(n\u207f)": -1, "O(n!)": -1}, {"n": 10, "total_runtime": 100, "O(1)": 1, "O(log(n))": -802.51, "O(n)": -2937.11, "O(n\u00b2)": 1.0, "O(n\u00b3)": 75916.47, "O(nlog(n))": -3275.63, "O(n\u207f)": -1, "O(n!)": -1}, {"n": 5, "total_runtime": 25, "O(1)": 1, "O(log(n))": -426.85, "O(n)": -1443.05, "O(n\u00b2)": 1.0, "O(n\u00b3)": 9489.58, "O(nlog(n))": -1136.4, "O(n\u207f)": -1, "O(n!)": -1}, {"n": 20, "total_runtime": 400, "O(1)": 1, "O(log(n))": -1178.16, "O(n)": -5925.22, "O(n\u00b2)": 1.0, "O(n\u00b3)": 607331.62, "O(nlog(n))": -8544.04, "O(n\u207f)": -1, "O(n!)": -1}, {"n": 9, "total_runtime": 81, "O(1)": 1, "O(log(n))": -745.41, "O(n)": -2638.3, "O(n\u00b2)": 1.0, "O(n\u00b3)": 55343.11, "O(nlog(n))": -2811.35, "O(n\u207f)": -1, "O(n!)": -1}, {"n": 15, "total_runtime": 225, "O(1)": 1, "O(log(n))": -1022.25, "O(n)": -4431.16, "O(n\u00b2)": 1.0, "O(n\u00b3)": 256218.04, "O(nlog(n))": -5788.51, "O(n\u207f)": -1, "O(n!)": -1}, {"n": 50, "total_runtime": 2500, "O(1)": 1, "O(log(n))": -1674.75, "O(n)": -14889.54, "O(n\u00b2)": 1.0, "O(n\u00b3)": 9489556.34, "O(nlog(n))": -27922.6, "O(n\u207f)": -1, "O(n!)": -1}, {"n": 12, "total_runtime": 144, "O(1)": 1, "O(log(n))": -901.32, "O(n)": -3534.73, "O(n\u00b2)": 1.0, "O(n\u00b3)": 131183.65, "O(nlog(n))": -4245.8, "O(n\u207f)": -1, "O(n!)": -1}], "e2e_memory": [{"n": 1, "total_memory": 1, "O(1)": 1, "O(log(n))": 10.46, "O(n)": 1.0, "O(n\u00b2)": 6.4, "O(n\u00b3)": 7.89, "O(nlog(n))": 0.25, "O(n\u207f)": -1, "O(n!)": -1, "memory_usage_by_time": {"0": 10, "1": 20, "2": 30, "3": 40}}, {"n": 2, "total_memory": 2, "O(1)": 1, "O(log(n))": 4.76, "O(n)": 1.0, "O(n\u00b2)": 25.53, "O(n\u00b3)": 63.14, "O(nlog(n))": 4.88, "O(n\u207f)": -1, "O(n!)": -1, "memory_usage_by_time": {"0": 20, "1": 30, "2": 40, "3": 50.5, "4": 100.1}}, {"n": 3, "total_memory": 3, "O(1)": 1, "O(log(n))": 1.43, "O(n)": 1.0, "O(n\u00b2)": 57.43, "O(n\u00b3)": 213.08, "O(nlog(n))": 11.27, "O(n\u207f)": -1, "O(n!)": -1, "memory_usage_by_time": {"0": 3, "1": 7, "2": 11}}, {"n": 10, "total_memory": 10, "O(1)": 1, "O(log(n))": -8.47, "O(n)": 1.0, "O(n\u00b2)": 637.91, "O(n\u00b3)": 7891.97, "O(nlog(n))": 77.26, "O(n\u207f)": -1, "O(n!)": -1, "memory_usage_by_time": {"0": 3, "1": 7, "2": 11}}, {"n": 5, "total_memory": 5, "O(1)": 1, "O(log(n))": -2.77, "O(n)": 1.0, "O(n\u00b2)": 159.49, "O(n\u00b3)": 986.5, "O(nlog(n))": 27.16, "O(n\u207f)": -1, "O(n!)": -1, "memory_usage_by_time": {"0": 3, "1": 7, "2": 11}}, {"n": 20, "total_memory": 20, "O(1)": 1, "O(log(n))": -14.16, "O(n)": 1.0, "O(n\u00b2)": 2551.59, "O(n\u00b3)": 63135.75, "O(nlog(n))": 200.63, "O(n\u207f)": -1, "O(n!)": -1, "memory_usage_by_time": {"0": 3, "1": 7, "2": 11}}, {"n": 9, "total_memory": 9, "O(1)": 1, "O(log(n))": -7.6, "O(n)": 1.0, "O(n\u00b2)": 516.71, "O(n\u00b3)": 5753.25, "O(nlog(n))": 66.38, "O(n\u207f)": -1, "O(n!)": -1, "memory_usage_by_time": {"0": 3, "1": 7, "2": 11}}, {"n": 15, "total_memory": 15, "O(1)": 1, "O(log(n))": -11.8, "O(n)": 1.0, "O(n\u00b2)": 1435.28, "O(n\u00b3)": 26635.39, "O(nlog(n))": 136.1, "O(n\u207f)": -1, "O(n!)": -1, "memory_usage_by_time": {"0": 3, "1": 7, "2": 11}}, {"n": 50, "total_memory": 50, "O(1)": 1, "O(log(n))": -21.7, "O(n)": 1.0, "O(n\u00b2)": 15947.33, "O(n\u00b3)": 986496.08, "O(nlog(n))": 654.44, "O(n\u207f)": -1, "O(n!)": -1, "memory_usage_by_time": {"0": 3, "1": 7, "2": 11}}, {"n": 12, "total_memory": 12, "O(1)": 1, "O(log(n))": -9.97, "O(n)": 1.0, "O(n\u00b2)": 918.58, "O(n\u00b3)": 13637.32, "O(nlog(n))": 99.98, "O(n\u207f)": -1, "O(n!)": -1, "memory_usage_by_time": {"0": 3, "1": 7, "2": 11}}], "e2e_highest_runtime_function": "getSpeed()", "e2e_highest_memory_usage_function": "getPosition()", "e2e_total_average_time": 348.9, "e2e_total_average_memory": 12.7, "e2e_time_complexity": "n2", "e2e_space_complexity": "n"}, "sankey": {"sankey_runtime": {"nodes": [{"name": "test.py"}, {"name": "Speedometer"}, {"name": "getSpeed()"}, {"name": "getPosition()"}], "links": [{"source": 0, "target": 1, "value": 100}, {"source": 1, "target": 2, "value": 50.39}, {"source": 1, "target": 3, "value": 49.61}]}, "sankey_memory": {"nodes": [{"name": "test.py"}, {"name": "Speedometer"}, {"name": "getSpeed()"}, {"name": "getPosition()"}], "links": [{"source": 0, "target": 1, "value": 100}, {"source": 1, "target": 2, "value": 31.25}, {"source": 1, "target": 3, "value": 68.75}]}}}
+{
+  "script_name": "/Users/abidsalahi/Desktop/410-proj/proj2/cpsc410_project2_team4/samples/constant_space_constant_time/constant_space_constant_time.py",
+  "class": { "class_runtime": [], "class_memory": [] },
+  "function": { "function_runtime": [], "function_memory": [] },
+  "line_by_line": [
+    [
+      {
+        "fileName": "y",
+        "line_num": 2,
+        "code": "for i in range(0, A_BIG_NUMBER):",
+        "total_runtime": 204.70000000000002,
+        "total_memory": 10.0,
+        "percent_runtime": 89,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "y",
+        "line_num": 3,
+        "code": "    x = 1 + 2",
+        "total_runtime": 25.3,
+        "total_memory": 0.0,
+        "percent_runtime": 11,
+        "percent_memory": 0.0
+      }
+    ]
+  ],
+  "e2e": {
+    "e2e_runtime": [
+      {
+        "n": 1,
+        "total_runtime": 278.0,
+        "O(1)": 278.0,
+        "O(log(n))": 4.9,
+        "O(n)": 359.07,
+        "O(n\u00b2)": 358.84,
+        "O(n\u00b3)": 358.83,
+        "O(nlog(n))": -0.0,
+        "O(n\u207f)": -1,
+        "O(n!)": -1
+      },
+      {
+        "n": 2,
+        "total_runtime": 285.67,
+        "O(1)": 278.0,
+        "O(log(n))": 236.1,
+        "O(n)": 718.18,
+        "O(n\u00b2)": 1435.37,
+        "O(n\u00b3)": 2870.67,
+        "O(nlog(n))": 497.63,
+        "O(n\u207f)": -1,
+        "O(n!)": -1
+      },
+      {
+        "n": 10,
+        "total_runtime": 335.0,
+        "O(1)": 278.0,
+        "O(log(n))": 772.91,
+        "O(n)": 3591.02,
+        "O(n\u00b2)": 35884.21,
+        "O(n\u00b3)": 358833.69,
+        "O(nlog(n))": 8265.48,
+        "O(n\u207f)": -1,
+        "O(n!)": -1
+      },
+      {
+        "n": 20,
+        "total_runtime": 496.0,
+        "O(1)": 278.0,
+        "O(log(n))": 1004.1,
+        "O(n)": 7182.08,
+        "O(n\u00b2)": 143536.86,
+        "O(n\u00b3)": 2870669.54,
+        "O(nlog(n))": 21507.28,
+        "O(n\u207f)": -1,
+        "O(n!)": -1
+      },
+      {
+        "n": 30,
+        "total_runtime": 343.67,
+        "O(1)": 278.0,
+        "O(log(n))": 1139.34,
+        "O(n)": 10773.13,
+        "O(n\u00b2)": 322957.93,
+        "O(n\u00b3)": 9688509.68,
+        "O(nlog(n))": 36627.37,
+        "O(n\u207f)": -1,
+        "O(n!)": -1
+      },
+      {
+        "n": 100,
+        "total_runtime": 414.67,
+        "O(1)": 278.0,
+        "O(log(n))": 1540.92,
+        "O(n)": 35910.52,
+        "O(n\u00b2)": 3588421.49,
+        "O(n\u00b3)": 358833692.02,
+        "O(nlog(n))": 165309.71,
+        "O(n\u207f)": -1,
+        "O(n!)": -1
+      },
+      {
+        "n": 2000,
+        "total_runtime": 287.67,
+        "O(1)": 278.0,
+        "O(log(n))": 2540.12,
+        "O(n)": 718210.97,
+        "O(n\u00b2)": 1435368594.04,
+        "O(n\u00b3)": 2870669536193.94,
+        "O(nlog(n))": 5456923.19,
+        "O(n\u207f)": -1,
+        "O(n!)": -1
+      }
+    ],
+    "e2e_memory": [
+      {
+        "n": 1,
+        "total_memory": 0.0,
+        "O(1)": 0.0,
+        "O(log(n))": 0.0,
+        "O(n)": 0.0,
+        "O(n\u00b2)": 0.0,
+        "O(n\u00b3)": 0.0,
+        "O(nlog(n))": 0.0,
+        "O(n\u207f)": -1,
+        "O(n!)": -1,
+        "memory_usage_by_time": {}
+      },
+      {
+        "n": 2,
+        "total_memory": 0.0,
+        "O(1)": 0.0,
+        "O(log(n))": 0.0,
+        "O(n)": 0.0,
+        "O(n\u00b2)": 0.0,
+        "O(n\u00b3)": 0.0,
+        "O(nlog(n))": 0.0,
+        "O(n\u207f)": -1,
+        "O(n!)": -1,
+        "memory_usage_by_time": {}
+      },
+      {
+        "n": 10,
+        "total_memory": 0.0,
+        "O(1)": 0.0,
+        "O(log(n))": 0.0,
+        "O(n)": 0.0,
+        "O(n\u00b2)": 0.0,
+        "O(n\u00b3)": 0.0,
+        "O(nlog(n))": 0.0,
+        "O(n\u207f)": -1,
+        "O(n!)": -1,
+        "memory_usage_by_time": {}
+      },
+      {
+        "n": 20,
+        "total_memory": 0.0,
+        "O(1)": 0.0,
+        "O(log(n))": 0.0,
+        "O(n)": 0.0,
+        "O(n\u00b2)": 0.0,
+        "O(n\u00b3)": 0.0,
+        "O(nlog(n))": 0.0,
+        "O(n\u207f)": -1,
+        "O(n!)": -1,
+        "memory_usage_by_time": {}
+      },
+      {
+        "n": 30,
+        "total_memory": 0.0,
+        "O(1)": 0.0,
+        "O(log(n))": 0.0,
+        "O(n)": 0.0,
+        "O(n\u00b2)": 0.0,
+        "O(n\u00b3)": 0.0,
+        "O(nlog(n))": 0.0,
+        "O(n\u207f)": -1,
+        "O(n!)": -1,
+        "memory_usage_by_time": {}
+      },
+      {
+        "n": 100,
+        "total_memory": 0.0,
+        "O(1)": 0.0,
+        "O(log(n))": 0.0,
+        "O(n)": 0.0,
+        "O(n\u00b2)": 0.0,
+        "O(n\u00b3)": 0.0,
+        "O(nlog(n))": 0.0,
+        "O(n\u207f)": -1,
+        "O(n!)": -1,
+        "memory_usage_by_time": {}
+      },
+      {
+        "n": 2000,
+        "total_memory": 0.0,
+        "O(1)": 0.0,
+        "O(log(n))": 0.0,
+        "O(n)": 0.0,
+        "O(n\u00b2)": 0.0,
+        "O(n\u00b3)": 0.0,
+        "O(nlog(n))": 0.0,
+        "O(n\u207f)": -1,
+        "O(n!)": -1,
+        "memory_usage_by_time": {}
+      }
+    ],
+    "e2e_highest_runtime_function": "",
+    "e2e_highest_memory_usage_function": "",
+    "e2e_total_average_time": 348.67,
+    "e2e_total_average_memory": 0.0,
+    "e2e_time_complexity": "1",
+    "e2e_space_complexity": "nlogn"
+  },
+  "sankey": {
+    "sankey_runtime": { "nodes": [], "links": [] },
+    "sankey_memory": { "nodes": [], "links": [] }
+  }
+}
