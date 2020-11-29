@@ -109,7 +109,7 @@ def build_visualization(program_file_path, profiler_results, e2e_results: Dict[i
     # e2e object contains two arrays for runtime and memory containing the n parameter, avg runtime/memory, and associated fit data
     debug("Creating e2e object")
     for i in e2e_results:
-        debug("Parsing e2e - n = ", i)
+        debug("Parsing e2e - n = "+str(i))
         e2e_runtime.append({
             "n": i,
             "total_runtime": round(e2e_results[i].average.total_runtime_ms, 2),
