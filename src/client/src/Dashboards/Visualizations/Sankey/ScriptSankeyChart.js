@@ -5,7 +5,7 @@ import SankeyNode from "./SankeyNode";
 import { Typography } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 
-function ScriptSankeyChart({ data }) {
+const ScriptSankeyChart = ({ data, type }) => {
   const isInvalidData = (data) => {
     const nodes = data["nodes"];
     const links = data["links"];
@@ -20,8 +20,8 @@ function ScriptSankeyChart({ data }) {
   return isInvalidData ? null : (
     <Paper elevation={5}>
       <Typography variant="subtitle1">
-        Sankey Chart representing runtime distribution broken down by classes
-        and functions
+        {`Sankey Chart representing ${type} distribution broken down by classes
+        and functions`}
       </Typography>
 
       <Sankey
@@ -46,6 +46,6 @@ function ScriptSankeyChart({ data }) {
       </Sankey>
     </Paper>
   );
-}
+};
 
 export default ScriptSankeyChart;
