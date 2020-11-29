@@ -44,7 +44,7 @@ def _build_client() -> None:
 
     try:
         debug("Installing yarn dependencies for visualization")
-        process = subprocess.Popen(["yarn", "install"], cwd=CLIENT_SRC)
+        process = subprocess.Popen(["yarn", "install"], cwd=CLIENT_SRC)  # TODO: PIPE if debug is off
         process.wait()
         debug("Compiling visualization code")
         build_output = subprocess.check_output(["yarn", "build"], cwd=CLIENT_SRC).decode("utf-8")
@@ -72,6 +72,7 @@ def _run_build_file_in_browser(dst_path) -> None:
     Runs the generated HTML file in browser
     :raises: Exception if any of the paths are invalid (file does not exist), or the file is not of correct format
     """
+    debug("Opening visualization in browser")
     try:
         webbrowser.open('file://' + os.path.join(dst_path, "build", "index.html"))
     except Exception as e:

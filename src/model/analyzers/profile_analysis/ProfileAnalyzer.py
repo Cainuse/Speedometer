@@ -105,7 +105,7 @@ class ProfileAnalyzer:
         self.results={"class": [], "function": [], "line_by_line": []}
         debug("Running scalene profile analysis")
         
-        args = config.get_args_for(min(config.get_input_sizes()))
+        args = config.get_args_for(max(config.get_input_sizes()))
         debug("Using input size {} for scalene analysis".format(min(config.get_input_sizes())))
         escaped_args = []
         for a in args:
