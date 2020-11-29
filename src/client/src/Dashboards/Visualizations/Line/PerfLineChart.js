@@ -41,6 +41,18 @@ export default class PerfLineChart extends PureComponent {
     return yTypes;
   }
 
+  filterYValues(data) {
+    const zeroKeys = Object.keys(data[0]).filter((key) => {
+      return data.every((dataObj) => dataObj[key] <= 0);
+    });
+
+    let filteredData = data;
+    zeroKeys.forEach((key) => {
+      filteredData.forEach((dataObj) => delete dataObj[key]);
+    });
+    return filteredData;
+  }
+
   getMaxScriptTime(data) {
     return Math.max.apply(
       Math,
@@ -168,7 +180,7 @@ export default class PerfLineChart extends PureComponent {
 
         <ResponsiveContainer>
           <LineChart
-            data={data}
+            data={this.filterYValues(data)}
             onMouseDown={(e) =>
               this.setState({ refAreaLeft: e ? e.activeLabel : "" })
             }

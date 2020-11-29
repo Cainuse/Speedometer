@@ -146,13 +146,10 @@ const SpaceComplexity = ({ dataset }) => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={12}>
-          <Typography>
-            Sankey Chart representing memory usage distribution broken down by
-            classes and functions
-          </Typography>
-          <Paper elevation={5}>
-            <ScriptSankeyChart data={dataset["sankey"]["sankey_runtime"]} />
-          </Paper>
+          <ScriptSankeyChart
+            data={dataset["sankey"]["sankey_runtime"]}
+            type="memory usage"
+          />
         </Grid>
       </Grid>
     </div>
