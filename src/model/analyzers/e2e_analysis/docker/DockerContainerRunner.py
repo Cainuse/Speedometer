@@ -31,7 +31,6 @@ def run_and_inspect_docker_image(docker_image_name: str) -> TestResult:
     started_time = state["StartedAt"]
     end_time = state["FinishedAt"]
 
-    print("Started_time", started_time)
     started_time_date_time = parser.parse(started_time).timestamp()
     end_time_date_time = parser.parse(end_time).timestamp()
     total_ms = int((end_time_date_time - started_time_date_time) * 1000)
@@ -41,7 +40,7 @@ def run_and_inspect_docker_image(docker_image_name: str) -> TestResult:
     return result
 
 
-def _parse_watcher_results(watcher_results) -> Dict[int, float]:
+def _parse_watcher_results(watcher_results) -> (Dict[int, float], float):
     retrieved = [results.get() for results in watcher_results]
     mem_by_time = [ret[0] for ret in retrieved]
     max_mem_usage = max([ret[1] for ret in retrieved])
