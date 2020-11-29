@@ -6,6 +6,8 @@ from src.model.analyzers.e2e_analysis.docker.DockerContainerRunner import run_an
 from src.model.analyzers.e2e_analysis.docker.DockerfileMaker import build_dockerfile
 from src.model.analyzers.e2e_analysis.result_types.InputSizeResult import InputSizeResult
 from src.model.analyzers.e2e_analysis.result_types.TestResult import TestResult
+from src.model.util.Logger import debug
+
 
 class EndToEndAnalyzer:
     RUNS_PER_INPUT_SIZE: int = 3
@@ -21,15 +23,18 @@ class EndToEndAnalyzer:
         input_sizes: List[int] = config.get_input_sizes()
 
         # creates all required dockerfiles and stores paths in a dict of <input_size, dockerfile path>
+        debug("Creating dockerfiles for each input size")
         dockerfiles: Dict[int, str] = \
             {size: self._build_dockerfile_for_input(program_file_path, size, config) for size in input_sizes}
 
         # builds all the dockerfiles into images and stores the image names in a dict of <input_size, image name>
+        debug("Building docker images for each input size")
         images: Dict[int, str] = \
             {size: build_docker_image(dockerfile) for size, dockerfile in dockerfiles.items()}
 
         # execute the test runs
         for input_size, image in images.items():
+            debug("Analyzing for input size {}".format(input_size))
             individual_results: List[TestResult] = self._run_test_container(image, self.RUNS_PER_INPUT_SIZE)
             computed_results: InputSizeResult = self._compute_average(individual_results)
             self.results[input_size] = computed_results
@@ -48,6 +53,7 @@ class EndToEndAnalyzer:
         :param individual_runs: results for the individual runs of the container
         :return: a combined result with a computed average
         """
+        debug("Computing average result")
 
         runs: float = len(individual_runs) * 1.0
         average_result = TestResult()
@@ -80,14 +86,12 @@ class EndToEndAnalyzer:
         """
 
         results: List[TestResult] = []
-
-        # TODO: implement this
-        # TODO: maybe there should be a timeout?
         try:
-            for _ in range(runs):
+            for i in range(runs):
+                debug("Running trial number {}".format(i))
                 results.append(run_and_inspect_docker_image(image_name))
-        except:
-            print("An error occurred during run test container")
+        except Exception as e:
+            raise Exception("An error occurred during run test container", e)
         return results
 
     def _build_dockerfile_for_input(self, program_file_path: str, input_size: int, config: Config) -> str:
