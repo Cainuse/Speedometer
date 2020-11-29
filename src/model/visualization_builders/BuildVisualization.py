@@ -139,8 +139,8 @@ def build_visualization(program_file_path, profiler_results, e2e_results: Dict[i
             "O(n\u00B2)": round(math.log(round(fit_data_memory.O_n2[i] / 10**6, 2) if round(fit_data_memory.O_n2[i], 2) > 1 else 1), 2),
             "O(n\u00B3)": round(math.log(round(fit_data_memory.O_n3[i] / 10**6, 2) if round(fit_data_memory.O_n3[i], 2) > 1 else 1), 2),
             "O(nlog(n))": round(math.log(round(fit_data_memory.O_nlogn[i] / 10**6, 2) if round(fit_data_memory.O_nlogn[i], 2) > 1 else 1), 2),
-            "O(n\u207F)": round(math.log(round(fit_data_memory.O_nn[i] / 10**6, 2) if round(fit_data_memory.O_nn[i], 2) > 1 else 1, 2),
-            "O(n!)": round(math.log(round(fit_data_memory.O_n_fact[i] / 10**6, 2) if round(fit_data_memory.O_n_fact[i], 2) > 1 else 1, 2),
+            "O(n\u207F)": round(math.log(round(fit_data_memory.O_nn[i] / 10**6, 2) if round(fit_data_memory.O_nn[i], 2) > 1 else 1), 2),
+            "O(n!)": round(math.log(round(fit_data_memory.O_n_fact[i] / 10**6, 2) if round(fit_data_memory.O_n_fact[i], 2) > 1 else 1), 2),
             "memory_usage_by_time": e2e_results[i].average.memory_usage_by_time
         })
         total_memory_points[i] = e2e_results[i].average.max_memory_usage_bytes

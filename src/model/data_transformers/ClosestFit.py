@@ -7,7 +7,7 @@ def find_O_fit(fit_data: FitData, raw_data: dict) -> str:
     :param fit_data: collection of all fit data
     :param raw_data: results from the end to end analysis
     """
-    
+
     min_least_square = least_squares(fit_data.O_1, raw_data)
     return_str = "1"
 
