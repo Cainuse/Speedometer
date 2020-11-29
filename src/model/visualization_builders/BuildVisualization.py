@@ -1,5 +1,6 @@
 import json
 from typing import Dict
+import math
 import os
 
 from src.model.analyzers.e2e_analysis.result_types.InputSizeResult import InputSizeResult
@@ -21,7 +22,8 @@ def build_visualization(program_file_path, profiler_results, e2e_results: Dict[i
     :param e2e_results: results from the end to end analysis
     """
     debug("Starting visualization building")
-    output = {"script_name": program_file_path}
+    input_path_split = program_file_path.split("/")
+    output = {"script_name": input_path_split[len(input_path_split)-1]}
 
     # create class object, two arrays for runtime and memory containing original file name, avg time/memory per class
     debug("Creating class objects")
@@ -110,17 +112,19 @@ def build_visualization(program_file_path, profiler_results, e2e_results: Dict[i
     debug("Creating e2e object")
     for i in e2e_results:
         debug("Parsing e2e - n = "+str(i))
+        # rt_obj = {}
+
         e2e_runtime.append({
             "n": i,
-            "total_runtime": round(e2e_results[i].average.total_runtime_ms, 2),
-            "O(1)": round(fit_data_runtime.O_1[i], 2),
-            "O(log(n))": round(fit_data_runtime.O_logn[i], 2),
-            "O(n)": round(fit_data_runtime.O_n[i], 2),
-            "O(n\u00B2)": round(fit_data_runtime.O_n2[i], 2),
-            "O(n\u00B3)": round(fit_data_runtime.O_n3[i], 2),
-            "O(nlog(n))": round(fit_data_runtime.O_nlogn[i], 2),
-            "O(n\u207F)": round(fit_data_runtime.O_nn[i], 2),
-            "O(n!)": round(fit_data_runtime.O_n_fact[i], 2)
+            "total_runtime": round(math.log(round(e2e_results[i].average.total_runtime_ms, 2) if round(e2e_results[i].average.total_runtime_ms, 2) > 1 else 1), 2),
+            "O(1)": round(math.log(round(fit_data_runtime.O_1[i], 2) if round(fit_data_runtime.O_1[i], 2) > 1 else 1), 2),
+            "O(log(n))": round(math.log(round(fit_data_runtime.O_logn[i], 2) if round(fit_data_runtime.O_logn[i], 2) > 1 else 1), 2),
+            "O(n)": round(math.log(round(fit_data_runtime.O_n[i], 2) if round(fit_data_runtime.O_n[i], 2) > 1 else 1), 2),
+            "O(n\u00B2)": round(math.log(round(fit_data_runtime.O_n2[i], 2) if round(fit_data_runtime.O_n2[i], 2) > 1 else 1), 2),
+            "O(n\u00B3)": round(math.log(round(fit_data_runtime.O_n3[i], 2) if round(fit_data_runtime.O_n3[i], 2) > 1 else 1), 2),
+            "O(nlog(n))": round(math.log(round(fit_data_runtime.O_nlogn[i], 2) if round(fit_data_runtime.O_nlogn[i], 2) > 1 else 1), 2),
+            "O(n\u207F)": round(math.log(round(fit_data_runtime.O_nn[i], 2) if round(fit_data_runtime.O_nn[i], 2) > 1 else 1), 2),
+            "O(n!)": round(math.log(round(fit_data_runtime.O_n_fact[i], 2) if round(fit_data_runtime.O_n_fact[i], 2) > 1 else 1), 2)
         })
         total_runtime_points[i] = e2e_results[i].average.total_runtime_ms
         e2e_memory.append({

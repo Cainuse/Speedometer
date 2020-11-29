@@ -75,6 +75,8 @@ class EndToEndAnalyzer:
         for time, memory in average_result.memory_usage_by_time.items():
             average_result.memory_usage_by_time[time] /= sample_times_with_counts[time]
 
+        debug("Average runtime: {}".format(average_result.total_runtime_ms))
+        debug("Average memory use: {}".format(average_result.max_memory_usage_bytes))
         return InputSizeResult(average_result, individual_runs)
 
     def _run_test_container(self, image_name: str, runs: int) -> List[TestResult]:
