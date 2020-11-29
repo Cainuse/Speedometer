@@ -6,7 +6,7 @@ from typing import Dict, List
 class Config:
     ARGS_PROP = "arguments"
 
-    args: Dict[int, List[str]]
+    args: Dict[int, list]
     path: str
 
     def __init__(self, config_file_path):
@@ -66,8 +66,8 @@ class Config:
         for size_str, args in args_data.items():
             try:
                 size_int = int(size_str)
-                if not type(args).__name__ == 'list' or (len(args) > 0 and type(args[0]).__name__ != 'str'):
-                    raise Exception('args are not a list of string')
+                if not type(args).__name__ == 'list':
+                    raise Exception('args are not a list')
                 parsed_args[size_int] = args
             except Exception as e:
                 raise Exception("Could not parse args for input size {}. {}".format(size_str, str(e)))
