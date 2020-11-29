@@ -7,3 +7,4 @@ src/client/.vscode
 src/client/build/
 __pycache__/
 generated_dockerfiles/
+*.pyc

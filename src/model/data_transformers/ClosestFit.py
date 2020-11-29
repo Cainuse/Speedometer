@@ -60,7 +60,10 @@ def least_squares(fit_y, data_y) -> float:
     #     raise RuntimeError("Fit data point count does not equal observed data point count.")
     ls_sum = 0.0
     for i in data_y:
-        ls_sum += (data_y[i] - fit_y[i]) ** 2
+        if fit_y[i] > 0:
+            ls_sum += (data_y[i] - fit_y[i]) ** 2
+        else:
+            return 1.0e+20
         if ls_sum > 1.0e+20:
             break
     return round(ls_sum, 2)

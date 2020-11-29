@@ -17,7 +17,7 @@ def after_each():
     Runs after each test
     """
     yield  # let the test run first
-    DockerImageBuilder.delete_all_docker_images(force=True)
+    DockerImageBuilder.delete_all_docker_images(force=True, exceptions=["python"])
 
 
 def test_valid_dockerfile():

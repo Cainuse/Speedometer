@@ -1,7 +1,7 @@
 from typing import List, Dict
 
 from src.model.util.Config import Config
-from src.model.analyzers.e2e_analysis.docker.DockerImageBuilder import build_docker_image
+from src.model.analyzers.e2e_analysis.docker.DockerImageBuilder import build_docker_image, delete_all_docker_images
 from src.model.analyzers.e2e_analysis.docker.DockerContainerRunner import run_and_inspect_docker_image
 from src.model.analyzers.e2e_analysis.docker.DockerfileMaker import build_dockerfile
 from src.model.analyzers.e2e_analysis.result_types.InputSizeResult import InputSizeResult
@@ -39,6 +39,14 @@ class EndToEndAnalyzer:
             computed_results: InputSizeResult = self._compute_average(individual_results)
             self.results[input_size] = computed_results
 
+        debug("End-to-end analysis complete!")
+        debug("Doing some clean-up!")
+        try:
+            delete_all_docker_images(exceptions=["python"], force=True)
+            debug("All cleaned-up here.")
+        except:
+            debug("Cleanup failed. Please cleanup Docker manually")
+
     def get_results(self) -> Dict[int, InputSizeResult]:
         """
         :return: the results from the analysis as a dict.
@@ -75,8 +83,8 @@ class EndToEndAnalyzer:
         for time, memory in average_result.memory_usage_by_time.items():
             average_result.memory_usage_by_time[time] /= sample_times_with_counts[time]
 
-        debug("Average runtime: {}".format(average_result.total_runtime_ms))
-        debug("Average memory use: {}".format(average_result.max_memory_usage_bytes))
+        debug("Average runtime: {} ms".format(average_result.total_runtime_ms))
+        debug("Average memory use: {} bytes".format(average_result.max_memory_usage_bytes))
         return InputSizeResult(average_result, individual_runs)
 
     def _run_test_container(self, image_name: str, runs: int) -> List[TestResult]:
@@ -90,7 +98,7 @@ class EndToEndAnalyzer:
         results: List[TestResult] = []
         try:
             for i in range(runs):
-                debug("Running trial number {}".format(i))
+                debug("Running trial number {} of {}".format(i + 1, runs))
                 results.append(run_and_inspect_docker_image(image_name))
         except Exception as e:
             raise Exception("An error occurred during run test container", e)

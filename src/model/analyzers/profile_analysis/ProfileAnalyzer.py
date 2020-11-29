@@ -1,11 +1,11 @@
 from src.model.util import Config
-import os
+from subprocess import check_output
 import re
 import math
 from typing import Union
+import os
 
 from src.model.util.Logger import debug
-
 
 class function_runtime:
     """
@@ -73,7 +73,7 @@ class class_runtime:
     total_memory: float
     memory_percentage_of_total: float
     time_percentage_of_total:int
-    class_functions: list #These will be integers, representing the index in results["function"]
+    class_functions: list # These will be integers, representing the index in results["function"]
 
     def __init__(self, filename, name, runtime, memory,time_percentage, memory_percentage=None, class_functions=None):
         self.filename = filename
@@ -105,19 +105,24 @@ class ProfileAnalyzer:
         self.results={"class": [], "function": [], "line_by_line": []}
         debug("Running scalene profile analysis")
         
-        args = config.get_args_for(min(config.get_input_sizes()))
-        concated =""
+        args = config.get_args_for(max(config.get_input_sizes()))
+        debug("Using input size {} for scalene analysis".format(min(config.get_input_sizes())))
+        escaped_args = []
         for a in args:
-            if isinstance(a,str):
-                concated = concated + '\"'+a+'\"'
-                concated += " "
+            if isinstance(a, str):
+                escaped_args.append('\"'+a+'\"')
             else:
-                concated = concated + str(a) +" "
-        command = 'scalene ' + program_file_path + " " + concated
-        debug(command)
+                escaped_args.append(str(a))
 
-        p = os.popen(command)
-        output = p.read()
+        program_file_dir, program_file_name = os.path.split(program_file_path)
+        command = ['scalene', program_file_name]
+        command.extend(escaped_args)
+
+        debug("Starting scalene run")
+        debug("Scalene command used = {}".format(command))
+        output = check_output(command, encoding='UTF-8', cwd=os.path.abspath(program_file_dir))
+        debug(output)
+        debug("Parsing output")
         self.parseOutput(output)
         
     def parseOutput(self,output:str):
@@ -142,14 +147,15 @@ class ProfileAnalyzer:
         """
         # Map file header (with name & total time) to line contents (with %time and %mem per line)
         # 5 lines without memory usage, 6 lines with
+        debug("Processing scalene output...")
         file_dict = self.ScaleneArrayStrip(arr, "Memory usage:", "% of time", 6)
 
         for a in file_dict:
             # Get total file time from header in ms
             total_memory = 0.0
             if len(a.split("\n")) > 1:
-                debug("CHECKING FILENAME - Full Scalene message: "+a)
-                debug("Split Message: "+a.split("\n")[1])
+                debug("CHECKING FILENAME - Full Scalene message: {}".format(a))
+                debug("Split Message: {}".format(a.split("\n")[1]))
                 file_name = (a.split("\n")[1]).split(": % of time")[0]
                 mem_num = ((a.split("\n")[0]).split("(max:")[1]).split("MB)")[0]
                 total_memory = float(mem_num)
@@ -160,8 +166,8 @@ class ProfileAnalyzer:
             func_indentation = ""
             clas = class_runtime(file_name, "", 0.0, 0.0,0)
             class_indentation = ""
-            debug("Total Runtime Calculated: " + str(reference_time) + "ms")
-            debug("Total Memory Calculated: " + str(total_memory) + "MB")
+            debug("Total Runtime Calculated: {}ms".format(reference_time))
+            debug("Total Memory Calculated: {}MB".format(total_memory))
 
             for l in file_dict[a]:
                 line_split = l.split("│")
@@ -290,11 +296,11 @@ class ProfileAnalyzer:
         Helper function for calculating time from Scalene output
         :param header: Scalene output line that includes filename, total time, and % of time for file
         """
-
         timeString = header.split(": % of time = ")[1]
         timeSplit = timeString.split("% out of   ")
         timeSplit[1] = timeSplit[1].replace("s.", "")
         return float(timeSplit[0]) / 100 * float(timeSplit[1])
+
 
     def get_results(self) -> dict:
         """
