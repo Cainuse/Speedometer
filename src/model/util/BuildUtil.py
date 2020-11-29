@@ -39,7 +39,7 @@ def _build_client() -> None:
 
     yarn_build_succ_msg = "The build folder is ready to be deployed."
 
-    os.chdir("./client")
+    os.chdir("src/client")
     install_output = subprocess.check_output(["yarn", "install"]).decode("utf-8")
     build_output = subprocess.check_output(["yarn", "build"]).decode("utf-8")
 
