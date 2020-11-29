@@ -143,14 +143,14 @@ def build_visualization(program_file_path, profiler_results, e2e_results: Dict[i
             "O(n!)": round(fit_data_memory.O_n_fact[i] / 10**6, 2),
             "memory_usage_by_time": e2e_results[i].average.memory_usage_by_time
         })
-        total_memory_points[i] = e2e_results[i].average.max_memory_usage_bytes / 10**6
+        total_memory_points[i] = e2e_results[i].average.max_memory_usage_bytes
     # set E2E runtime/memory arrays, highest runtime/memory functions, total function runtime/memory usage, and calculate complexity of program
     e2e_object["e2e_runtime"] = e2e_runtime
     e2e_object["e2e_memory"] = e2e_memory
     e2e_object["e2e_highest_runtime_function"] = max_fun_runtime_name
     e2e_object["e2e_highest_memory_usage_function"] = max_fun_memory_name
     e2e_object["e2e_total_average_time"] = round(sum(list(total_runtime_points.values())) / len(e2e_runtime), 2)
-    e2e_object["e2e_total_average_memory"] = round(sum(list(total_memory_points.values())) / len(e2e_memory), 2)
+    e2e_object["e2e_total_average_memory"] = round(sum(list(total_memory_points.values())) / len(e2e_memory) / 10**6, 2)
     debug("Calculating project runtime complexity")
     e2e_object["e2e_time_complexity"] = find_O_fit(fit_data_runtime, total_runtime_points)
     debug("Calculating project memory complexity")
