@@ -1,11 +1,11 @@
 from src.model.util import Config
-import os
+from subprocess import check_output
 import re
 import math
 from typing import Union
+import os
 
 from src.model.util.Logger import debug
-
 
 class function_runtime:
     """
@@ -73,7 +73,7 @@ class class_runtime:
     total_memory: float
     memory_percentage_of_total: float
     time_percentage_of_total:int
-    class_functions: list #These will be integers, representing the index in results["function"]
+    class_functions: list # These will be integers, representing the index in results["function"]
 
     def __init__(self, filename, name, runtime, memory,time_percentage, memory_percentage=None, class_functions=None):
         self.filename = filename
@@ -106,18 +106,22 @@ class ProfileAnalyzer:
         debug("Running scalene profile analysis")
         
         args = config.get_args_for(min(config.get_input_sizes()))
-        concated =""
+        debug("Using input size {} for scalene analysis".format(min(config.get_input_sizes())))
+        escaped_args = []
         for a in args:
-            if isinstance(a,str):
-                concated = concated + '\"'+a+'\"'
-                concated += " "
+            if isinstance(a, str):
+                escaped_args.append('\"'+a+'\"')
             else:
-                concated = concated + str(a) +" "
-        command = 'scalene ' + program_file_path + " " + concated
-        debug(command)
+                escaped_args.append(str(a))
 
-        p = os.popen(command)
-        output = p.read()
+        program_file_dir, program_file_name = os.path.split(program_file_path)
+        command = ['scalene', program_file_name]
+        command.extend(escaped_args)
+
+        debug("Starting scalene run")
+        debug("Scalene command used = " + str(command))
+        output = check_output(command, encoding='UTF-8', cwd=os.path.abspath(program_file_dir))
+        debug("Parsing output")
         self.parseOutput(output)
         
     def parseOutput(self,output:str):
@@ -290,11 +294,11 @@ class ProfileAnalyzer:
         Helper function for calculating time from Scalene output
         :param header: Scalene output line that includes filename, total time, and % of time for file
         """
-
         timeString = header.split(": % of time = ")[1]
         timeSplit = timeString.split("% out of   ")
         timeSplit[1] = timeSplit[1].replace("s.", "")
         return float(timeSplit[0]) / 100 * float(timeSplit[1])
+
 
     def get_results(self) -> dict:
         """

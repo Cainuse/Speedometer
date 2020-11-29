@@ -3,8 +3,11 @@ import webbrowser
 import os
 import subprocess
 
+from src.model.util.Logger import debug
+
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_PATH = os.path.abspath(os.path.join(CURRENT_DIR, "..", "..", ".."))
+CLIENT_SRC = os.path.join(PROJECT_PATH, "src", "client")
 
 
 def package_visualization_and_open() -> None:
@@ -39,12 +42,16 @@ def _build_client() -> None:
 
     yarn_build_succ_msg = "The build folder is ready to be deployed."
 
-    os.chdir("./client")
-    install_output = subprocess.check_output(["yarn", "install"]).decode("utf-8")
-    build_output = subprocess.check_output(["yarn", "build"]).decode("utf-8")
-
-    if yarn_build_succ_msg not in build_output:
-        print("An error occurred while building client, please check you have the latest version of yarn installed.")
+    try:
+        debug("Installing yarn dependencies for visualization")
+        process = subprocess.Popen(["yarn", "install"], cwd=CLIENT_SRC)
+        process.wait()
+        debug("Compiling visualization code")
+        build_output = subprocess.check_output(["yarn", "build"], cwd=CLIENT_SRC).decode("utf-8")
+        if yarn_build_succ_msg not in build_output:
+            raise Exception("An error occurred while building client")
+    except Exception as e:
+        raise Exception("Could not build visualization. Ensure you have the latest version of yarn installed.", e)
 
 
 def _move_build_files() -> str:
