@@ -217,7 +217,7 @@ class TestBuildVisualization:
               'total_memory': FUN_OBJECT_2.total_memory,
               'percent_memory': FUN_OBJECT_2.memory_percentage_of_total
             }]},
-        "line_by_line": [{
+        "line_by_line": [[{
             "fileName": LINE_OBJECT_1.filename,
             "line_num": LINE_OBJECT_1.line_num,
             "code": LINE_OBJECT_1.line_text,
@@ -273,7 +273,7 @@ class TestBuildVisualization:
             "total_memory": LINE_OBJECT_7.total_memory,
             "percent_runtime": LINE_OBJECT_7.time_percentage_of_total,
             "percent_memory": LINE_OBJECT_7.memory_percentage_of_total
-        }],
+        }]],
         "e2e": {
             "e2e_runtime": [{
                 "n": 1,

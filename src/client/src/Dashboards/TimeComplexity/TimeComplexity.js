@@ -160,13 +160,7 @@ const TimeComplexity = ({ dataset }) => {
         </Grid>
 
         <Grid item xs={12}>
-          <Typography variant="subtitle1">
-            Sankey Chart representing runtime distribution broken down by
-            classes and functions
-          </Typography>
-          <Paper elevation={5}>
-            <ScriptSankeyChart data={dataset["sankey"]["sankey_runtime"]} />
-          </Paper>
+          <ScriptSankeyChart data={dataset["sankey"]["sankey_runtime"]} />
         </Grid>
       </Grid>
     </div>

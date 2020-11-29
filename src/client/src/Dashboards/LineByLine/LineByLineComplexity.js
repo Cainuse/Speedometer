@@ -105,12 +105,16 @@ const LineByLineComplexity = ({ dataset }) => {
     return lines[lines.length - 1].line_num;
   };
 
+  const getFirstLineNumber = (lines) => {
+    return lines[0].line_num;
+  };
+
   const getAccordDetails = (lines) => {
     let codeProportionElements = [];
     let codeSyntaxElements = [];
     const lastLine = getLastLineNumber(lines);
 
-    let currLine = 1;
+    let currLine = getFirstLineNumber(lines);
     while (currLine <= lastLine) {
       const codeSnippet = getCodeSnippet(lines, currLine);
       const pyCode = getPythonSyntaxCode(lines, codeSnippet, currLine);
