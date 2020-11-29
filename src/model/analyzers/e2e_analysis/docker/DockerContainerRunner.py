@@ -1,4 +1,5 @@
 from datetime import datetime
+from dateutil import parser
 from multiprocessing.pool import Pool
 from typing import Dict
 
@@ -30,9 +31,10 @@ def run_and_inspect_docker_image(docker_image_name: str) -> TestResult:
     started_time = state["StartedAt"]
     end_time = state["FinishedAt"]
 
-    started_time_date_time = datetime.strptime(started_time[:-2], "%Y-%m-%dT%H:%M:%S.%f")
-    end_time_date_time = datetime.strptime(end_time[:-2], "%Y-%m-%dT%H:%M:%S.%f")
-    total_ms = int((end_time_date_time - started_time_date_time).total_seconds() * 1000)
+    print("Started_time", started_time)
+    started_time_date_time = parser.parse(started_time).timestamp()
+    end_time_date_time = parser.parse(end_time).timestamp()
+    total_ms = int((end_time_date_time - started_time_date_time) * 1000)
 
     result = TestResult(total_ms, max_mem_usage, mem_use_by_time)
     docker_container.remove()
