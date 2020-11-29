@@ -1,7 +1,7 @@
 from typing import List, Dict
 
 from src.model.util.Config import Config
-from src.model.analyzers.e2e_analysis.docker.DockerImageBuilder import build_docker_image
+from src.model.analyzers.e2e_analysis.docker.DockerImageBuilder import build_docker_image, delete_all_docker_images
 from src.model.analyzers.e2e_analysis.docker.DockerContainerRunner import run_and_inspect_docker_image
 from src.model.analyzers.e2e_analysis.docker.DockerfileMaker import build_dockerfile
 from src.model.analyzers.e2e_analysis.result_types.InputSizeResult import InputSizeResult
@@ -38,6 +38,11 @@ class EndToEndAnalyzer:
             individual_results: List[TestResult] = self._run_test_container(image, self.RUNS_PER_INPUT_SIZE)
             computed_results: InputSizeResult = self._compute_average(individual_results)
             self.results[input_size] = computed_results
+
+        debug("End-to-end analysis complete!")
+        debug("Doing some clean-up!")
+        delete_all_docker_images(exceptions=["python"])
+        debug("All cleaned-up here.")
 
     def get_results(self) -> Dict[int, InputSizeResult]:
         """

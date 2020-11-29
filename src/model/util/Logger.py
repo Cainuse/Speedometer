@@ -1,4 +1,4 @@
-DEBUG_ON = False
+DEBUG_ON = True
 STAGE = None
 
 
