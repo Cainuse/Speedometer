@@ -56,10 +56,10 @@ class line_by_line_runtime:
         self.memory_percentage_of_total = -1
 
     def __eq__(self, other):
-        if (isinstance(other, line_by_line_runtime)):
-            return ((self.filename == other.filename) and (self.line_num == other.line_num) and \
-                (self.line_text == other.line_text) and (self.total_run_time == other.total_run_time) and \
-                    (self.total_memory == other.total_memory)  and (self.memory_percentage_of_total ==other.memory_percentage_of_total) and\
+        if isinstance(other, line_by_line_runtime):
+            return ((self.filename == other.filename) and (self.line_num == other.line_num) and
+                    (self.line_text == other.line_text) and (self.total_run_time == other.total_run_time) and
+                    (self.total_memory == other.total_memory) and (self.memory_percentage_of_total ==other.memory_percentage_of_total) and
                     (self.time_percentage_of_total == other.time_percentage_of_total))
         return False
 
@@ -86,9 +86,9 @@ class class_runtime:
 
     def __eq__(self, other):
         if (isinstance(other, class_runtime)):
-            return ((self.filename == other.filename) and (self.name == other.name) and \
-                (self.total_run_time == other.total_run_time) and (self.total_memory == other.total_memory)  \
-                    and (self.memory_percentage_of_total ==other.memory_percentage_of_total) and\
+            return ((self.filename == other.filename) and (self.name == other.name) and
+                    (self.total_run_time == other.total_run_time) and (self.total_memory == other.total_memory)
+                    and (self.memory_percentage_of_total ==other.memory_percentage_of_total) and
                     (self.time_percentage_of_total == other.time_percentage_of_total) and (self.class_functions == other.class_functions))
         return False
 
