@@ -136,6 +136,8 @@ class ProfileAnalyzer:
             # Get total file time from header in ms
             total_memory = 0.0
             if len(a.split("\n")) > 1:
+                debug("CHECKING FILENAME - Full Scalene message: "+a)
+                debug("Split Message: "+a.split("\n")[1])
                 file_name = (a.split("\n")[1]).split(": % of time")[0]
                 mem_num = ((a.split("\n")[0]).split("(max:")[1]).split("MB)")[0]
                 total_memory = float(mem_num)

@@ -21,7 +21,8 @@ def build_visualization(program_file_path, profiler_results, e2e_results: Dict[i
     :param e2e_results: results from the end to end analysis
     """
     debug("Starting visualization building")
-    output = {"script_name": program_file_path}
+    input_path_split = program_file_path.split("/")
+    output = {"script_name": input_path_split[len(input_path_split)-1]}
 
     # create class object, two arrays for runtime and memory containing original file name, avg time/memory per class
     debug("Creating class objects")
