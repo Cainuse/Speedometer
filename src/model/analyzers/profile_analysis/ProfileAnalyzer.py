@@ -148,6 +148,8 @@ class ProfileAnalyzer:
             func_indentation = ""
             clas = class_runtime(file_name, "", 0.0, 0.0,0)
             class_indentation = ""
+            debug("Total Runtime Calculated: " + str(reference_time) + "ms")
+            debug("Total Memory Calculated: " + str(total_memory) + "MB")
 
             for l in file_dict[a]:
                 line_split = l.split("│")
