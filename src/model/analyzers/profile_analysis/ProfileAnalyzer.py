@@ -119,7 +119,7 @@ class ProfileAnalyzer:
         command.extend(escaped_args)
 
         debug("Starting scalene run")
-        debug("Scalene command used = " + str(command))
+        debug("Scalene command used = {}".format(command))
         output = check_output(command, encoding='UTF-8', cwd=os.path.abspath(program_file_dir))
         debug("Parsing output")
         self.parseOutput(output)
@@ -146,14 +146,15 @@ class ProfileAnalyzer:
         """
         # Map file header (with name & total time) to line contents (with %time and %mem per line)
         # 5 lines without memory usage, 6 lines with
+        debug("Processing scalene output...")
         file_dict = self.ScaleneArrayStrip(arr, "Memory usage:", "% of time", 6)
 
         for a in file_dict:
             # Get total file time from header in ms
             total_memory = 0.0
             if len(a.split("\n")) > 1:
-                debug("CHECKING FILENAME - Full Scalene message: "+a)
-                debug("Split Message: "+a.split("\n")[1])
+                debug("CHECKING FILENAME - Full Scalene message: {}".format(a))
+                debug("Split Message: {}".format(a.split("\n")[1]))
                 file_name = (a.split("\n")[1]).split(": % of time")[0]
                 mem_num = ((a.split("\n")[0]).split("(max:")[1]).split("MB)")[0]
                 total_memory = float(mem_num)
@@ -164,8 +165,8 @@ class ProfileAnalyzer:
             func_indentation = ""
             clas = class_runtime(file_name, "", 0.0, 0.0,0)
             class_indentation = ""
-            debug("Total Runtime Calculated: " + str(reference_time) + "ms")
-            debug("Total Memory Calculated: " + str(total_memory) + "MB")
+            debug("Total Runtime Calculated: {}ms".format(reference_time))
+            debug("Total Memory Calculated: {}MB".format(total_memory))
 
             for l in file_dict[a]:
                 line_split = l.split("│")
