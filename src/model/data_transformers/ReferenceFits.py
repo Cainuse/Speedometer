@@ -86,7 +86,10 @@ def get_o_n3_data(x_values: List[int], y_values: List[float]) -> Dict[int, int]:
 
 def get_o_nlogn_data(x_values: List[int], y_values: List[float]) -> Dict[int, int]:
     def x_log_x(x: float) -> float:
-        return x * numpy.log(x)
+        try:
+            return x * numpy.log(x)
+        except OverflowError:
+            return 10**12
 
     x_log_x_values = [x_log_x(x) for x in x_values]
     if max(x_log_x_values) > 10**12:
@@ -99,7 +102,10 @@ def get_o_nlogn_data(x_values: List[int], y_values: List[float]) -> Dict[int, in
 
 def get_o_nn_data(x_values: List[int], y_values: List[float]) -> Dict[int, int]:
     def x_to_the_x(x: float) -> float:
-        return math.pow(x, x)
+        try:
+            return math.pow(x, x)
+        except OverflowError:
+            return 10**12
 
     x_to_the_x_values = [x_to_the_x(x) for x in x_values]
     if max(x_to_the_x_values) > 10**12:
@@ -112,7 +118,10 @@ def get_o_nn_data(x_values: List[int], y_values: List[float]) -> Dict[int, int]:
 
 def get_o_n_fact_data(x_values: List[int], y_values: List[float]) -> Dict[int, int]:
     def x_fact(x: float) -> float:
-        return math.factorial(x)
+        try:
+            return math.factorial(x)
+        except OverflowError:
+            return 10**12
 
     x_fact_values = [x_fact(x) for x in x_values]
     if max(x_fact_values) > 10**12:
