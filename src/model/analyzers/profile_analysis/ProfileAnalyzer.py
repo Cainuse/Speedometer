@@ -104,7 +104,19 @@ class ProfileAnalyzer:
         """
         self.results={"class": [], "function": [], "line_by_line": []}
         debug("Running scalene profile analysis")
-        p = os.popen('scalene ' + program_file_path)
+        
+        args = config.get_args_for(min(config.get_input_sizes()))
+        concated =""
+        for a in args:
+            if isinstance(a,str):
+                concated = concated + '\"'+a+'\"'
+                concated += " "
+            else:
+                concated = concated + str(a) +" "
+        command = 'scalene ' + program_file_path + " " + concated
+        debug(command)
+
+        p = os.popen(command)
         output = p.read()
         self.parseOutput(output)
         
