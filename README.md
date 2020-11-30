@@ -2,6 +2,8 @@
 
 [Watch the video here](https://drive.google.com/file/d/1Sw31UE2h0gWIgypsrU14E9wYE4hArfLq/view)
 
+![](docs/images/sample_visualization.png)
+
 ## Requirements
 
 - Python 3.x
