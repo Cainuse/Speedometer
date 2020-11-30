@@ -25,7 +25,7 @@ For this example, we will run `dumb_sort` (which is just insertion sort):
 From the root directory of the project run (assuming your Python 3.x installation is under `python3`):
 
 ```python
-python3 src/MainCLI.py -v --program "samples/dumb_sort/dumb_sort.py" --config "samples/dumb_sort/config.json"
+python3 src/MainCLI.py -v --program "samples/merge_sort/Merge.py" --config "samples/merge_sort/merge_config.json"
 ```
 
 where `--program` gives the path to the python file, `--config` gives the path to the config file and `-v` is a (optional) flag for verbose output
