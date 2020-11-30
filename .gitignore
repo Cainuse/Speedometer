@@ -8,3 +8,4 @@ src/client/build/
 __pycache__/
 generated_dockerfiles/
 *.pyc
+scalene.tar

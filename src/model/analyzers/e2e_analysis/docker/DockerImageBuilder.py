@@ -58,6 +58,11 @@ def delete_all_docker_images(force=False, exceptions=None):
             DOCKER_CLIENT.images.remove(name, force=force)
 
 
+def load_docker_image(path: str):
+    with open(path, "rb") as file:
+        DOCKER_CLIENT.images.load(file)
+
+
 def _pull_base_image_if_absent(base_image_name: str):
     local_images = list_images(remove_version=False)
     if base_image_name not in local_images:
@@ -66,3 +71,7 @@ def _pull_base_image_if_absent(base_image_name: str):
         debug("If you're running Speedometer for the first time, this may take a few minutes")
         pull_process = Popen(['docker', 'pull', base_image_name])
         pull_process.wait()
+
+
+if __name__ == "__main__":
+    load_docker_image("D:\\University of British Columbia\\Academics\\Year 4\\Term 1\\CPSC 410\\Projects\\Project 2\\cpsc410_project2_team4\\resources\\scalene.tar")

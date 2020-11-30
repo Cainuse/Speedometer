@@ -1,8 +1,11 @@
+from src.model.analyzers.e2e_analysis.docker.DockerContainerRunner import create_docker_container
+from src.model.analyzers.e2e_analysis.docker.DockerImageBuilder import load_docker_image, build_docker_image
+from src.model.analyzers.e2e_analysis.docker.DockerfileMaker import build_scalene_dockerfile
 from src.model.util import Config
 from subprocess import check_output
 import re
 import math
-from typing import Union
+from typing import Union, List
 import os
 
 from src.model.util.Logger import debug
@@ -106,24 +109,27 @@ class ProfileAnalyzer:
         debug("Running scalene profile analysis")
         
         args = config.get_args_for(max(config.get_input_sizes()))
-        debug("Using input size {} for scalene analysis".format(min(config.get_input_sizes())))
-        escaped_args = []
-        for a in args:
-            if isinstance(a, str):
-                escaped_args.append('\"'+a+'\"')
-            else:
-                escaped_args.append(str(a))
-
-        program_file_dir, program_file_name = os.path.split(program_file_path)
-        command = ['scalene', program_file_name]
-        command.extend(escaped_args)
-
+        debug("Using input size {} for scalene analysis".format(max(config.get_input_sizes())))
         debug("Starting scalene run")
-        debug("Scalene command used = {}".format(command))
-        output = check_output(command, encoding='UTF-8', cwd=os.path.abspath(program_file_dir))
+        # output = check_output(scalene_args, encoding='UTF-8', cwd=os.path.abspath(program_file_dir))
+        output = self._run_scalene_in_docker(program_file_path, args)
         debug(output)
         debug("Parsing output")
         self.parseOutput(output)
+
+    def _run_scalene_in_docker(self, program_file_path, scalene_args: List[str]):
+        debug("Loading the scalene docker container")
+        load_docker_image(os.path.abspath("resources/scalene.tar"))
+        output_path = build_scalene_dockerfile(program_file_path, scalene_args)
+        image_name = build_docker_image(output_path)
+        container = create_docker_container(image_name)
+        debug("Starting the scalene docker container")
+        container.start()
+        container.wait()
+        output =  bytes(container.logs()).decode('UTF-8')
+        container.stop()
+        return output
+
         
     def parseOutput(self,output:str):
         # parse Scalene output, removing formatting & any logging from user files
@@ -296,10 +302,10 @@ class ProfileAnalyzer:
         Helper function for calculating time from Scalene output
         :param header: Scalene output line that includes filename, total time, and % of time for file
         """
-        timeString = header.split(": % of time = ")[1]
-        timeSplit = timeString.split("% out of   ")
+        timeString = header.split(": % of time =")[1]
+        timeSplit = timeString.split("% out of")
         timeSplit[1] = timeSplit[1].replace("s.", "")
-        return float(timeSplit[0]) / 100 * float(timeSplit[1])
+        return float(timeSplit[0].strip()) / 100 * float(timeSplit[1].strip())
 
 
     def get_results(self) -> dict:

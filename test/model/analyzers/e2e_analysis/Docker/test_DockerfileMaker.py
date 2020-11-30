@@ -29,7 +29,7 @@ Test build_dockerfile()
 
 
 def helper_test_dockerfile(program_file_path, args, expected_contents):
-    output_path = DockerfileMaker.build_dockerfile(program_file_path, args)
+    output_path = DockerfileMaker.build_python_dockerfile(program_file_path, args)
     try:
         with open(output_path, "r") as dockerfile:
             contents = dockerfile.read()
