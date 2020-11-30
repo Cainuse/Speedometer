@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LineByLineComplexity = ({ dataset }) => {
   const classes = useStyles();
-  const timeThreshold = 5;
+  const timeThreshold = 1;
 
   const [expanded, setExpanded] = useState(
     dataset["line_by_line"].map(() => {

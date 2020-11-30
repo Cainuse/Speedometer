@@ -1,1 +1,771 @@
-{"script_name": "fibonacci.py", "class": {"class_runtime": [], "class_memory": []}, "function": {"function_runtime": [{"name": "fibonacci.py/calculate_nth_fibonacci(n: int)", "total_runtime": 0.0, "percent_runtime": 0}, {"name": "fibonacci.py/calculate_all_fibonacci(limit: int)", "total_runtime": 0.0, "percent_runtime": 0}], "function_memory": [{"name": "fibonacci.py/calculate_nth_fibonacci(n: int)", "total_memory": 0.0, "percent_memory": 0.0}, {"name": "fibonacci.py/calculate_all_fibonacci(limit: int)", "total_memory": 1.0, "percent_memory": 3.571428571428571}]}, "line_by_line": [[{"fileName": "fibonacci.py", "line_num": 1, "code": "import sys", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 2, "code": "", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 3, "code": "", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 4, "code": "def calculate_nth_fibonacci(n: int):", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 5, "code": "    if n == 0:", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 6, "code": "        return n", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 7, "code": "", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 8, "code": "    previous = 1", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 9, "code": "    previous_previous = 0", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 10, "code": "", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 11, "code": "    while n > 1:", "total_runtime": 1480.5, "total_memory": 0.0, "percent_runtime": 9, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 12, "code": "        curr = previous + previous_previous", "total_runtime": 6086.5, "total_memory": -92.0, "percent_runtime": 37, "percent_memory": -328.57142857142856}, {"fileName": "fibonacci.py", "line_num": 13, "code": "        previous_previous = previous", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 14, "code": "        previous = curr", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 15, "code": "        n -= 1", "total_runtime": 8718.5, "total_memory": 107.0, "percent_runtime": 53, "percent_memory": 382.14285714285717}, {"fileName": "fibonacci.py", "line_num": 16, "code": "", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 17, "code": "    return previous", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 18, "code": "", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 19, "code": "", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 20, "code": "def calculate_all_fibonacci(limit: int):", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 21, "code": "    all_fib = []", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 22, "code": "    while limit > 0:", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 23, "code": "        all_fib.append(calculate_nth_fibonacci(limit - 1))", "total_runtime": 0.0, "total_memory": 1.0, "percent_runtime": 0, "percent_memory": 3.571428571428571}, {"fileName": "fibonacci.py", "line_num": 24, "code": "        limit -= 1", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 25, "code": "    return all_fib", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 26, "code": "", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 27, "code": "", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 28, "code": "if __name__ == \"__main__\":", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 29, "code": "    calculate_all_fibonacci(int(sys.argv[1]))", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}, {"fileName": "fibonacci.py", "line_num": 30, "code": "    print(\"done!\")", "total_runtime": 0.0, "total_memory": 0.0, "percent_runtime": 0, "percent_memory": 0.0}]], "e2e": {"e2e_runtime": [{"n": 50, "total_runtime": 4.6, "O(1)": 4.6, "O(log(n))": 0.0, "O(n)": 0.0, "O(n\u00b2)": 12.72, "O(n\u00b3)": 18.55, "O(nlog(n))": 0.0, "O(n\u207f)": 0.0, "O(n!)": 0.0}, {"n": 100, "total_runtime": 4.69, "O(1)": 4.6, "O(log(n))": 0.0, "O(n)": 0.0, "O(n\u00b2)": 14.1, "O(n\u00b3)": 20.63, "O(nlog(n))": 0.0, "O(n\u207f)": 0.0, "O(n!)": 0.0}, {"n": 500, "total_runtime": 4.72, "O(1)": 4.6, "O(log(n))": 0.0, "O(n)": 0.0, "O(n\u00b2)": 17.32, "O(n\u00b3)": 25.46, "O(nlog(n))": 0.0, "O(n\u207f)": 0.0, "O(n!)": 0.0}, {"n": 1000, "total_runtime": 5.32, "O(1)": 4.6, "O(log(n))": 0.0, "O(n)": 0.0, "O(n\u00b2)": 18.71, "O(n\u00b3)": 27.53, "O(nlog(n))": 0.0, "O(n\u207f)": 0.0, "O(n!)": 0.0}, {"n": 2000, "total_runtime": 6.33, "O(1)": 4.6, "O(log(n))": 0.0, "O(n)": 0.0, "O(n\u00b2)": 20.1, "O(n\u00b3)": 29.61, "O(nlog(n))": 0.0, "O(n\u207f)": 0.0, "O(n!)": 0.0}, {"n": 3000, "total_runtime": 7.13, "O(1)": 4.6, "O(log(n))": 0.0, "O(n)": 0.0, "O(n\u00b2)": 20.91, "O(n\u00b3)": 30.83, "O(nlog(n))": 0.0, "O(n\u207f)": 0.0, "O(n!)": 0.0}, {"n": 3500, "total_runtime": 7.49, "O(1)": 4.6, "O(log(n))": 0.0, "O(n)": 0.0, "O(n\u00b2)": 21.21, "O(n\u00b3)": 31.29, "O(nlog(n))": 0.0, "O(n\u207f)": 0.0, "O(n!)": 0.0}, {"n": 4000, "total_runtime": 7.84, "O(1)": 4.6, "O(log(n))": 0.0, "O(n)": 0.0, "O(n\u00b2)": 21.48, "O(n\u00b3)": 31.69, "O(nlog(n))": 0.0, "O(n\u207f)": 0.0, "O(n!)": 0.0}, {"n": 4500, "total_runtime": 8.13, "O(1)": 4.6, "O(log(n))": 0.0, "O(n)": 0.0, "O(n\u00b2)": 21.72, "O(n\u00b3)": 32.05, "O(nlog(n))": 0.0, "O(n\u207f)": 0.0, "O(n!)": 0.0}, {"n": 5000, "total_runtime": 8.57, "O(1)": 4.6, "O(log(n))": 0.0, "O(n)": 0.0, "O(n\u00b2)": 21.93, "O(n\u00b3)": 32.36, "O(nlog(n))": 0.0, "O(n\u207f)": 0.0, "O(n!)": 0.0}, {"n": 5500, "total_runtime": 8.79, "O(1)": 4.6, "O(log(n))": 0.0, "O(n)": 0.0, "O(n\u00b2)": 22.12, "O(n\u00b3)": 32.65, "O(nlog(n))": 0.0, "O(n\u207f)": 0.0, "O(n!)": 0.0}, {"n": 6000, "total_runtime": 8.69, "O(1)": 4.6, "O(log(n))": 0.0, "O(n)": 0.0, "O(n\u00b2)": 22.29, "O(n\u00b3)": 32.91, "O(nlog(n))": 0.0, "O(n\u207f)": 0.0, "O(n!)": 0.0}, {"n": 7000, "total_runtime": 8.96, "O(1)": 4.6, "O(log(n))": 0.0, "O(n)": 0.0, "O(n\u00b2)": 22.6, "O(n\u00b3)": 33.37, "O(nlog(n))": 0.0, "O(n\u207f)": 0.0, "O(n!)": 0.0}, {"n": 8000, "total_runtime": 9.23, "O(1)": 4.6, "O(log(n))": 0.0, "O(n)": 0.0, "O(n\u00b2)": 22.87, "O(n\u00b3)": 33.77, "O(nlog(n))": 0.0, "O(n\u207f)": 0.0, "O(n!)": 0.0}], "e2e_memory": [{"n": 50, "total_memory": 0.0, "O(1)": 0.0, "O(log(n))": 0.0, "O(n)": 2.01, "O(n\u00b2)": 8.33, "O(n\u00b3)": 12.62, "O(nlog(n))": 4.38, "O(n\u207f)": 0.0, "O(n!)": 0.0, "memory_usage_by_time": {}}, {"n": 100, "total_memory": 0.0, "O(1)": 0.0, "O(log(n))": 0.0, "O(n)": 2.71, "O(n\u00b2)": 9.72, "O(n\u00b3)": 14.7, "O(nlog(n))": 5.23, "O(n\u207f)": 0.0, "O(n!)": 0.0, "memory_usage_by_time": {}}, {"n": 500, "total_memory": 0.0, "O(1)": 0.0, "O(log(n))": 0.0, "O(n)": 4.32, "O(n\u00b2)": 12.94, "O(n\u00b3)": 19.53, "O(nlog(n))": 7.14, "O(n\u207f)": 0.0, "O(n!)": 0.0, "memory_usage_by_time": {}}, {"n": 1000, "total_memory": 0.0, "O(1)": 0.0, "O(log(n))": 0.0, "O(n)": 5.01, "O(n\u00b2)": 14.32, "O(n\u00b3)": 21.61, "O(nlog(n))": 7.94, "O(n\u207f)": 0.0, "O(n!)": 0.0, "memory_usage_by_time": {}}, {"n": 2000, "total_memory": 0.0, "O(1)": 0.0, "O(log(n))": 0.0, "O(n)": 5.7, "O(n\u00b2)": 15.71, "O(n\u00b3)": 23.69, "O(nlog(n))": 8.73, "O(n\u207f)": 0.0, "O(n!)": 0.0, "memory_usage_by_time": {}}, {"n": 3000, "total_memory": 1.71, "O(1)": 0.0, "O(log(n))": 0.0, "O(n)": 6.11, "O(n\u00b2)": 16.52, "O(n\u00b3)": 24.9, "O(nlog(n))": 9.19, "O(n\u207f)": 0.0, "O(n!)": 0.0, "memory_usage_by_time": {"0": 5349376.0}}, {"n": 3500, "total_memory": 1.71, "O(1)": 0.0, "O(log(n))": 0.0, "O(n)": 6.26, "O(n\u00b2)": 16.83, "O(n\u00b3)": 25.37, "O(nlog(n))": 9.36, "O(n\u207f)": 0.0, "O(n!)": 0.0, "memory_usage_by_time": {"0": 5363029.333333333}}, {"n": 4000, "total_memory": 1.71, "O(1)": 0.0, "O(log(n))": 0.0, "O(n)": 6.4, "O(n\u00b2)": 17.1, "O(n\u00b3)": 25.77, "O(nlog(n))": 9.51, "O(n\u207f)": 0.0, "O(n!)": 0.0, "memory_usage_by_time": {"0": 5331626.666666667}}, {"n": 4500, "total_memory": 1.79, "O(1)": 0.0, "O(log(n))": 0.0, "O(n)": 6.51, "O(n\u00b2)": 17.33, "O(n\u00b3)": 26.12, "O(nlog(n))": 9.64, "O(n\u207f)": 0.0, "O(n!)": 0.0, "memory_usage_by_time": {"0": 5204650.666666667, "2010": 5832704.0, "2013": 5988352.0, "2009": 5885952.0}}, {"n": 5000, "total_memory": 1.81, "O(1)": 0.0, "O(log(n))": 0.0, "O(n)": 6.62, "O(n\u00b2)": 17.54, "O(n\u00b3)": 26.44, "O(nlog(n))": 9.76, "O(n\u207f)": 0.0, "O(n!)": 0.0, "memory_usage_by_time": {"0": 5218304.0, "2014": 5681152.0, "4024": 6299648.0, "2012": 5705728.0, "4021": 6225920.0, "2009": 5857280.0}}, {"n": 5500, "total_memory": 1.85, "O(1)": 0.0, "O(log(n))": 0.0, "O(n)": 6.71, "O(n\u00b2)": 17.73, "O(n\u00b3)": 26.72, "O(nlog(n))": 9.87, "O(n\u207f)": 0.0, "O(n!)": 0.0, "memory_usage_by_time": {"0": 5085866.666666667, "2009": 5623808.0, "4050": 6152192.0, "6061": 6516736.0, "2010": 5693440.0, "4022": 6123520.0, "2019": 5468160.0, "4027": 6225920.0}}, {"n": 6000, "total_memory": 1.81, "O(1)": 0.0, "O(log(n))": 0.0, "O(n)": 6.8, "O(n\u00b2)": 17.91, "O(n\u00b3)": 26.98, "O(nlog(n))": 9.96, "O(n\u207f)": 0.0, "O(n!)": 0.0, "memory_usage_by_time": {"0": 5104981.333333333, "2017": 5562368.0, "4024": 6025216.0, "2008": 5459968.0, "4015": 6246400.0, "2030": 5337088.0, "4043": 5976064.0}}, {"n": 7000, "total_memory": 1.82, "O(1)": 0.0, "O(log(n))": 0.0, "O(n)": 6.96, "O(n\u00b2)": 18.22, "O(n\u00b3)": 27.44, "O(nlog(n))": 10.14, "O(n\u207f)": 0.0, "O(n!)": 0.0, "memory_usage_by_time": {"0": 5099520.0, "2006": 5122048.0, "4013": 5324800.0, "6019": 5943296.0, "2028": 5054464.0, "4037": 5423104.0, "6043": 6180864.0, "4015": 5574656.0, "6021": 6303744.0}}, {"n": 8000, "total_memory": 1.9, "O(1)": 0.0, "O(log(n))": 0.0, "O(n)": 7.09, "O(n\u00b2)": 18.48, "O(n\u00b3)": 27.85, "O(nlog(n))": 10.28, "O(n\u207f)": 0.0, "O(n!)": 0.0, "memory_usage_by_time": {"0": 5094058.666666667, "2006": 5076992.0, "4015": 5464064.0, "6022": 5984256.0, "8028": 6684672.0, "4014": 5443584.0, "6024": 5967872.0, "8029": 6643712.0, "2005": 5128192.0, "4011": 5517312.0, "6017": 5976064.0}}], "e2e_highest_runtime_function": "", "e2e_highest_memory_usage_function": "calculate_all_fibonacci(limit: int)", "e2e_total_average_time": 3275.36, "e2e_total_average_memory": 3.85, "e2e_time_complexity": "1", "e2e_space_complexity": "n"}, "sankey": {"sankey_runtime": {"nodes": [{"name": "calculate_nth_fibonacci(n: int)"}, {"name": "calculate_all_fibonacci(limit: int)"}], "links": []}, "sankey_memory": {"nodes": [{"name": "calculate_nth_fibonacci(n: int)"}, {"name": "calculate_all_fibonacci(limit: int)"}], "links": []}}}
+{
+  "script_name": "Merge.py",
+  "class": { "class_runtime": [], "class_memory": [] },
+  "function": {
+    "function_runtime": [
+      {
+        "name": "Merge.py/mergeSort(arr)",
+        "total_runtime": 68.2,
+        "percent_runtime": 2
+      },
+      {
+        "name": "Merge.py/validate(arr)",
+        "total_runtime": 102.3,
+        "percent_runtime": 3
+      }
+    ],
+    "function_memory": [
+      {
+        "name": "Merge.py/mergeSort(arr)",
+        "total_memory": 4.2,
+        "percent_memory": 88
+      },
+      {
+        "name": "Merge.py/validate(arr)",
+        "total_memory": 0.8,
+        "percent_memory": 12
+      }
+    ]
+  },
+  "line_by_line": [
+    [
+      {
+        "fileName": "Merge.py",
+        "line_num": 1,
+        "code": "import sys",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 2,
+        "code": "import random",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 3,
+        "code": "",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 4,
+        "code": "",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 5,
+        "code": "def mergeSort(arr):",
+        "total_runtime": 34.1,
+        "total_memory": 0.0,
+        "percent_runtime": 1,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 6,
+        "code": "    if len(arr) > 1:",
+        "total_runtime": 34.1,
+        "total_memory": 0.0,
+        "percent_runtime": 1,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 7,
+        "code": "",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 8,
+        "code": "        # Finding the mid of the array",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 9,
+        "code": "        mid = len(arr) // 2",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 10,
+        "code": "",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 11,
+        "code": "        # Dividing the array elements",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 12,
+        "code": "        L = arr[:mid]",
+        "total_runtime": 68.2,
+        "total_memory": 0.0,
+        "percent_runtime": 2,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 13,
+        "code": "",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 14,
+        "code": "        # into 2 halves",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 15,
+        "code": "        R = arr[mid:]",
+        "total_runtime": 68.2,
+        "total_memory": -3.0,
+        "percent_runtime": 2,
+        "percent_memory": -10.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 16,
+        "code": "",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 17,
+        "code": "        # Sorting the first half",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 18,
+        "code": "        mergeSort(L)",
+        "total_runtime": 34.1,
+        "total_memory": 1.0,
+        "percent_runtime": 1,
+        "percent_memory": 3.3333333333333335
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 19,
+        "code": "",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 20,
+        "code": "        # Sorting the second half",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 21,
+        "code": "        mergeSort(R)",
+        "total_runtime": 68.2,
+        "total_memory": 0.0,
+        "percent_runtime": 2,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 22,
+        "code": "",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 23,
+        "code": "        i = j = k = 0",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 24,
+        "code": "",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 25,
+        "code": "        # Copy data to temp arrays L[] and R[]",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 26,
+        "code": "        while i < len(L) and j < len(R):",
+        "total_runtime": 1125.3,
+        "total_memory": 1.0,
+        "percent_runtime": 33,
+        "percent_memory": 3.3333333333333335
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 27,
+        "code": "            if L[i] < R[j]:",
+        "total_runtime": 579.7,
+        "total_memory": 0.0,
+        "percent_runtime": 17,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 28,
+        "code": "                arr[k] = L[i]",
+        "total_runtime": 136.4,
+        "total_memory": 0.0,
+        "percent_runtime": 4,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 29,
+        "code": "                i += 1",
+        "total_runtime": 170.5,
+        "total_memory": 0.0,
+        "percent_runtime": 5,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 30,
+        "code": "            else:",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 31,
+        "code": "                arr[k] = R[j]",
+        "total_runtime": 136.4,
+        "total_memory": 0.0,
+        "percent_runtime": 4,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 32,
+        "code": "                j += 1",
+        "total_runtime": 170.5,
+        "total_memory": 6.0,
+        "percent_runtime": 5,
+        "percent_memory": 20.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 33,
+        "code": "            k += 1",
+        "total_runtime": 409.2,
+        "total_memory": 14.0,
+        "percent_runtime": 12,
+        "percent_memory": 46.666666666666664
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 34,
+        "code": "",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 35,
+        "code": "        # Checking if any element was left",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 36,
+        "code": "        while i < len(L):",
+        "total_runtime": 34.1,
+        "total_memory": 0.0,
+        "percent_runtime": 1,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 37,
+        "code": "            arr[k] = L[i]",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 38,
+        "code": "            i += 1",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 39,
+        "code": "            k += 1",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 40,
+        "code": "",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 41,
+        "code": "        while j < len(R):",
+        "total_runtime": 34.1,
+        "total_memory": 0.0,
+        "percent_runtime": 1,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 42,
+        "code": "            arr[k] = R[j]",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 43,
+        "code": "            j += 1",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 44,
+        "code": "            k += 1",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 45,
+        "code": "",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 46,
+        "code": "",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 47,
+        "code": "# Code to print the list",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 48,
+        "code": "def validate(arr):",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 49,
+        "code": "    for i in range(len(arr) - 1):",
+        "total_runtime": 0.0,
+        "total_memory": -4.0,
+        "percent_runtime": 0,
+        "percent_memory": -13.333333333333334
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 50,
+        "code": "        if arr[i] > arr[i + 1]:",
+        "total_runtime": 102.3,
+        "total_memory": -5.0,
+        "percent_runtime": 3,
+        "percent_memory": -16.666666666666664
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 51,
+        "code": "            return False",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 52,
+        "code": "",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 53,
+        "code": "    return True",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 54,
+        "code": "",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 55,
+        "code": "",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 56,
+        "code": "# Driver code to test above",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 57,
+        "code": "if __name__ == \"__main__\":",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 58,
+        "code": "    A = []",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 59,
+        "code": "    for a in range(int(sys.argv[1])):",
+        "total_runtime": 0.0,
+        "total_memory": 2.0,
+        "percent_runtime": 0,
+        "percent_memory": 6.666666666666667
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 60,
+        "code": "        A.append(random.random() * 1000)",
+        "total_runtime": 102.3,
+        "total_memory": 8.0,
+        "percent_runtime": 3,
+        "percent_memory": 26.666666666666668
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 61,
+        "code": "    mergeSort(A)",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 62,
+        "code": "    if not validate(A):",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 63,
+        "code": "        print(\"Wrong output\")",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 64,
+        "code": "    else:",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      },
+      {
+        "fileName": "Merge.py",
+        "line_num": 65,
+        "code": "        print(\"Finished with correct output\")",
+        "total_runtime": 0.0,
+        "total_memory": 0.0,
+        "percent_runtime": 0,
+        "percent_memory": 0.0
+      }
+    ]
+  ],
+  "e2e": {
+    "e2e_runtime": [
+      {
+        "n": 1,
+        "total_runtime": 5.3,
+        "O(1)": 5.3,
+        "O(log(n))": 6.39,
+        "O(n)": 4.76,
+        "O(n\u00b2)": 6.22,
+        "O(n\u00b3)": 6.52,
+        "O(nlog(n))": 1.94,
+        "O(n\u207f)": 0.0,
+        "O(n!)": 0.0
+      },
+      {
+        "n": 10,
+        "total_runtime": 6.09,
+        "O(1)": 5.3,
+        "O(log(n))": 0.0,
+        "O(n)": 6.77,
+        "O(n\u00b2)": 10.82,
+        "O(n\u00b3)": 13.43,
+        "O(nlog(n))": 8.64,
+        "O(n\u207f)": 0.0,
+        "O(n!)": 0.0
+      },
+      {
+        "n": 30,
+        "total_runtime": 6.85,
+        "O(1)": 5.3,
+        "O(log(n))": 0.0,
+        "O(n)": 7.84,
+        "O(n\u00b2)": 13.02,
+        "O(n\u00b3)": 16.72,
+        "O(nlog(n))": 10.12,
+        "O(n\u207f)": 0.0,
+        "O(n!)": 0.0
+      },
+      {
+        "n": 60,
+        "total_runtime": 7.59,
+        "O(1)": 5.3,
+        "O(log(n))": 0.0,
+        "O(n)": 8.53,
+        "O(n\u00b2)": 14.41,
+        "O(n\u00b3)": 18.8,
+        "O(nlog(n))": 11.0,
+        "O(n\u207f)": 0.0,
+        "O(n!)": 0.0
+      },
+      {
+        "n": 100,
+        "total_runtime": 8.14,
+        "O(1)": 5.3,
+        "O(log(n))": 0.0,
+        "O(n)": 9.04,
+        "O(n\u00b2)": 15.43,
+        "O(n\u00b3)": 20.33,
+        "O(nlog(n))": 11.63,
+        "O(n\u207f)": 0.0,
+        "O(n!)": 0.0
+      }
+    ],
+    "e2e_memory": [
+      {
+        "n": 1,
+        "total_memory": 0.0,
+        "O(1)": 0.0,
+        "O(log(n))": 1.17,
+        "O(n)": 0.0,
+        "O(n\u00b2)": 0.0,
+        "O(n\u00b3)": 0.51,
+        "O(nlog(n))": 0.0,
+        "O(n\u207f)": 0.0,
+        "O(n!)": 0.0,
+        "memory_usage_by_time": {}
+      },
+      {
+        "n": 10,
+        "total_memory": 0.0,
+        "O(1)": 0.0,
+        "O(log(n))": 0.0,
+        "O(n)": 0.0,
+        "O(n\u00b2)": 4.06,
+        "O(n\u00b3)": 7.41,
+        "O(nlog(n))": 0.0,
+        "O(n\u207f)": 0.0,
+        "O(n!)": 0.0,
+        "memory_usage_by_time": {}
+      },
+      {
+        "n": 30,
+        "total_memory": 0.0,
+        "O(1)": 0.0,
+        "O(log(n))": 0.0,
+        "O(n)": 0.0,
+        "O(n\u00b2)": 6.26,
+        "O(n\u00b3)": 10.71,
+        "O(nlog(n))": 0.0,
+        "O(n\u207f)": 0.0,
+        "O(n!)": 0.0,
+        "memory_usage_by_time": {}
+      },
+      {
+        "n": 60,
+        "total_memory": 2.49,
+        "O(1)": 0.0,
+        "O(log(n))": 0.0,
+        "O(n)": 0.0,
+        "O(n\u00b2)": 7.64,
+        "O(n\u00b3)": 12.79,
+        "O(nlog(n))": 0.0,
+        "O(n\u207f)": 0.0,
+        "O(n!)": 0.0,
+        "memory_usage_by_time": { "0": 12006741.333333334 }
+      },
+      {
+        "n": 100,
+        "total_memory": 2.8,
+        "O(1)": 0.0,
+        "O(log(n))": 0.0,
+        "O(n)": 0.0,
+        "O(n\u00b2)": 8.66,
+        "O(n\u00b3)": 14.32,
+        "O(nlog(n))": 0.0,
+        "O(n\u207f)": 0.0,
+        "O(n!)": 0.0,
+        "memory_usage_by_time": {
+          "0": 16319829.333333334,
+          "2019": 15171584.0,
+          "2014": 16445440.0,
+          "2012": 16334848.0
+        }
+      }
+    ],
+    "e2e_highest_runtime_function": "validate(arr)",
+    "e2e_highest_memory_usage_function": "mergeSort(arr)",
+    "e2e_total_average_time": 1398.8,
+    "e2e_total_average_memory": 5.69,
+    "e2e_time_complexity": "nlogn",
+    "e2e_space_complexity": "n"
+  },
+  "sankey": {
+    "sankey_runtime": {
+      "nodes": [{ "name": "mergeSort(arr)" }, { "name": "validate(arr)" }],
+      "links": []
+    },
+    "sankey_memory": {
+      "nodes": [{ "name": "mergeSort(arr)" }, { "name": "validate(arr)" }],
+      "links": []
+    }
+  }
+}
