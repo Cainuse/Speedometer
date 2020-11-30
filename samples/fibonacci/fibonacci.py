@@ -1,7 +1,7 @@
 import sys
 
 
-def calculate_nth_fibonacci(n: int):
+def nthFib(n: int):
     if n == 0:
         return n
 
@@ -17,14 +17,14 @@ def calculate_nth_fibonacci(n: int):
     return previous
 
 
-def calculate_all_fibonacci(limit: int):
+def allFib(limit: int):
     all_fib = []
     while limit > 0:
-        all_fib.append(calculate_nth_fibonacci(limit - 1))
+        all_fib.append(nthFib(limit - 1))
         limit -= 1
     return all_fib
 
 
 if __name__ == "__main__":
-    calculate_all_fibonacci(int(sys.argv[1]))
+    allFib(int(sys.argv[1]))
     print("done!")
