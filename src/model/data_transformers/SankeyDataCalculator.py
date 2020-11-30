@@ -29,7 +29,17 @@ def _build_links(class_runtimes, function_runtimes, files, classes, functions, r
             func_runtime = function_runtimes[functionIdx]
             dst_idx = functions[func_runtime.name]["index"]
             value = func_runtime.time_percentage_of_total if runtime_calc else func_runtime.memory_percentage_of_total
-            value /= source_class.time_percentage_of_total if runtime_calc else source_class.memory_percentage_of_total
+            if runtime_calc:
+                if source_class.time_percentage_of_total == 0:
+                    value = 0
+                else:
+                    value /= source_class.time_percentage_of_total
+            else:
+                if source_class.memory_percentage_of_total == 0:
+                    value = 0
+                else:
+                    value /= source_class.memory_percentage_of_total
+
             value *= 100
             links.append({"source": source_idx, "target": dst_idx, "value": value})
 
