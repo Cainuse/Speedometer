@@ -85,7 +85,7 @@
 
 > Note: Speedometer runs multiple trials of the test program for each input size, and therefore analysis can take up to 5 mins (longer if you are running it for the first time and haven't manually downloaded the optional dependencies above). Please be patient! Make sure to use the `-v` verbose flag to get detailed logging.
 
-Test your setup using one of our sample scripts under `<project root>/samples`. Each sub-directory contains a python script as well as a configuration file. We've also included a `results_visualization` sub-folder that contains the visualization that is generated for each script using Speedometer, in case you aren't able to run the analysis yourself.
+Test your setup using one of our sample scripts under `<project root>/samples`. Each sub-directory contains a python script as well as a configuration file (learn more about config files [here](#explanation-of-config-file)). We've also included a `results_visualization` sub-folder that contains the visualization that is generated for each script using Speedometer, in case you aren't able to run the analysis yourself.
 
 For this example, we will run `merge_sort` (which is just regular merge sort):
 
@@ -140,9 +140,64 @@ python3 src/MainCLI.py -v --program "samples/binary_search/binary_search.py" --c
 View the generated [results here](samples/binary_search/results_visualization)
 
 
+- Constant time/space loop
+
+```shell
+python3 src/MainCLI.py -v --program "samples/constant_loop/constant_loop.py" --config "samples/constant_loop/config.json" -v
+```
+
+View the generated [results here](samples/constant_loop/results_visualization)
+
+
+## Explanation of config file
+
+The config file tells Speedometer the arguments to give the test python script that would make it run the program for a specific input size.
+
+For example, the config file below:
+
+```json
+{
+    "arguments": {
+      "500": [500, "-f"],
+      "1000": [1000, "-f"],
+      "5000": [5000, "-f"],
+      "10000": [10000, "-f"],
+      "20000": [20000, "-f"]
+    }
+}
+```
+
+Tells Speedometer that to run the test script with input size 500, give it arguments `[500, "-f"]`. So the test script would be run as follows:
+
+```shell
+python test.py 500 -f
+```
+
+Likewise, the arguments to run the script with input size 1000 are `[1000, "-f"]`, and so on...
+
+### Writing good config files:
+
+To get good analysis results, ensure that the input sizes given result in the script running for at least 2 seconds. Further, the more 'range' of inputs you provide, the more accurate the results will be (since it will be closer to the average case). However, the larger the inputs, the longer the analysis will take - and the growth in time may be exponential.
+
 ## Limitations
 
 * Mac OS or Linux only
 * Does not support multi-file projects yet
 * Only supports standard python libraries - cannot import external libraries in test scripts
+* The test script must run for at least 2 seconds on the smallest input.
+* Running multiple analysis back-to-back can affect results due to thermal throttling of the CPU
+
+## Development
+
+### Requirements
+
+* Pytest for Python 3.x
+
+### Running unit tests
+
+Use the following command from `<project root>` to run the unit test suite:
+
+```shell
+$ pytest -vvs
+```
 
