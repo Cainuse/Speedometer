@@ -135,7 +135,7 @@ class ProfileAnalyzer:
         # parse Scalene output, removing formatting & any logging from user files
         ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
         result = ansi_escape.sub('', output)
-        chart_start = re.compile(r'\n(.*)\n(.*)\n(.*)\s+Line(\s+)\│Time %(\s+)\│Time %(\s+)\│Sys(\s+)(.+\n)*')
+        chart_start = re.compile(r'(.*)\n(.*)\n(.*)\n(.*)\s+Line(\s+)\│Time %(\s+)\│Time %(\s+)\│Sys(\s+)(.+\n)*')
         chart_str = re.search(chart_start,result)
         # send array of Scalene output split by newline
         if (chart_str != None):

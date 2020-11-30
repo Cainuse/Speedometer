@@ -17,16 +17,20 @@ const SummaryInfo = ({
         </Typography>
       </Typography>
       <Typography variant="subtitle1">{totalText}</Typography>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <Typography variant="h2" style={{ fontSize: "6rem" }}>
-        {highestVal}
-      </Typography>
-      <Typography variant="subtitle1">{highestText}</Typography>
+      {highestVal && highestVal !== "" ? (
+        <div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <Typography variant="h2" style={{ fontSize: "6rem" }}>
+            {highestVal}
+          </Typography>
+          <Typography variant="subtitle1">{highestText}</Typography>
+        </div>
+      ) : null}
     </div>
   );
 };

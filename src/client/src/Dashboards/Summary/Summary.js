@@ -250,7 +250,7 @@ const Summary = ({ dataset }) => {
             </Grid>
             <PerfLineChart
               data={dataset["e2e"]["e2e_runtime"]}
-              yLabel="Time (ms)"
+              yLabel="Logarithm of Time (ms)"
             />
           </Paper>
         </Grid>
@@ -298,7 +298,7 @@ const Summary = ({ dataset }) => {
               data={dataset["e2e"]["e2e_memory"].map(
                 ({ memory_usage_by_time, ...memObj }) => memObj
               )}
-              yLabel="Memory (MB)"
+              yLabel="Lograithm of Memory (MB)"
             />
           </Paper>
         </Grid>
