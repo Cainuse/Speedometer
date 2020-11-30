@@ -26,5 +26,5 @@ def calculate_all_fibonacci(limit: int):
 
 
 if __name__ == "__main__":
-    calculate_all_fibonacci(5000 + int(sys.argv[1]))
+    calculate_all_fibonacci(3000 + int(sys.argv[1]))
     print("done!")
