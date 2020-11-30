@@ -7,63 +7,45 @@ def find_O_fit(fit_data: FitData, raw_data: dict) -> str:
     :param fit_data: collection of all fit data
     :param raw_data: results from the end to end analysis
     """
+    if is_less_than_for_all_vals(fit_data.O_1, raw_data):
+        return "1"
 
-    min_least_square = least_squares(fit_data.O_1, raw_data)
-    return_str = "1"
+    if is_less_than_for_all_vals(fit_data.O_n, raw_data):
+        return "n"
 
-    o_n_least_square = least_squares(fit_data.O_n, raw_data)
-    if o_n_least_square <= min_least_square:
-        min_least_square = o_n_least_square
-        return_str = "n"
+    if is_less_than_for_all_vals(fit_data.O_n, raw_data):
+        return "n"
 
-    o_logn_least_square = least_squares(fit_data.O_logn, raw_data)
-    if o_logn_least_square <= min_least_square:
-        min_least_square = o_logn_least_square
-        return_str = "logn"
+    if is_less_than_for_all_vals(fit_data.O_logn, raw_data):
+        return "logn"
 
-    o_n2_least_square = least_squares(fit_data.O_n2, raw_data)
-    if o_n2_least_square <= min_least_square:
-        min_least_square = o_n2_least_square
-        return_str = "n2"
+    if is_less_than_for_all_vals(fit_data.O_n2, raw_data):
+        return "n2"
 
-    o_n3_least_square = least_squares(fit_data.O_n3, raw_data)
-    if o_n3_least_square <= min_least_square:
-        min_least_square = o_n3_least_square
-        return_str = "n3"
+    if is_less_than_for_all_vals(fit_data.O_n3, raw_data):
+        return "n3"
 
-    o_nlogn_least_square = least_squares(fit_data.O_nlogn, raw_data)
-    if o_nlogn_least_square <= min_least_square:
-        min_least_square = o_nlogn_least_square
-        return_str = "nlogn"
+    if is_less_than_for_all_vals(fit_data.O_nlogn, raw_data):
+        return "nlogn"
 
-    o_nn_least_square = least_squares(fit_data.O_nn, raw_data)
-    if o_nn_least_square <= min_least_square:
-        min_least_square = o_nn_least_square
-        return_str = "nn"
+    if is_less_than_for_all_vals(fit_data.O_nn, raw_data):
+        return "nn"
 
-    o_nfact_least_square = least_squares(fit_data.O_n_fact, raw_data)
-    if o_nfact_least_square <= min_least_square:
-        min_least_square = o_nfact_least_square
-        return_str = "n!"
+    if is_less_than_for_all_vals(fit_data.O_n_fact, raw_data):
+        return "n!"
 
-    return return_str
+    return "1"
 
 
-def least_squares(fit_y, data_y) -> float:
+def is_less_than_for_all_vals(fit_y, data_y) -> bool:
     """
     Calculate the least squares value between experimental data and the expected fitline
     :param data_y: array of data from
     :param fit_y: results from the end to end analysis
     """
 
-    # if len(data_y) != len(fit_y):
-    #     raise RuntimeError("Fit data point count does not equal observed data point count.")
-    ls_sum = 0.0
-    for i in data_y:
-        if fit_y[i] > 0:
-            ls_sum += (data_y[i] - fit_y[i]) ** 2
-        else:
-            return 1.0e+20
-        if ls_sum > 1.0e+20:
-            break
-    return round(ls_sum, 2)
+    for i in data_y.keys():
+        if data_y[i] > fit_y[i]:
+            return False
+
+    return True
