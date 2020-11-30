@@ -21,7 +21,7 @@ def build_visualization(program_file_path, profiler_results, e2e_results: Dict[i
     :param profiler_results: results from the profile analysis
     :param e2e_results: results from the end to end analysis
     """
-    debug("Starting visualization building")
+    debug("Starting results_visualization building")
     input_path_split = program_file_path.split("/")
     if len(input_path_split) > 0:
         output = {"script_name": input_path_split[len(input_path_split)-1]}

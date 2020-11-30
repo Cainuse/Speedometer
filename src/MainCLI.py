@@ -104,14 +104,13 @@ def main():
         Logger.debug("Analysis is complete!", force=True)
 
         Logger.set_stage("VISUALIZATION")
-        Logger.debug("Building visualization of results", force=True)
+        Logger.debug("Building results_visualization of results", force=True)
         package_visualization_and_open()
         Logger.debug("Build complete!", force=True)
     except Exception as e:
         Logger.set_stage("PROGRAM ERROR")
         Logger.debug("Error analyzing program", force=True)
         Logger.debug("Full Stack Trace - " + str(e), force=True)
-        raise e
 
 
 if __name__ == "__main__":

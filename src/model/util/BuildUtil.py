@@ -43,14 +43,14 @@ def _build_client() -> None:
     yarn_build_succ_msg = "The build folder is ready to be deployed."
 
     try:
-        debug("Installing yarn dependencies for visualization")
+        debug("Installing yarn dependencies for results_visualization")
         debug(CLIENT_SRC)
         os.chdir(CLIENT_SRC)
         os.system("yarn install")
-        debug("Compiling visualization code")
+        debug("Compiling results_visualization code")
         os.system("yarn build")
     except Exception as e:
-        raise Exception("Could not build visualization. Ensure you have the latest version of yarn installed.", e)
+        raise Exception("Could not build results_visualization. Ensure you have the latest version of yarn installed.", e)
 
 
 def _move_build_files() -> str:
@@ -71,7 +71,7 @@ def _run_build_file_in_browser(dst_path) -> None:
     Runs the generated HTML file in browser
     :raises: Exception if any of the paths are invalid (file does not exist), or the file is not of correct format
     """
-    debug("Opening visualization in browser")
+    debug("Opening results_visualization in browser")
     try:
         webbrowser.open('file://' +
                         os.path.join(dst_path, "build", "index.html"))
