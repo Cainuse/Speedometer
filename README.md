@@ -20,7 +20,7 @@
 
 Test your setup using one of our sample scripts under `<project root>/samples`. Each sub-directory contains a python script as well as a configuration file.
 
-For this example, we will run `dumb_sort` (which is just insertion sort):
+For this example, we will run `merge_sort` (which is just regular merge sort):
 
 From the root directory of the project run (assuming your Python 3.x installation is under `python3`):
 
